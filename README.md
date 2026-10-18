@@ -1,8 +1,10 @@
 # MudGPT
 
-MudGPT is a small headless MUD client for Windows and Linux. A persistent local broker owns one Telnet connection. A command-line interface and a Model Context Protocol (MCP) stdio adapter share that connection, while independent readers receive the same bounded event history.
+MudGPT is a headless MUD client for Windows and Linux, developed first for Legends of Krynn (LoK) and designed to remain useful with other text MUDs. Its play workflow includes LoK-specific lessons about room awareness, roleplay, color, equipment and character progression. A persistent local broker owns one Telnet connection. A command-line interface and a Model Context Protocol (MCP) stdio adapter share that connection, while independent readers receive the same bounded event history.
 
 This is an early developer release. It supplies the transport and control handoff for a person or an AI host to carry commands and observations back and forth. It does not call an AI provider, create accounts, choose game actions, or give a remote collaborator its own socket. No provider API key is required by the client.
+
+Read [LoK play lessons and Codex-to-ChatGPT collaboration](docs/lok-and-collaboration.md) for the intended decision partnership: a local Codex courier carries fresh observations to a named, saved ChatGPT conversation and returns the interlocutor's chosen command through the local client. The browser conversation does not directly own an MCP connection or game socket.
 
 ## Install
 
