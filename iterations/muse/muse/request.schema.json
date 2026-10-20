@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/mudgpt/muse/request-v1.schema.json",
+  "title": "Scoped Muse adapter operation",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op"
+      ],
+      "properties": {
+        "op": {
+          "const": "status"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "after",
+        "expected_broker_id"
+      ],
+      "properties": {
+        "op": {
+          "const": "observe"
+        },
+        "after": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_broker_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "expected_adapter_id",
+        "expected_broker_id"
+      ],
+      "properties": {
+        "op": {
+          "const": "claim"
+        },
+        "expected_adapter_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        },
+        "expected_broker_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "expected_adapter_id",
+        "expected_broker_id"
+      ],
+      "properties": {
+        "op": {
+          "const": "release"
+        },
+        "expected_adapter_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        },
+        "expected_broker_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "expected_adapter_id",
+        "command_id",
+        "command",
+        "expected_broker_id",
+        "expected_generation",
+        "expected_cursor",
+        "expires_at"
+      ],
+      "properties": {
+        "op": {
+          "const": "send"
+        },
+        "expected_adapter_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        },
+        "command_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        },
+        "command": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Runtime rejects all Unicode category C characters and U+2028/U+2029."
+        },
+        "expected_broker_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        },
+        "expected_generation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_cursor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expires_at": {
+          "type": "number",
+          "description": "Finite Unix seconds; runtime requires now < value <= now + 30."
+        }
+      }
+    }
+  ]
+}

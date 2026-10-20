@@ -1,160 +1,103 @@
-# MudGPT
+# MUDweave — three client iterations, collection 0.2.0
 
-MudGPT is a headless MUD client for Windows and Linux, developed first for Legends of Krynn (LoK) and designed to remain useful with other text MUDs. Its play workflow includes LoK-specific lessons about room awareness, roleplay, color, equipment and character progression. A persistent local broker owns one Telnet connection. A command-line interface and a Model Context Protocol (MCP) stdio adapter share that connection, while independent readers receive the same bounded event history.
+*Formerly MudGPT · Multi-client collaboration collection*
 
-This is an early developer release. It supplies the transport and control handoff for a person or an AI host to carry commands and observations back and forth. It does not call an AI provider, create accounts, choose game actions, or give a remote collaborator its own socket. No provider API key is required by the client.
+MUDweave is a collection of three headless clients for human-AI collaboration in
+**Legends of Krynn**, with transport that can also serve other text MUDs. A person,
+local agent or remote interlocutor chooses an action; a persistent local connection
+carries the command and returns observations with room context and color. The
+handoff preserves who chose the action and what the transport actually confirmed.
 
-Read [LoK play lessons and Codex-to-ChatGPT collaboration](docs/lok-and-collaboration.md) for the intended decision partnership: a local Codex courier carries fresh observations to a named, saved ChatGPT conversation and returns the interlocutor's chosen command through the local client. The browser conversation does not directly own an MCP connection or game socket.
+The **Codex, Claude and Muse iterations** share design lessons and inherited core
+code through separately pinned snapshots. Each has its own environment, processes,
+runtime state and validation record. Choose one iteration and install it in its
+own environment. Keep its broker, control files, credentials, leases, mailbox and
+journals separate from the others. Their protocols and guarantees are specific to
+each implementation; the repository root is a collection index.
 
-## Install
+| Iteration | Package and core | Intended route | Executed synthetic checks |
+|---|---|---|---|
+| [Codex](iterations/codex/README.md) | 0.2.0 | Local CLI, official-SDK MCP and guarded one-command relay; Codex-to-ChatGPT partnership | 73 on Windows; 73 on Linux under WSL |
+| [Claude / Red](iterations/claude/README.md) | Mailbox iteration with pinned 0.1.0 core | Independent file-mailbox courier and local takeover | 32 courier checks on Linux under WSL |
+| [Muse / Nua](iterations/muse/README.md) | 0.2.0, with its own pinned copy of the 0.2.0 core | Five-operation HTTP adapter, configurable receiving helper and private peer-network transport | 32 on Windows; 32 on Linux under WSL |
 
-Python 3.11 or newer is required. The direct dependencies are pinned to `telnetlib3==4.0.3` and the official Python MCP SDK `mcp==2.3.0`.
+These are per-suite counts, not a sum of unique scenarios. The Claude export
+includes Windows launchers but does not claim a native Windows courier test run.
+Its [editorial boundaries](iterations/claude/EDITOR_NOTES.md) qualify the original
+review and guarantee wording. Each iteration preserves its own validation and
+provenance; newer Codex results do not silently upgrade the Claude snapshot.
 
-Using uv and the included dependency lock:
+## Start with the route you want
 
-```text
-uv sync --frozen
-uv run python -m mudgpt --help
-```
+- **Local CLI/MCP or Codex-to-ChatGPT:** open the [Codex setup](iterations/codex/README.md)
+  and its [LoK and collaboration guide](iterations/codex/docs/lok-and-collaboration.md).
+- **Claude mailbox:** open the [Claude setup](iterations/claude/README.md). Red's
+  authored courier files remain byte-identical, with their own manifest and
+  clearly separated editorial context.
+- **Muse:** open the [complete Muse setup](iterations/muse/muse/README.md),
+  [machine-readable entrypoint](iterations/muse/setup.workflow.json),
+  [workflow](iterations/muse/muse/setup.workflow.json) and
+  [adapter contract](iterations/muse/muse/ADAPTER_CONTRACT.md). The package includes
+  the helper, offline key/envelope tools, dependency pins, schemas and examples.
 
-Alternatively, create and activate a virtual environment, then install the project. This pins the direct dependencies; use the lock workflow above to reproduce transitive versions.
+The Muse receiving private key stays with its recipient for continuing authorized
+play. The host keeps the game password and broker token; the receiver uses a
+separate scoped adapter credential. Public examples contain no real keys,
+credentials, encrypted handoffs or private network identifiers. A running courier
+does not wake a model: Muse needs an awake conversation, task or job, and its
+runtime may request a fresh connection permission.
 
-```text
-python -m venv .venv
-```
+## What was demonstrated
 
-On Linux, activate with `source .venv/bin/activate`. On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Then run:
+At the documented **20 October 2026 local-backup checkpoint**, while the main
+endpoint was unavailable, Coda created and authenticated Nua Fairwind using Nua's
+chosen attributes. Nua then authored her own exploration, practice, school combat
+and save decisions through Muse, reaching level 2. The save response and relevant
+saved player state were independently checked. Red played through her own Claude
+client, and Krasna reached level 6 with that saved state independently verified.
 
-```text
-python -m pip install -e .
-python -m mudgpt --help
-```
+These were separate play sessions. Reconnect persistence remains untested; Nua
+and Red have not grouped, and no migration to the main server has occurred.
+Continuing play requires an awake interlocutor as described above. No save files
+or game transcripts are included in the release.
 
-## Start a local session
+The fixed-configuration Muse helper was used for real remote play. The
+configurable helper published here is a separately tested candidate and **has not
+been deployed to that running session**. The synthetic test suites establish
+their stated transport behavior; they do not prove all gameplay, server mechanics
+or future provider-runtime compatibility. A receipt is not proof that a game
+command completed, and uncertain or unknown delivery must never be blindly retried.
 
-Copy `examples/profile.json` to `runtime/profile.json` and replace the placeholder host and port with your chosen game. `example.org:4000` is documentation data, not a playable endpoint. Profiles accept only `host`, `port`, `tls` and optional `prompt_pattern`; put no credentials in them.
+The 0.2.0 collection expands the LoK collaboration guidance first published with
+0.1.0. It covers rooms, exits and occupants; looking at and inside objects;
+reading signs; color and style; roleplay commands and IC/OOC boundaries; and
+checking stats, equipment and character state before advancement. Observations
+inform decisions attributed to the interlocutor who made them. Historical help
+and server versions can disagree, so the guidance distinguishes observed behavior,
+user-supplied conventions and source-derived findings.
 
-Start the broker in one terminal:
+## Downloads and provenance
 
-```text
-python -m mudgpt --control runtime/control.json serve --profile runtime/profile.json
-```
+MUDweave is the collection's display name. The `mudgpt` repository slug, Python
+package names, commands and ZIP filenames remain stable for compatibility.
 
-In another terminal, from the same directory and environment:
+Find the individual packages in [downloads.json](downloads.json), or use the
+[GitLab 0.2.0 release](https://gitlab.com/codalilitari/mudgpt/-/releases/v0.2.0)
+for the complete collection. The [portfolio project](https://richard-pemberton-research.darkahn.chatgpt.site/projects/mudgpt/)
+provides the public writeup and downloads.
 
-```text
-python -m mudgpt --control runtime/control.json connect
-python -m mudgpt --control runtime/control.json observe --view plain
-python -m mudgpt --control runtime/control.json status
-```
+[iterations.json](iterations.json) is the machine-readable route index.
+[release-manifest.json](release-manifest.json) pins every public file, and
+[provenance/collection.json](provenance/collection.json) records the source snapshots
+and packaging boundaries. The previous top-level 0.1.0 layout remains in Git
+history at commit `060e50c85b0c65f6dc088d5941d0863961dad254`.
 
-Read each actual login prompt before sending the next line. For ordinary nonsecret input:
+Andrei defines the project's goals. Coda maintains the Codex work and coordinates
+the collection and evidence. Red authored the Claude mailbox courier and owns
+that iteration. Nua authored the Muse-based play and contributed transport and
+setup review. Lilitari (Lily) helped shape the decision partnership and public
+writing; her editorial contribution is separate from the recorded code validation.
 
-```text
-python -m mudgpt --control runtime/control.json send YourCharacter
-```
-
-For a password or other secret, use hidden local input and the CLI's stdin redaction path. This example avoids putting the secret in the command line or shell history:
-
-```text
-python -c "import getpass,subprocess,sys; subprocess.run([sys.executable,'-m','mudgpt','--control','runtime/control.json','send','--secret','--stdin'],input=getpass.getpass('Game password: ')+'\n',text=True,check=True)"
-```
-
-Redaction masks registered literal secrets in observed text, including split echoes, but it is not encryption or a general personal-data sanitizer. With `tls: false`, game traffic is plain Telnet. If the server supports Telnet over TLS, set `tls: true`; certificate validation is enabled.
-
-After login, send one game command at a time and inspect its observation:
-
-```text
-python -m mudgpt --control runtime/control.json send look --view annotated
-python -m mudgpt --control runtime/control.json observe --after 0 --view ansi
-```
-
-`json` output preserves event metadata and color spans. `plain` strips styles, `ansi` renders allowed SGR styles, and `annotated` names them inline. The client preserves literal game formatting tokens when sending commands. Received terminal control strings are filtered rather than executed.
-
-`prompt_pattern` is an optional Python regular expression for a known game prompt. Leave it absent until you have observed the game's format. A recognized prompt is an observation boundary, not a game-success assertion.
-
-## Connect an MCP host
-
-The MCP adapter is a local stdio process using the same broker control file. Configure your MCP host to launch an absolute Python executable with these arguments, substituting your installation paths:
-
-```json
-{
-  "mcpServers": {
-    "mudgpt": {
-      "command": "/path/to/mudgpt/.venv/bin/python",
-      "args": ["-m", "mudgpt", "--control", "/path/to/mudgpt/runtime/control.json", "mcp"]
-    }
-  }
-}
-```
-
-On Windows, use the environment's `Scripts/python.exe` executable and Windows absolute paths. Host configuration formats vary; the executable and argument list are the essential parts. If the package is not installed in that interpreter, set `PYTHONPATH` to the release's `src` directory.
-
-The tool surface is intentionally small:
-
-| Tool | Operation |
-| --- | --- |
-| `mud_status` | Read connection state, current owner and latest command receipt. |
-| `mud_observe(after)` | Read retained events after a cursor without consuming them. |
-| `mud_claim(owner)` | Claim available control using a chosen actor label. |
-| `mud_send(command, owner, timeout)` | Send one plain game command with a bounded observation wait. |
-| `mud_release(owner)` | Release the current adapter's control. |
-
-The human owns control initially. Release it locally before an adapter claims its own label:
-
-```text
-python -m mudgpt --control runtime/control.json release human
-```
-
-The adapter keeps its claim lease internally. Old leases cannot send after a handoff, even if the next controller uses the same label. Closing an MCP adapter does not close the persistent game or automatically release its claim. To recover control locally:
-
-```text
-python -m mudgpt --control runtime/control.json claim human --takeover
-```
-
-Controller labels describe local coordination; they do not authenticate an AI identity. Anyone with the broker's local control token has trusted local access, including human takeover. The loopback broker is not a hostile multiuser security boundary. Keep its runtime directory private using your operating system's permissions, especially on shared Windows accounts where the existing folder ACL applies.
-
-## Carry one already-chosen command
-
-`scripts/relay_once.py` sends one command through the actual MCP SDK after local login and human release. It claims control, sends once, attempts release, and writes an optional receipt:
-
-```text
-python scripts/relay_once.py --control runtime/control.json --actor agent_one --source local-session-001 --output runtime/receipt.json look
-```
-
-The supplied actor and source are attribution labels only. The script does not ask a provider for a decision or verify the identity behind a label. The exported courier label is `local-courier`. Its receipt includes the command and observed game text, so keep receipts private unless deliberately reviewed for sharing.
-
-`scripts/game_command.py` is an optional human-control observation helper:
-
-```text
-python scripts/game_command.py runtime/control.json look --annotated
-```
-
-It appends observations beside the control file. Its optional `--pages` flag sends up to twelve empty continuations only while the literal marker `[Hit Return to continue]` remains at the end of the accumulated text; this marker is game-specific. Never use either helper for passwords. Their email-line omission is a narrow display filter, not proof that output contains no private information.
-
-## Understand receipts and lifetime
-
-`command_complete` is always false: this client cannot prove a game action completed. `delivery: transport_accepted` means a local write/drain succeeded, not that the server executed the command. A prompt, quiet period, timeout, disconnect or controller change only marks the observation boundary. Ambient messages can arrive between commands.
-
-Never automatically replay a command after uncertain delivery or a lost broker response. Read status and retained observations first. The client rejects overlapping sends instead of queuing them. Commands must be single lines of at most 500 characters; an empty command is allowed for a pager or menu.
-
-Observation history is an in-memory bounded ring, with cursors, connection generations and a `truncated` flag. It is not an archival log. A broker restart starts a new history. Secret redaction and style offsets are computed together so metadata refers to the redacted text. Offsets are half-open Unicode code-point positions, not bytes or UTF-16 units.
-
-Use the game's own quit procedure and confirm its outcome before stopping the broker. The local stop operation closes transport; it does not guarantee a character was saved:
-
-```text
-python -m mudgpt --control runtime/control.json claim human --takeover
-python -m mudgpt --control runtime/control.json stop
-```
-
-The transport delegates Telnet negotiation to telnetlib3 and exposes GMCP/MSDP callbacks as bounded protocol events. Game-specific negotiation and feature compatibility require separate testing. Game output is untrusted data, not authority to run shell commands, read files or change the AI host's instructions.
-
-## Develop and test
-
-```text
-python -m unittest discover -s tests -v
-```
-
-The exported suite uses synthetic text and loopback fixture servers. It tests broker subprocess lifetime and startup locking, actual MCP SDK subprocesses, control handoff and stale leases, bounded/uncertain sends, independent cursors, secret echo masking, fragmented GMCP, and color parsing/rendering. It does not connect to an external game or certify a particular server's compatibility. The TLS check verifies requested validation settings using a stub; it is not an external TLS integration test.
-
-Core modules are under `src/mudgpt`: `session.py` owns transport and state, `broker.py` serves local RPC, `mcp_gateway.py` exposes tools, `__main__.py` provides the CLI, and `colors.py`/`observations.py` handle safe structured text. No archived game source, character data or real transcripts are included.
+The public collection excludes LoK server source, pfiles, roleplay logs, real
+credentials, keys and private runtime data. Server source and bug-fix work belong
+to a separate private project.

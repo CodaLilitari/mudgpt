@@ -1,0 +1,308 @@
+{
+  "format": "mudgpt-muse-setup-workflow-v1",
+  "iteration": "muse",
+  "version": "0.2.0",
+  "status": "separate_iteration_offline_verified_windows_and_wsl",
+  "client_separation": {
+    "codex": "../codex",
+    "claude": "../claude",
+    "muse": ".",
+    "relationship": "Separate client iteration with its own pinned copy of Codex 0.2.0 core; no shared runtime or courier merge"
+  },
+  "roles": {
+    "host_operator": [
+      "game login",
+      "dedicated broker",
+      "tailnet policy",
+      "scoped credential",
+      "local takeover"
+    ],
+    "recipient": [
+      "own character decisions",
+      "private receiving key",
+      "one-command requests"
+    ],
+    "adapter": [
+      "five scoped operations",
+      "local-only broker lease",
+      "durable command ID journal"
+    ]
+  },
+  "dependencies": {
+    "host_python": ">=3.11",
+    "recipient_python": ">=3.11",
+    "recipient_cryptography": "50.0.2",
+    "broker_install": [
+      "python",
+      "-m",
+      "pip",
+      "install",
+      "-e",
+      "."
+    ],
+    "helper_install": [
+      "python",
+      "-m",
+      "pip",
+      "install",
+      "-r",
+      "muse/requirements.txt"
+    ],
+    "host_tailscale_cli": true,
+    "recipient_runtime_tailscale_connect_proxy": true,
+    "runtime_proxy_environment": "HTTPS_PROXY",
+    "runtime_proxy_port": 3130,
+    "new_paid_api_key_required": false
+  },
+  "inputs": [
+    "operator-authorized character",
+    "dedicated control file",
+    "host and recipient verified Tailscale IPv4 pins",
+    "recipient public key and independently confirmed SPKI fingerprint",
+    "private adapter credential file",
+    "encrypted envelope and independently confirmed envelope SHA-256",
+    "private receiving config file"
+  ],
+  "steps": [
+    {
+      "id": "local_login",
+      "actor": "host_operator",
+      "action": "Start dedicated broker; connect/login locally and release human controller",
+      "secrets": "MUD password uses stdin secret send; broker token and password never sent to recipient"
+    },
+    {
+      "id": "network",
+      "actor": "host_operator",
+      "action": "Enroll selected devices through official flows and restrict recipient-to-host TCP 8811",
+      "automatic_execution": false,
+      "verify": [
+        "actual enrolled device identity",
+        "no broader additive rule",
+        "current address pins"
+      ]
+    },
+    {
+      "id": "key",
+      "actor": "recipient",
+      "argv_template": [
+        "python",
+        "-m",
+        "muse.credentials",
+        "keygen",
+        "--private-key",
+        "PRIVATE_KEY_PATH",
+        "--public-key",
+        "PUBLIC_KEY_PATH"
+      ],
+      "share": [
+        "public key",
+        "SPKI SHA-256"
+      ],
+      "retain": "private receiving key for continuing authorized play"
+    },
+    {
+      "id": "credential",
+      "actor": "host_operator",
+      "argv_template": [
+        "python",
+        "-m",
+        "muse.adapter",
+        "create-credential",
+        "PRIVATE_CREDENTIAL_PATH"
+      ]
+    },
+    {
+      "id": "envelope",
+      "actor": "host_operator",
+      "argv_template": [
+        "python",
+        "-m",
+        "muse.credentials",
+        "encrypt",
+        "--public-key",
+        "PUBLIC_KEY_PATH",
+        "--expected-fingerprint",
+        "RECIPIENT_SPKI_SHA256",
+        "--credential-file",
+        "PRIVATE_CREDENTIAL_PATH",
+        "--output",
+        "PRIVATE_ENVELOPE_PATH",
+        "--endpoint",
+        "PINNED_ENDPOINT",
+        "--peer-ip",
+        "PINNED_PEER_IP",
+        "--purpose",
+        "AGREED_PLAY_SCOPE"
+      ],
+      "share": [
+        "encrypted envelope",
+        "envelope SHA-256"
+      ],
+      "never_share": [
+        "broker token",
+        "MUD password",
+        "raw adapter token",
+        "private key"
+      ]
+    },
+    {
+      "id": "adapter",
+      "actor": "host_operator",
+      "argv_template": [
+        "python",
+        "-m",
+        "muse.adapter",
+        "serve",
+        "--control",
+        "PRIVATE_CONTROL_PATH",
+        "--credential-file",
+        "PRIVATE_CREDENTIAL_PATH",
+        "--journal",
+        "PERSISTENT_PRIVATE_JOURNAL_PATH",
+        "--listen-ip",
+        "HOST_TAILSCALE_IP",
+        "--peer-ip",
+        "RECIPIENT_TAILSCALE_IP",
+        "--listen-port",
+        "8811"
+      ]
+    },
+    {
+      "id": "config",
+      "actor": "recipient",
+      "action": "Privately fill config.example.json; do not use documentation IPs or zero hash",
+      "schema": "muse/config.schema.json"
+    },
+    {
+      "id": "offline_validate",
+      "actor": "recipient",
+      "argv_template": [
+        "python",
+        "-m",
+        "muse.call",
+        "--config",
+        "PRIVATE_CONFIG_PATH",
+        "--request",
+        "muse/status.request.json",
+        "--validate-only"
+      ],
+      "network": false
+    },
+    {
+      "id": "warmup",
+      "actor": "recipient",
+      "argv_template": [
+        "python",
+        "-m",
+        "muse.call",
+        "--config",
+        "PRIVATE_CONFIG_PATH",
+        "--request",
+        "muse/status.request.json"
+      ],
+      "network": true,
+      "permission": "Inspect any runtime connection request against exact agreed endpoint before approving; prepare send expiry only after warmup"
+    },
+    {
+      "id": "play",
+      "actor": "recipient",
+      "state_sequence": [
+        "status",
+        "claim",
+        "observe",
+        "decide one command",
+        "send once",
+        "inspect receipt and observe"
+      ],
+      "guard_fields": [
+        "expected_adapter_id",
+        "expected_broker_id",
+        "expected_generation",
+        "expected_cursor",
+        "expires_at",
+        "command_id"
+      ],
+      "send_ttl_seconds_recommended": 25,
+      "send_ttl_seconds_maximum": 30,
+      "automatic_retries": 0,
+      "response_does_not_prove": [
+        "command completion",
+        "world remained unchanged",
+        "character persisted"
+      ]
+    },
+    {
+      "id": "ongoing_access",
+      "actor": "both",
+      "action": "Retain key and keep agreed game/broker/adapter running until scope changes; release ownership when handing off",
+      "automatic_model_wakeup": false,
+      "automatic_background_install": false,
+      "runtime_requirements": [
+        "awake conversation, task or job",
+        "fresh per-address CONNECT approval may be required"
+      ],
+      "key_permissions": {
+        "posix_file": "0600",
+        "posix_directory": "0700",
+        "windows": "operator-reviewed owner-only ACL"
+      }
+    },
+    {
+      "id": "restart_recovery",
+      "actor": "host_operator",
+      "action": "After broker restart restore and authenticate intended character locally, release ownership and confirm the new broker lifetime before recipient reclaims",
+      "automatic_continuation": false,
+      "offline_validation_checks_dynamic_guards": false
+    },
+    {
+      "id": "revoke",
+      "actor": "host_operator",
+      "action": "Disable scoped credential or stop adapter; rotate token to retire capability",
+      "note": "Does not undo an already admitted game command; envelope metadata is not enforced expiry"
+    }
+  ],
+  "stop_and_reassess": [
+    "uncertain command delivery",
+    "broker or adapter lifetime changed",
+    "truncated observations",
+    "character identity mismatch",
+    "unexpected combat/editor/pager",
+    "stale cursor",
+    "changed endpoint or recipient device",
+    "journal at capacity",
+    "unknown outcome",
+    "unrecognized or malformed helper output",
+    "missing helper result"
+  ],
+  "privacy_exclusions": [
+    "real private keys",
+    "real credentials",
+    "private configs and network pins",
+    "real encrypted envelopes",
+    "pfiles",
+    "roleplay logs",
+    "game server source"
+  ],
+  "tests": {
+    "full_argv": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "muse/tests",
+      "-v"
+    ],
+    "network_scope": "synthetic loopback only; helper sockets mocked"
+  },
+  "paths_relative_to": "this Muse iteration root",
+  "inherited_core_pin": "provenance/inherited-core.json",
+  "helper_outcomes": {
+    "response_received": "Parsed HTTP and JSON only; inspect HTTP status, returned error, receipt and observations. Exit 0 can include HTTP 4xx or 502.",
+    "not_sent": "Inner MUD-adapter request was not sent; still refresh any expired or changed game decision.",
+    "uncertain": "Stop and inspect; never blindly resend or substitute a new ID for the same uncertain command.",
+    "unknown": "Unexpected exception, exit 1: stop and inspect; never assume nothing was sent.",
+    "unrecognized_malformed_or_missing": "Stop and inspect; never permission to retry."
+  },
+  "http_502": "Generic adapter error can include stale guards as well as transport/journal problems; status alone does not classify delivery."
+}

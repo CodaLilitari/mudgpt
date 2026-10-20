@@ -1,0 +1,8 @@
+{
+  "format": "mudgpt-muse-call-config-v1",
+  "endpoint": "http://192.0.2.10:8811/rpc",
+  "peer_ip": "192.0.2.11",
+  "key_path": "receive-key.pem",
+  "envelope_path": "credential.envelope.json",
+  "envelope_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+}

@@ -1,0 +1,16 @@
+# Claude iteration 0.1.0 (MudGPT core 0.1.0): public file set, SHA-256. Generated 2026-10-20 by Red.
+# Verify from this folder: sha256sum -c PUBLICATION_MANIFEST.sha256
+7aa0a05e24fee10d40c9dc1c2cb81e23a56ccdadb692e9d37088fbcb4ba4548b  PUBLIC_README.md
+bc6ca00dfdf7886c8e7dac14c64218ad2bcfd5874c2045e7f3f98144602a78eb  courier/mailbox_courier.py
+45f3d13a1b19ad7d53b64f9c046e91f302ce760f774ac7406edb248244c51e54  courier/krasna.py
+a87dd20cba6b43430f0fc38a48b9968b951d6bd874711ea48725f0ab724f4e73  courier/Start-Krasna.cmd
+64ce1e145c065dcb4f317b5ddee41fa94cbc6b46d47014518d3dfcdc8d6a848b  courier/Take-Over-Krasna.cmd
+dc6d9dc2d7467cce8eaeaa17e498a3dade6f72bd7e44b49954d37fb2105d5a12  courier/Release-To-Red.cmd
+1f9e7c13a6989d980b77446e507c4ccaa832294a4e13a196b80f9ef6a529697c  courier/Start-Krasna-WSL.cmd
+775e86207352448b3075e4d0c39d713654c9ca50b756c53941216d07ada1c94a  courier/start-krasna-wsl.sh
+325c9c54d510cb120de1909044589e9f7b9a654aa47158100de6def6811d8cb8  courier/take-over-krasna-wsl.sh
+370c0a3409953e510db894f966ce91a98eab99dccd588bd0d73d6e564c37273d  courier/release-to-red-wsl.sh
+030a261ae47042e83d4a933b6692f6bc1525a769613d9cad309e08dd21ff7132  courier/tests/test_courier_e2e.py
+40c02d01fc2d96cd33d2e9e3a947a21ec64894652456e4d28c55a9d15e485726  courier/tests/fake_lok.py
+aa25aabf1ebcca0372e581b6085303d247d637ebd9d79e026ad2df73f23ef6ae  docs/CLAUDE_PLAY_SETUP.md
+1dc717d074d5a7b464574a00a2f92d6c47b03365a60f20d86662bc81d2d58869  docs/MUDGPT_0.1.0_REVIEW.md

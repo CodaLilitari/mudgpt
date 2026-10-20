@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/mudgpt/muse/envelope-v1.schema.json",
+  "title": "Private encrypted scoped credential envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "algorithm",
+    "recipient_spki_sha256",
+    "endpoint",
+    "peer_ip",
+    "purpose",
+    "revocation",
+    "ciphertext_base64"
+  ],
+  "properties": {
+    "format": {
+      "const": "mudgpt-gameplay-credential-envelope-v1"
+    },
+    "algorithm": {
+      "const": "RSA-OAEP-SHA256-MGF1-SHA256-empty-label"
+    },
+    "recipient_spki_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "Must equal independently pinned local config endpoint exactly."
+    },
+    "peer_ip": {
+      "type": "string",
+      "description": "Must equal independently pinned local config peer exactly."
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "revocation": {
+      "type": "string",
+      "description": "Descriptive metadata, not expiry enforcement or authority."
+    },
+    "ciphertext_base64": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "description": "Exactly one 384-byte RSA-3072 block when decoded."
+    }
+  }
+}

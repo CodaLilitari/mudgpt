@@ -1,0 +1,100 @@
+{
+  "format": "mudgpt-muse-package-manifest-v1",
+  "iteration": "muse",
+  "version": "0.2.0",
+  "manifest_self_excluded": true,
+  "publication_root": "muse/",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 101,
+      "sha256": "180c2fe0aca90bff787abae58896383ac44f23b5bdfc54740d0b09de5481eb0a"
+    },
+    {
+      "path": "__init__.py",
+      "bytes": 86,
+      "sha256": "f2cc91d70a9285a21bd4ff9f86a9ced59bb15244cca79c73d820bacd14ea5ab7"
+    },
+    {
+      "path": "adapter.py",
+      "bytes": 23945,
+      "sha256": "df76fe223742069cb34df75a66b7db790b4739a35b9f3d018ab4c0cf01574eba"
+    },
+    {
+      "path": "call.py",
+      "bytes": 20033,
+      "sha256": "974e08c3f072086f776e2c50847a88b835f43108fa2e836b963c4a94e2fe72e4"
+    },
+    {
+      "path": "credentials.py",
+      "bytes": 5320,
+      "sha256": "3eeb7bc41feb9f290335d940b58df771d323374fe59b8ab81cc2e3949323a8b3"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 149,
+      "sha256": "b58e9d2e578854f1ec1f406d00126ed260226dc72632a732977c638b4799ed79"
+    },
+    {
+      "path": "README.md",
+      "bytes": 15663,
+      "sha256": "ac23dee8e67da1f4e78c966194e269ae8edf6a3bc03656f3f3e41d60fd5bf301"
+    },
+    {
+      "path": "ADAPTER_CONTRACT.md",
+      "bytes": 9381,
+      "sha256": "133ec0f186c4202cd601bbf628cfaf7fa2b3870bae062d43a124bf2a8d2ad707"
+    },
+    {
+      "path": "config.example.json",
+      "bytes": 285,
+      "sha256": "7103a0e4a8ca095edcdc2bf70d47ea772bfa63dcba1ccd6a8ccb2bf9e8e42881"
+    },
+    {
+      "path": "config.schema.json",
+      "bytes": 1091,
+      "sha256": "50cfcd7237dbb7d260f64996c95e9d58c21908ca080b2a2f273fdaae41d3601a"
+    },
+    {
+      "path": "envelope.schema.json",
+      "bytes": 1357,
+      "sha256": "66329b32ed320962b8f0aab54b391c8fb6a382fab4ef2f334f231b7d2bfe749e"
+    },
+    {
+      "path": "request.schema.json",
+      "bytes": 3217,
+      "sha256": "8564647da6653dfbaf8dd621cb003f083e667517e7a39bed6a4b127627af1f42"
+    },
+    {
+      "path": "setup.workflow.json",
+      "bytes": 9091,
+      "sha256": "a73cc2c375555d6a22c5b4fd894dafcd0533f282806ba97fac4f5cf1d39d6742"
+    },
+    {
+      "path": "status.request.json",
+      "bytes": 16,
+      "sha256": "e1b0f3bc0a33c457342c2b0e5052177b194ed3e1a39456daedafb05b82cbacf5"
+    },
+    {
+      "path": "tailnet-policy.example.json",
+      "bytes": 230,
+      "sha256": "c18d7d30c2986a6399780a7de36fa92859cbfe6728a0326cbae2aac5a1b052b9"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 3105,
+      "sha256": "4d7b22c9b7b92c4437ad92cacc53c7c31af683343de0b3fb2306e94a01dce2b2"
+    },
+    {
+      "path": "tests/test_adapter.py",
+      "bytes": 19376,
+      "sha256": "cf8002040f7f099e71f7de1ae74541325881464fc022bdec2e5e8c9e0629b20a"
+    },
+    {
+      "path": "tests/test_call.py",
+      "bytes": 12073,
+      "sha256": "71ff64ba40477d2ec0460fb450eba2b4545142ed59e29face74869f7d200e048"
+    }
+  ],
+  "status": "self_contained_iteration_candidate_windows_and_wsl_verified"
+}

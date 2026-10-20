@@ -1,0 +1,33 @@
+{
+  "format": "mudgpt-muse-validation-v1",
+  "date_utc": "2026-10-20",
+  "iteration": "muse",
+  "version": "0.2.0",
+  "status": "passed",
+  "tests": 32,
+  "adapter_tests": 18,
+  "helper_tests": 14,
+  "command": "python -m unittest discover -s muse/tests -v",
+  "python": "3.13.14",
+  "platform": "Windows 11 amd64",
+  "cryptography": "50.0.2",
+  "core_fixture": "tests/test_broker.py",
+  "adapter_source_changed": false,
+  "scope": [
+    "synthetic loopback broker integration",
+    "host adapter contract",
+    "config and envelope pins",
+    "no redirects or retries",
+    "unchanged request bytes",
+    "token suppression",
+    "color preservation",
+    "exclusive key creation"
+  ],
+  "not_established": [
+    "this configurable helper redeployed to live game",
+    "Linux execution of this candidate",
+    "automatic provider wakeups",
+    "all future runtime permission prompts eliminated"
+  ],
+  "history": "Initial combined staging run lacked the copied core fixture and failed that single integration test; after supplying the existing fixture, all 32 passed. No production session was used."
+}

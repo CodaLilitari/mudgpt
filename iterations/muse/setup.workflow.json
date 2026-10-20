@@ -1,0 +1,63 @@
+{
+  "format": "mudgpt-iteration-entrypoint-v1",
+  "iteration": "muse",
+  "version": "0.2.0",
+  "working_directory": ".",
+  "human_entrypoint": "muse/README.md",
+  "machine_workflow": "muse/setup.workflow.json",
+  "contract": "muse/ADAPTER_CONTRACT.md",
+  "config_schema": "muse/config.schema.json",
+  "request_schema": "muse/request.schema.json",
+  "envelope_schema": "muse/envelope.schema.json",
+  "source_manifest": "source-manifest.json",
+  "core_pin": "provenance/inherited-core.json",
+  "validation": "validation.json",
+  "python": ">=3.11",
+  "environment": "Dedicated .venv in this iteration, never another client's active environment",
+  "install": [
+    [
+      "python",
+      "-m",
+      "venv",
+      ".venv"
+    ],
+    [
+      "VENV_PYTHON",
+      "-m",
+      "pip",
+      "install",
+      "-e",
+      "."
+    ],
+    [
+      "VENV_PYTHON",
+      "-m",
+      "pip",
+      "install",
+      "-r",
+      "muse/requirements.txt"
+    ]
+  ],
+  "verify": [
+    "VENV_PYTHON",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "muse/tests",
+    "-v"
+  ],
+  "separate_runtime_state": [
+    "broker process",
+    "control file",
+    "broker bearer",
+    "adapter credential",
+    "receiving key",
+    "envelope",
+    "command journal"
+  ],
+  "candidate_live_deployed": false,
+  "automatic_model_wakeup": false,
+  "ongoing_access": "Retain privately agreed receiving key; keep explicitly authorized services available. Runtime may require a fresh CONNECT approval and awake conversation/task/job.",
+  "unknown_outcome_policy": "Stop and inspect; never automatically retry unknown, malformed, unrecognized or missing outcomes."
+}

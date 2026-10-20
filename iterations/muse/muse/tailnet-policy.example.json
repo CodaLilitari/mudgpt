@@ -1,0 +1,13 @@
+{
+  "tagOwners": {
+    "tag:muse-client": ["autogroup:admin"],
+    "tag:mud-host": ["autogroup:admin"]
+  },
+  "grants": [
+    {
+      "src": ["tag:muse-client"],
+      "dst": ["tag:mud-host"],
+      "ip": ["tcp:8811"]
+    }
+  ]
+}

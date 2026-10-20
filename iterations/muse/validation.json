@@ -1,0 +1,70 @@
+{
+  "format": "mudgpt-muse-iteration-validation-v1",
+  "iteration": "muse",
+  "version": "0.2.0",
+  "publication_status": "staged_validated_not_published",
+  "recorded_at": "2026-10-20T22:25:53.613796+00:00",
+  "platform_runs": [
+    {
+      "platform": "windows",
+      "recorded_at": "2026-10-20T22:24:17.137775+00:00",
+      "python": "3.13.14",
+      "os": "Windows-11-10.0.26300-SP0",
+      "dependency_versions": {
+        "mcp": "2.3.0",
+        "telnetlib3": "4.0.3",
+        "cryptography": "50.0.2"
+      },
+      "command": "python -m unittest discover -s muse/tests -v",
+      "tests": 32,
+      "exit_code": 0,
+      "passed": true,
+      "elapsed_seconds": 3.343,
+      "output_sha256": "a9f11c57a82fab5cf80129477a32e6c04fa686a7b158c1c20a6503996bff9291",
+      "source_resolution": "Separate editable install resolves to this Muse iteration src/mudgpt and local muse package; PYTHONPATH removed for verification and tests",
+      "scope": "Synthetic loopback broker and HTTP fixtures only; helper sockets mocked; no live MUD or tailnet calls"
+    },
+    {
+      "platform": "wsl",
+      "recorded_at": "2026-10-20T22:24:16.877576+00:00",
+      "python": "3.14.4",
+      "os": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+      "dependency_versions": {
+        "mcp": "2.3.0",
+        "telnetlib3": "4.0.3",
+        "cryptography": "50.0.2"
+      },
+      "command": "python -m unittest discover -s muse/tests -v",
+      "tests": 32,
+      "exit_code": 0,
+      "passed": true,
+      "elapsed_seconds": 3.036,
+      "output_sha256": "a62f4affb2e58c68f0f3a7587fc48327414cd4d482506b2d674afc69ef7688f3",
+      "source_resolution": "Separate editable install resolves to this Muse iteration src/mudgpt and local muse package; PYTHONPATH removed for verification and tests",
+      "scope": "Synthetic loopback broker and HTTP fixtures only; helper sockets mocked; no live MUD or tailnet calls"
+    }
+  ],
+  "test_breakdown": {
+    "host_adapter": 18,
+    "receiving_helper_and_offline_setup": 14,
+    "total_per_platform": 32
+  },
+  "isolation": "Fresh dedicated virtual environments on Windows and WSL, with this iteration installed editable. Imported core and helper paths verified before tests; PYTHONPATH removed.",
+  "inherited_core": "provenance/inherited-core.json",
+  "inherited_core_validation": "provenance/codex-validation.json",
+  "original_helper_candidate_validation": "provenance/muse-original-validation.json",
+  "independent_review": {
+    "helper_tests_rerun": 14,
+    "result": "passed; no code blocker found",
+    "accepted_changes": [
+      "Document unknown/malformed/unrecognized outcomes as stop-and-inspect",
+      "Document exit 0 as parsed response only, including HTTP error statuses"
+    ]
+  },
+  "limits": [
+    "Configurable helper was not deployed to live game",
+    "No model auto-wakeup or background service installation",
+    "No claim that transport receipt proves game-command completion",
+    "No real character or tailnet endpoint used in these tests"
+  ]
+}

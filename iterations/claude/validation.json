@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "project": "MudGPT",
+  "iteration": "claude",
+  "version": "0.1.0",
+  "status": "staged_validated_not_published",
+  "recorded_at": "2026-10-20T22:27:05.011039+00:00",
+  "core": {
+    "version": "0.1.0",
+    "repository": "https://gitlab.com/codalilitari/mudgpt",
+    "commit": "060e50c85b0c65f6dc088d5941d0863961dad254",
+    "files": "provenance/core.json"
+  },
+  "red_publication": {
+    "original_manifest": "claude/PUBLICATION_MANIFEST.sha256",
+    "manifest_sha256": "80993af40f34647c592f8f17a8a5f525a6e380a8e93ac810f57546543bc3a581",
+    "authored_files": 14,
+    "byte_identical": true,
+    "verification": "Original manifest and all original files verified before and after staging and again after tests."
+  },
+  "courier_test_run": {
+    "started_at": "2026-10-20T22:26:06.165928+00:00",
+    "platform": "WSL Linux",
+    "python": "3.14.4",
+    "os": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "package_version": "0.1.0",
+    "dependencies": {
+      "telnetlib3": "4.0.3",
+      "mcp": "2.3.0"
+    },
+    "command": "MUDGPT_REPO=<this-iteration> MUDGPT_PYTHON=<isolated-venv>/bin/python python claude/courier/tests/test_courier_e2e.py",
+    "checks_passed": 32,
+    "checks_total": 32,
+    "passed": true,
+    "exit_code": 0,
+    "elapsed_seconds": 30.966,
+    "output_sha256": "f7a4aa68ced4706eea86625e3da84050d970e9cace2d9cb868ba2dd4181bf693",
+    "scope": "Original copied courier checks, synthetic loopback MUDs, temporary homes and fixture broker processes only. No real game, character, credentials or running courier accessed.",
+    "source_resolution": "Isolated editable install resolves this staged 0.1.0 core; fixture copies this iteration src into each temporary home.",
+    "red_originals_and_manifest_still_match_after_tests": true
+  },
+  "installation": "Isolated WSL editable installation of this exact pinned-core package. Direct dependencies pinned, transitive versions resolved by pip. No frozen-lock or native Windows courier execution is claimed.",
+  "editorial_note": "EDITOR_NOTES.md qualifies Red authored guarantee wording and dates the historical review. Red originals remain unchanged; docs/HISTORICAL_CLIENT_REVIEW.md provides a clearly annotated reading entry.",
+  "limits": [
+    "Optional cursor preflight is not the newer atomic broker guard.",
+    "Retained ledger suppresses IDs in tested scenarios; no power-loss exactly-once guarantee.",
+    "Transport acceptance is not game completion.",
+    "This iteration deliberately retains the documented 0.1.0 core limits; Codex 0.2.0 results do not apply.",
+    "No real game, character, roleplay, private courier or external provider was exercised by the exported synthetic run."
+  ],
+  "files": [
+    {
+      "path": "claude/PUBLIC_README.md",
+      "sha256": "7aa0a05e24fee10d40c9dc1c2cb81e23a56ccdadb692e9d37088fbcb4ba4548b",
+      "bytes": 2308,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/mailbox_courier.py",
+      "sha256": "bc6ca00dfdf7886c8e7dac14c64218ad2bcfd5874c2045e7f3f98144602a78eb",
+      "bytes": 15291,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/krasna.py",
+      "sha256": "45f3d13a1b19ad7d53b64f9c046e91f302ce760f774ac7406edb248244c51e54",
+      "bytes": 5594,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/Start-Krasna.cmd",
+      "sha256": "a87dd20cba6b43430f0fc38a48b9968b951d6bd874711ea48725f0ab724f4e73",
+      "bytes": 1590,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/Take-Over-Krasna.cmd",
+      "sha256": "64ce1e145c065dcb4f317b5ddee41fa94cbc6b46d47014518d3dfcdc8d6a848b",
+      "bytes": 625,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/Release-To-Red.cmd",
+      "sha256": "dc6d9dc2d7467cce8eaeaa17e498a3dade6f72bd7e44b49954d37fb2105d5a12",
+      "bytes": 361,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/Start-Krasna-WSL.cmd",
+      "sha256": "1f9e7c13a6989d980b77446e507c4ccaa832294a4e13a196b80f9ef6a529697c",
+      "bytes": 605,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/start-krasna-wsl.sh",
+      "sha256": "775e86207352448b3075e4d0c39d713654c9ca50b756c53941216d07ada1c94a",
+      "bytes": 1876,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/take-over-krasna-wsl.sh",
+      "sha256": "325c9c54d510cb120de1909044589e9f7b9a654aa47158100de6def6811d8cb8",
+      "bytes": 560,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/release-to-red-wsl.sh",
+      "sha256": "370c0a3409953e510db894f966ce91a98eab99dccd588bd0d73d6e564c37273d",
+      "bytes": 342,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/tests/test_courier_e2e.py",
+      "sha256": "030a261ae47042e83d4a933b6692f6bc1525a769613d9cad309e08dd21ff7132",
+      "bytes": 13073,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/courier/tests/fake_lok.py",
+      "sha256": "40c02d01fc2d96cd33d2e9e3a947a21ec64894652456e4d28c55a9d15e485726",
+      "bytes": 8306,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/docs/CLAUDE_PLAY_SETUP.md",
+      "sha256": "aa25aabf1ebcca0372e581b6085303d247d637ebd9d79e026ad2df73f23ef6ae",
+      "bytes": 6455,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/docs/MUDGPT_0.1.0_REVIEW.md",
+      "sha256": "1dc717d074d5a7b464574a00a2f92d6c47b03365a60f20d86662bc81d2d58869",
+      "bytes": 5902,
+      "provenance": "Red authored publication file; exact original manifest bytes"
+    },
+    {
+      "path": "claude/PUBLICATION_MANIFEST.sha256",
+      "sha256": "80993af40f34647c592f8f17a8a5f525a6e380a8e93ac810f57546543bc3a581",
+      "bytes": 1469,
+      "provenance": "Red authored SHA-256 manifest; exact original bytes"
+    },
+    {
+      "path": "src/mudgpt/__init__.py",
+      "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
+      "bytes": 84,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "src/mudgpt/__main__.py",
+      "sha256": "c46e8bedddf04742eea1be9462b4df2def1b9207e40f98fc8cf762adbaa2cefc",
+      "bytes": 4150,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "src/mudgpt/broker.py",
+      "sha256": "76f1709949e9ae0af4a56e965805705b06f3702d5c35f47a958d97f86c6be2ab",
+      "bytes": 8890,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "src/mudgpt/session.py",
+      "sha256": "968bc603656c6a89b1fc9ba53c0635c70809f6f5cd35f70eaa018ed9b8e200c2",
+      "bytes": 16163,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "src/mudgpt/colors.py",
+      "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
+      "bytes": 8747,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "src/mudgpt/observations.py",
+      "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
+      "bytes": 4698,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "src/mudgpt/mcp_gateway.py",
+      "sha256": "a51df03387ae390fc9be60b48a6d117315b67ab27ddecaa4f101023a38ef8e8d",
+      "bytes": 3208,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "8a957603a0d9cb78e8cab4beb49400a6ba6d4228c10ce1555919fb1d9523cd7d",
+      "bytes": 385,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "78e43c7532e83dc61f77b6042faaffe8a86949ed9736328cc22acb44abcafd7d",
+      "bytes": 167197,
+      "provenance": "Public MudGPT 0.1.0 commit 060e50c85b0c65f6dc088d5941d0863961dad254"
+    },
+    {
+      "path": "examples/profile.json",
+      "sha256": "2f2f2a2e32d1d86b3a70e61a8683f5516ee99b28bba1b7b1751da9a3a02d9e64",
+      "bytes": 60,
+      "provenance": "Existing public neutral example"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "9495a6221a1507e82b0af64d4c0e10153f1046496c8fa00e1e65033f5b9f1d42",
+      "bytes": 243,
+      "provenance": "Public baseline exclusions plus Claude runtime exclusions"
+    },
+    {
+      "path": "EDITOR_NOTES.md",
+      "sha256": "1d3b5ddeb02dcaf214eea4c520448f1e5ce3644309cf620f6614c3d05034d3fb",
+      "bytes": 3127,
+      "provenance": "Coda editorial qualification; original Red files preserved"
+    },
+    {
+      "path": "docs/HISTORICAL_CLIENT_REVIEW.md",
+      "sha256": "92980345f434e19f795c7e481358d259ec6a03c7699f9680f8a7674a75dc86b1",
+      "bytes": 6292,
+      "provenance": "Editorial wrapper followed by Red authored review text"
+    },
+    {
+      "path": "README.md",
+      "sha256": "037a4665c0361d7d3a3b21e71cdb05b0652e59a7ad11743b413ceb7cb5f7165d",
+      "bytes": 3774,
+      "provenance": "Coda public entry and reproducible setup"
+    },
+    {
+      "path": "provenance/core.json",
+      "sha256": "b235d8110b4e02d985b544280c3846f2de6d69f89ba7a90682d6bf98075773f7",
+      "bytes": 1601,
+      "provenance": "Hash-pinned public baseline"
+    }
+  ],
+  "excluded": [
+    "LoK server source and engine findings",
+    "player files",
+    "roleplay logs",
+    "credentials and keys",
+    "actual profiles",
+    "mailboxes and journals",
+    "private character brief",
+    "full internal Claude README",
+    "Codex 0.2.0 and Muse code"
+  ]
+}

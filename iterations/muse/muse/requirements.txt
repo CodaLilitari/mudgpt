@@ -1,0 +1,3 @@
+# Remote receiving helper and offline key/envelope utilities.
+# The host broker dependencies remain in the root pyproject.toml.
+cryptography==50.0.2

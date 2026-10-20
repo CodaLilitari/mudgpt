@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/mudgpt/muse/config-v1.schema.json",
+  "title": "Private Muse helper endpoint and receiving-file pins",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "endpoint", "peer_ip", "key_path", "envelope_path", "envelope_sha256"],
+  "properties": {
+    "format": {"const": "mudgpt-muse-call-config-v1"},
+    "endpoint": {"type": "string", "pattern": "^http://100\\.[0-9]+\\.[0-9]+\\.[0-9]+:[0-9]+/rpc$", "description": "Runtime additionally requires canonical literal IPv4 in 100.64.0.0/10, port 1..65535, no DNS/userinfo/query/fragment."},
+    "peer_ip": {"type": "string", "format": "ipv4", "description": "Runtime additionally requires a different literal IPv4 in 100.64.0.0/10."},
+    "key_path": {"type": "string", "minLength": 1, "description": "Absolute, home-expanded, or relative to this config file; private RSA-3072 PEM."},
+    "envelope_path": {"type": "string", "minLength": 1},
+    "envelope_sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"}
+  }
+}

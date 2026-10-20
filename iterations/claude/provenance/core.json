@@ -1,0 +1,53 @@
+{
+  "format": "mudgpt-claude-core-provenance-v1",
+  "core_version": "0.1.0",
+  "repository": "https://gitlab.com/codalilitari/mudgpt",
+  "commit": "060e50c85b0c65f6dc088d5941d0863961dad254",
+  "files": [
+    {
+      "path": "src/mudgpt/__init__.py",
+      "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
+      "bytes": 84
+    },
+    {
+      "path": "src/mudgpt/__main__.py",
+      "sha256": "c46e8bedddf04742eea1be9462b4df2def1b9207e40f98fc8cf762adbaa2cefc",
+      "bytes": 4150
+    },
+    {
+      "path": "src/mudgpt/broker.py",
+      "sha256": "76f1709949e9ae0af4a56e965805705b06f3702d5c35f47a958d97f86c6be2ab",
+      "bytes": 8890
+    },
+    {
+      "path": "src/mudgpt/session.py",
+      "sha256": "968bc603656c6a89b1fc9ba53c0635c70809f6f5cd35f70eaa018ed9b8e200c2",
+      "bytes": 16163
+    },
+    {
+      "path": "src/mudgpt/colors.py",
+      "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
+      "bytes": 8747
+    },
+    {
+      "path": "src/mudgpt/observations.py",
+      "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
+      "bytes": 4698
+    },
+    {
+      "path": "src/mudgpt/mcp_gateway.py",
+      "sha256": "a51df03387ae390fc9be60b48a6d117315b67ab27ddecaa4f101023a38ef8e8d",
+      "bytes": 3208
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "8a957603a0d9cb78e8cab4beb49400a6ba6d4228c10ce1555919fb1d9523cd7d",
+      "bytes": 385
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "78e43c7532e83dc61f77b6042faaffe8a86949ed9736328cc22acb44abcafd7d",
+      "bytes": 167197
+    }
+  ]
+}

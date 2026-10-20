@@ -1,0 +1,10 @@
+{
+  "decision_id": "example-only-do-not-send",
+  "actor": "agent_one",
+  "source": "your-saved-project-conversation",
+  "command": "look",
+  "expected_broker_id": "replace-with-observed-broker-id",
+  "expected_generation": 1,
+  "expected_cursor": 0,
+  "expires_at": 0
+}
