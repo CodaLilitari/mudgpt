@@ -1,8 +1,10 @@
 {
   "format": "mudgpt-public-release-manifest-v1",
-  "collection_version": "0.2.0",
+  "collection_version": "0.2.1",
   "date": "2026-10-20",
   "manifest_self_excluded": true,
+  "baseline_commit": "7fcced4b72df97454b8c015a7bf6ac7cf7940c28",
+  "distribution_revision": "license1",
   "files": [
     {
       "path": ".gitattributes",
@@ -20,19 +22,54 @@
       "bytes": 2106
     },
     {
+      "path": "CONTRIBUTING.md",
+      "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
+      "bytes": 877
+    },
+    {
+      "path": "CONTRIBUTOR_RECOGNITION.md",
+      "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
+      "bytes": 1522
+    },
+    {
+      "path": "CREDITS.md",
+      "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
+      "bytes": 2625
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "LICENSE_SCOPE.md",
+      "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
+      "bytes": 1742
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
+      "bytes": 1870
+    },
+    {
       "path": "README.md",
-      "sha256": "b05223334e68aac6625a4cc9cf05600f745845bbd704ef7e4a4ec0fdae8ecf86",
-      "bytes": 6601
+      "sha256": "b98509b02c2f7646f4a48d221ccfe6ca27b61057e9486ea1657bcecfb4722b1e",
+      "bytes": 7515
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
+      "bytes": 1401
     },
     {
       "path": "downloads.json",
-      "sha256": "aab5f27a4a3b623148081d937545f66c4af3efa1d001e87788cc833bb319b698",
-      "bytes": 1261
+      "sha256": "74425738bf44fa732e45c3e0de84bf673c4eb1716e622297eea7caa4feb3f315",
+      "bytes": 1738
     },
     {
       "path": "iterations.json",
-      "sha256": "22d8dfc79c64ca74626ea8e3bba9b70b8beeb3c87081ff6e4c065f2c9daa678e",
-      "bytes": 2088
+      "sha256": "e6a81c1fd0205f70dd16527214011a456fd4c66195215761d2030e776fe5717f",
+      "bytes": 3065
     },
     {
       "path": "iterations/claude/.gitignore",
@@ -40,14 +77,79 @@
       "bytes": 243
     },
     {
+      "path": "iterations/claude/CONTRIBUTING.md",
+      "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
+      "bytes": 877
+    },
+    {
+      "path": "iterations/claude/CONTRIBUTOR_RECOGNITION.md",
+      "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
+      "bytes": 1522
+    },
+    {
+      "path": "iterations/claude/CREDITS.md",
+      "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
+      "bytes": 2625
+    },
+    {
       "path": "iterations/claude/EDITOR_NOTES.md",
       "sha256": "1d3b5ddeb02dcaf214eea4c520448f1e5ce3644309cf620f6614c3d05034d3fb",
       "bytes": 3127
     },
     {
+      "path": "iterations/claude/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "iterations/claude/LICENSE_SCOPE.md",
+      "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
+      "bytes": 1742
+    },
+    {
+      "path": "iterations/claude/NOTICE",
+      "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
+      "bytes": 1870
+    },
+    {
       "path": "iterations/claude/README.md",
       "sha256": "037a4665c0361d7d3a3b21e71cdb05b0652e59a7ad11743b413ceb7cb5f7165d",
       "bytes": 3774
+    },
+    {
+      "path": "iterations/claude/THIRD_PARTY_NOTICES.md",
+      "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
+      "bytes": 1401
+    },
+    {
+      "path": "iterations/claude/claude/CONTRIBUTING.md",
+      "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
+      "bytes": 877
+    },
+    {
+      "path": "iterations/claude/claude/CONTRIBUTOR_RECOGNITION.md",
+      "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
+      "bytes": 1522
+    },
+    {
+      "path": "iterations/claude/claude/CREDITS.md",
+      "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
+      "bytes": 2625
+    },
+    {
+      "path": "iterations/claude/claude/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "iterations/claude/claude/LICENSE_SCOPE.md",
+      "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
+      "bytes": 1742
+    },
+    {
+      "path": "iterations/claude/claude/NOTICE",
+      "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
+      "bytes": 1870
     },
     {
       "path": "iterations/claude/claude/PUBLICATION_MANIFEST.sha256",
@@ -58,6 +160,11 @@
       "path": "iterations/claude/claude/PUBLIC_README.md",
       "sha256": "7aa0a05e24fee10d40c9dc1c2cb81e23a56ccdadb692e9d37088fbcb4ba4548b",
       "bytes": 2308
+    },
+    {
+      "path": "iterations/claude/claude/THIRD_PARTY_NOTICES.md",
+      "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
+      "bytes": 1401
     },
     {
       "path": "iterations/claude/claude/courier/Release-To-Red.cmd",
@@ -125,6 +232,11 @@
       "bytes": 5902
     },
     {
+      "path": "iterations/claude/distribution-manifest.json",
+      "sha256": "fa41ac68a80c90a3c215b4584065c757ec700c1890410153a00d6edb2ab9ffa8",
+      "bytes": 9966
+    },
+    {
       "path": "iterations/claude/docs/HISTORICAL_CLIENT_REVIEW.md",
       "sha256": "92980345f434e19f795c7e481358d259ec6a03c7699f9680f8a7674a75dc86b1",
       "bytes": 6292
@@ -141,8 +253,8 @@
     },
     {
       "path": "iterations/claude/pyproject.toml",
-      "sha256": "8a957603a0d9cb78e8cab4beb49400a6ba6d4228c10ce1555919fb1d9523cd7d",
-      "bytes": 385
+      "sha256": "da470a84455b0cc51786f0290fc6c61b2944ee35bb195664cea0a89b261531ac",
+      "bytes": 516
     },
     {
       "path": "iterations/claude/src/mudgpt/__init__.py",
@@ -200,9 +312,49 @@
       "bytes": 839
     },
     {
+      "path": "iterations/codex/CONTRIBUTING.md",
+      "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
+      "bytes": 877
+    },
+    {
+      "path": "iterations/codex/CONTRIBUTOR_RECOGNITION.md",
+      "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
+      "bytes": 1522
+    },
+    {
+      "path": "iterations/codex/CREDITS.md",
+      "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
+      "bytes": 2625
+    },
+    {
+      "path": "iterations/codex/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "iterations/codex/LICENSE_SCOPE.md",
+      "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
+      "bytes": 1742
+    },
+    {
+      "path": "iterations/codex/NOTICE",
+      "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
+      "bytes": 1870
+    },
+    {
       "path": "iterations/codex/README.md",
       "sha256": "b0140adf0ae52cac79e4c08b5afb6fd69742c52167c25cef375fdf16a4c96668",
       "bytes": 12681
+    },
+    {
+      "path": "iterations/codex/THIRD_PARTY_NOTICES.md",
+      "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
+      "bytes": 1401
+    },
+    {
+      "path": "iterations/codex/distribution-manifest.json",
+      "sha256": "ca039f3866fbdedfcf02bc688c6b1e83146347b80a93fde7ce28102390ae35a2",
+      "bytes": 7522
     },
     {
       "path": "iterations/codex/docs/lok-and-collaboration.md",
@@ -221,8 +373,8 @@
     },
     {
       "path": "iterations/codex/pyproject.toml",
-      "sha256": "646fcadab3a753a7adeffae5d9ed25c7a9a2b5b62e01597802e2fff880d9dfd4",
-      "bytes": 385
+      "sha256": "5df0f987c8f50c3bcb93aba443d419bd86068fde5dffb324f1f726d613de17e7",
+      "bytes": 516
     },
     {
       "path": "iterations/codex/scripts/game_command.py",
@@ -340,9 +492,49 @@
       "bytes": 973
     },
     {
+      "path": "iterations/muse/CONTRIBUTING.md",
+      "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
+      "bytes": 877
+    },
+    {
+      "path": "iterations/muse/CONTRIBUTOR_RECOGNITION.md",
+      "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
+      "bytes": 1522
+    },
+    {
+      "path": "iterations/muse/CREDITS.md",
+      "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
+      "bytes": 2625
+    },
+    {
+      "path": "iterations/muse/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "iterations/muse/LICENSE_SCOPE.md",
+      "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
+      "bytes": 1742
+    },
+    {
+      "path": "iterations/muse/NOTICE",
+      "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
+      "bytes": 1870
+    },
+    {
       "path": "iterations/muse/README.md",
       "sha256": "e8288ecfde7b8381ec1d00919f51fa8f3dd6965a2d782381263e8b786fadf0a6",
       "bytes": 3962
+    },
+    {
+      "path": "iterations/muse/THIRD_PARTY_NOTICES.md",
+      "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
+      "bytes": 1401
+    },
+    {
+      "path": "iterations/muse/distribution-manifest.json",
+      "sha256": "b3d9a8fb5244f9d3a7693645acadfe1b1efbab993d512a4868bd68126dd2567f",
+      "bytes": 14626
     },
     {
       "path": "iterations/muse/docs/core-readme.md",
@@ -375,9 +567,44 @@
       "bytes": 9381
     },
     {
+      "path": "iterations/muse/muse/CONTRIBUTING.md",
+      "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
+      "bytes": 877
+    },
+    {
+      "path": "iterations/muse/muse/CONTRIBUTOR_RECOGNITION.md",
+      "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
+      "bytes": 1522
+    },
+    {
+      "path": "iterations/muse/muse/CREDITS.md",
+      "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
+      "bytes": 2625
+    },
+    {
+      "path": "iterations/muse/muse/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "iterations/muse/muse/LICENSE_SCOPE.md",
+      "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
+      "bytes": 1742
+    },
+    {
+      "path": "iterations/muse/muse/NOTICE",
+      "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
+      "bytes": 1870
+    },
+    {
       "path": "iterations/muse/muse/README.md",
       "sha256": "ac23dee8e67da1f4e78c966194e269ae8edf6a3bc03656f3f3e41d60fd5bf301",
       "bytes": 15663
+    },
+    {
+      "path": "iterations/muse/muse/THIRD_PARTY_NOTICES.md",
+      "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
+      "bytes": 1401
     },
     {
       "path": "iterations/muse/muse/__init__.py",
@@ -481,8 +708,8 @@
     },
     {
       "path": "iterations/muse/pyproject.toml",
-      "sha256": "646fcadab3a753a7adeffae5d9ed25c7a9a2b5b62e01597802e2fff880d9dfd4",
-      "bytes": 385
+      "sha256": "5df0f987c8f50c3bcb93aba443d419bd86068fde5dffb324f1f726d613de17e7",
+      "bytes": 516
     },
     {
       "path": "iterations/muse/scripts/game_command.py",
@@ -596,20 +823,33 @@
     },
     {
       "path": "provenance/collection.json",
+      "sha256": "c5873128d404c0ceca5864e8c434ef8c3d644e4bfd18288a91cf683f02d6dfe1",
+      "bytes": 1741
+    },
+    {
+      "path": "provenance/notice-release.json",
+      "sha256": "78d0c4472095342e1f014c81c37af02f92df8f3e01f816bd4271f5f6cadeecb1",
+      "bytes": 20347
+    },
+    {
+      "path": "provenance/releases/v0.2.0/collection.json",
       "sha256": "62e9000c27311eb8d1301029a98847c3a6385277f0c47e0eed166972059eac03",
       "bytes": 24244
+    },
+    {
+      "path": "provenance/releases/v0.2.0/downloads.json",
+      "sha256": "aab5f27a4a3b623148081d937545f66c4af3efa1d001e87788cc833bb319b698",
+      "bytes": 1261
+    },
+    {
+      "path": "provenance/releases/v0.2.0/iterations.json",
+      "sha256": "22d8dfc79c64ca74626ea8e3bba9b70b8beeb3c87081ff6e4c065f2c9daa678e",
+      "bytes": 2088
+    },
+    {
+      "path": "provenance/releases/v0.2.0/release-manifest.json",
+      "sha256": "25e0098252534ab1b7d24ee670d45e200b763e48a5a0950e933394c1775242e1",
+      "bytes": 21120
     }
-  ],
-  "archive_policy": "Sorted exact allowlist, fixed 2026-10-20T00:00:00 ZIP timestamps and permissions, DEFLATE level 9",
-  "line_endings": "Repository .gitattributes disables text conversion; preserve tested bytes",
-  "exclusions": [
-    "game server source",
-    "pfiles",
-    "roleplay logs",
-    "keys",
-    "credentials",
-    "private encrypted handoffs",
-    "runtime data",
-    "generated build files"
   ]
 }

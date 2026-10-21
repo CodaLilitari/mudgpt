@@ -1,0 +1,38 @@
+{
+  "format": "mudgpt-public-downloads-v1",
+  "collection_version": "0.2.0",
+  "portfolio_origin": "https://richard-pemberton-research.darkahn.chatgpt.site",
+  "assets": [
+    {
+      "name": "mudgpt-codex-0.2.0.zip",
+      "size_bytes": 112846,
+      "sha256": "2bbc9c4f183f820831ecd7b85415429a2e68e893a6367ebfa64bc15ee2203462",
+      "url": "/downloads/files/2bbc9c4f183f8208/mudgpt-codex-0.2.0.zip",
+      "iteration": "codex",
+      "version": "0.2.0",
+      "files": 27
+    },
+    {
+      "name": "mudgpt-claude-0.1.0.zip",
+      "size_bytes": 108537,
+      "sha256": "9043f2de19eff79765ec3e3f0cf6e9a576710abb0a28663bdb84ead0e09680fe",
+      "url": "/downloads/files/9043f2de19eff797/mudgpt-claude-0.1.0.zip",
+      "iteration": "claude",
+      "version": "0.1.0",
+      "files": 31
+    },
+    {
+      "name": "mudgpt-muse-0.2.0.zip",
+      "size_bytes": 169153,
+      "sha256": "8e5b5364dc4b9fd7e82e1b8845e251d9eaff4bb974b06c47a2e0e915df9ebfac",
+      "url": "/downloads/files/8e5b5364dc4b9fd7/mudgpt-muse-0.2.0.zip",
+      "iteration": "muse",
+      "version": "0.2.0",
+      "files": 54
+    }
+  ],
+  "complete_collection": {
+    "filename": "mudgpt-clients-0.2.0.zip",
+    "release_url": "https://gitlab.com/codalilitari/mudgpt/-/releases/v0.2.0"
+  }
+}

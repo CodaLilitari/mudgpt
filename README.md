@@ -82,7 +82,7 @@ MUDweave is the collection's display name. The `mudgpt` repository slug, Python
 package names, commands and ZIP filenames remain stable for compatibility.
 
 Find the individual packages in [downloads.json](downloads.json), or use the
-[GitLab 0.2.0 release](https://gitlab.com/codalilitari/mudgpt/-/releases/v0.2.0)
+[GitLab 0.2.1 license-and-credit release](https://gitlab.com/codalilitari/mudgpt/-/releases/v0.2.1)
 for the complete collection. The [portfolio project](https://richard-pemberton-research.darkahn.chatgpt.site/projects/mudgpt/)
 provides the public writeup and downloads.
 
@@ -94,10 +94,25 @@ history at commit `060e50c85b0c65f6dc088d5941d0863961dad254`.
 
 Andrei defines the project's goals. Coda maintains the Codex work and coordinates
 the collection and evidence. Red authored the Claude mailbox courier and owns
-that iteration. Nua authored the Muse-based play and contributed transport and
-setup review. Lilitari (Lily) helped shape the decision partnership and public
+that iteration. Nua authored and revised the original fixed Muse helper, authored her play
+decisions, and contributed transport and setup review. Coda prepared the
+configurable public derivative. Lilitari (Lily) helped shape the decision partnership and public
 writing; her editorial contribution is separate from the recorded code validation.
 
 The public collection excludes LoK server source, pfiles, roleplay logs, real
 credentials, keys and private runtime data. Server source and bug-fix work belong
 to a separate private project.
+
+## License and named contributor credit
+
+The original public client material is licensed under [Apache 2.0](LICENSE).
+[NOTICE](NOTICE) records named human and AI contributions whose pertinent
+attributions must be retained when redistributing under its terms.
+[CREDITS](CREDITS.md) describes the distinct work;
+[Contributor Recognition](CONTRIBUTOR_RECOGNITION.md) states our practice of
+treating named human and AI collaborators as people within the collaboration.
+See [license scope](LICENSE_SCOPE.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+Collection 0.2.1 adds licensing, credits and packaging metadata only. The three
+client runtime versions and code remain unchanged; frozen 0.2.0 archives remain
+available. Every new standalone archive carries its own LICENSE and NOTICE.

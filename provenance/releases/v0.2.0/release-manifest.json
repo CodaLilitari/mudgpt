@@ -1,0 +1,615 @@
+{
+  "format": "mudgpt-public-release-manifest-v1",
+  "collection_version": "0.2.0",
+  "date": "2026-10-20",
+  "manifest_self_excluded": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "3a1bc55b228e0d4f88127aa1091ae4224e80a6a711b9e132ef7db4f1d80f1dcd",
+      "bytes": 280
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "9d1b6c50b9b0aec96be5cd462dd6f744403d29a6eab882d37f3565fd8aaae55a",
+      "bytes": 2106
+    },
+    {
+      "path": "README.md",
+      "sha256": "b05223334e68aac6625a4cc9cf05600f745845bbd704ef7e4a4ec0fdae8ecf86",
+      "bytes": 6601
+    },
+    {
+      "path": "downloads.json",
+      "sha256": "aab5f27a4a3b623148081d937545f66c4af3efa1d001e87788cc833bb319b698",
+      "bytes": 1261
+    },
+    {
+      "path": "iterations.json",
+      "sha256": "22d8dfc79c64ca74626ea8e3bba9b70b8beeb3c87081ff6e4c065f2c9daa678e",
+      "bytes": 2088
+    },
+    {
+      "path": "iterations/claude/.gitignore",
+      "sha256": "9495a6221a1507e82b0af64d4c0e10153f1046496c8fa00e1e65033f5b9f1d42",
+      "bytes": 243
+    },
+    {
+      "path": "iterations/claude/EDITOR_NOTES.md",
+      "sha256": "1d3b5ddeb02dcaf214eea4c520448f1e5ce3644309cf620f6614c3d05034d3fb",
+      "bytes": 3127
+    },
+    {
+      "path": "iterations/claude/README.md",
+      "sha256": "037a4665c0361d7d3a3b21e71cdb05b0652e59a7ad11743b413ceb7cb5f7165d",
+      "bytes": 3774
+    },
+    {
+      "path": "iterations/claude/claude/PUBLICATION_MANIFEST.sha256",
+      "sha256": "80993af40f34647c592f8f17a8a5f525a6e380a8e93ac810f57546543bc3a581",
+      "bytes": 1469
+    },
+    {
+      "path": "iterations/claude/claude/PUBLIC_README.md",
+      "sha256": "7aa0a05e24fee10d40c9dc1c2cb81e23a56ccdadb692e9d37088fbcb4ba4548b",
+      "bytes": 2308
+    },
+    {
+      "path": "iterations/claude/claude/courier/Release-To-Red.cmd",
+      "sha256": "dc6d9dc2d7467cce8eaeaa17e498a3dade6f72bd7e44b49954d37fb2105d5a12",
+      "bytes": 361
+    },
+    {
+      "path": "iterations/claude/claude/courier/Start-Krasna-WSL.cmd",
+      "sha256": "1f9e7c13a6989d980b77446e507c4ccaa832294a4e13a196b80f9ef6a529697c",
+      "bytes": 605
+    },
+    {
+      "path": "iterations/claude/claude/courier/Start-Krasna.cmd",
+      "sha256": "a87dd20cba6b43430f0fc38a48b9968b951d6bd874711ea48725f0ab724f4e73",
+      "bytes": 1590
+    },
+    {
+      "path": "iterations/claude/claude/courier/Take-Over-Krasna.cmd",
+      "sha256": "64ce1e145c065dcb4f317b5ddee41fa94cbc6b46d47014518d3dfcdc8d6a848b",
+      "bytes": 625
+    },
+    {
+      "path": "iterations/claude/claude/courier/krasna.py",
+      "sha256": "45f3d13a1b19ad7d53b64f9c046e91f302ce760f774ac7406edb248244c51e54",
+      "bytes": 5594
+    },
+    {
+      "path": "iterations/claude/claude/courier/mailbox_courier.py",
+      "sha256": "bc6ca00dfdf7886c8e7dac14c64218ad2bcfd5874c2045e7f3f98144602a78eb",
+      "bytes": 15291
+    },
+    {
+      "path": "iterations/claude/claude/courier/release-to-red-wsl.sh",
+      "sha256": "370c0a3409953e510db894f966ce91a98eab99dccd588bd0d73d6e564c37273d",
+      "bytes": 342
+    },
+    {
+      "path": "iterations/claude/claude/courier/start-krasna-wsl.sh",
+      "sha256": "775e86207352448b3075e4d0c39d713654c9ca50b756c53941216d07ada1c94a",
+      "bytes": 1876
+    },
+    {
+      "path": "iterations/claude/claude/courier/take-over-krasna-wsl.sh",
+      "sha256": "325c9c54d510cb120de1909044589e9f7b9a654aa47158100de6def6811d8cb8",
+      "bytes": 560
+    },
+    {
+      "path": "iterations/claude/claude/courier/tests/fake_lok.py",
+      "sha256": "40c02d01fc2d96cd33d2e9e3a947a21ec64894652456e4d28c55a9d15e485726",
+      "bytes": 8306
+    },
+    {
+      "path": "iterations/claude/claude/courier/tests/test_courier_e2e.py",
+      "sha256": "030a261ae47042e83d4a933b6692f6bc1525a769613d9cad309e08dd21ff7132",
+      "bytes": 13073
+    },
+    {
+      "path": "iterations/claude/claude/docs/CLAUDE_PLAY_SETUP.md",
+      "sha256": "aa25aabf1ebcca0372e581b6085303d247d637ebd9d79e026ad2df73f23ef6ae",
+      "bytes": 6455
+    },
+    {
+      "path": "iterations/claude/claude/docs/MUDGPT_0.1.0_REVIEW.md",
+      "sha256": "1dc717d074d5a7b464574a00a2f92d6c47b03365a60f20d86662bc81d2d58869",
+      "bytes": 5902
+    },
+    {
+      "path": "iterations/claude/docs/HISTORICAL_CLIENT_REVIEW.md",
+      "sha256": "92980345f434e19f795c7e481358d259ec6a03c7699f9680f8a7674a75dc86b1",
+      "bytes": 6292
+    },
+    {
+      "path": "iterations/claude/examples/profile.json",
+      "sha256": "2f2f2a2e32d1d86b3a70e61a8683f5516ee99b28bba1b7b1751da9a3a02d9e64",
+      "bytes": 60
+    },
+    {
+      "path": "iterations/claude/provenance/core.json",
+      "sha256": "b235d8110b4e02d985b544280c3846f2de6d69f89ba7a90682d6bf98075773f7",
+      "bytes": 1601
+    },
+    {
+      "path": "iterations/claude/pyproject.toml",
+      "sha256": "8a957603a0d9cb78e8cab4beb49400a6ba6d4228c10ce1555919fb1d9523cd7d",
+      "bytes": 385
+    },
+    {
+      "path": "iterations/claude/src/mudgpt/__init__.py",
+      "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
+      "bytes": 84
+    },
+    {
+      "path": "iterations/claude/src/mudgpt/__main__.py",
+      "sha256": "c46e8bedddf04742eea1be9462b4df2def1b9207e40f98fc8cf762adbaa2cefc",
+      "bytes": 4150
+    },
+    {
+      "path": "iterations/claude/src/mudgpt/broker.py",
+      "sha256": "76f1709949e9ae0af4a56e965805705b06f3702d5c35f47a958d97f86c6be2ab",
+      "bytes": 8890
+    },
+    {
+      "path": "iterations/claude/src/mudgpt/colors.py",
+      "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
+      "bytes": 8747
+    },
+    {
+      "path": "iterations/claude/src/mudgpt/mcp_gateway.py",
+      "sha256": "a51df03387ae390fc9be60b48a6d117315b67ab27ddecaa4f101023a38ef8e8d",
+      "bytes": 3208
+    },
+    {
+      "path": "iterations/claude/src/mudgpt/observations.py",
+      "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
+      "bytes": 4698
+    },
+    {
+      "path": "iterations/claude/src/mudgpt/session.py",
+      "sha256": "968bc603656c6a89b1fc9ba53c0635c70809f6f5cd35f70eaa018ed9b8e200c2",
+      "bytes": 16163
+    },
+    {
+      "path": "iterations/claude/uv.lock",
+      "sha256": "78e43c7532e83dc61f77b6042faaffe8a86949ed9736328cc22acb44abcafd7d",
+      "bytes": 167197
+    },
+    {
+      "path": "iterations/claude/validation.json",
+      "sha256": "20c28ada3cd4eeeee2e23fd2f2c2355cefe9355217fc594fd1843a1d837e36ae",
+      "bytes": 10577
+    },
+    {
+      "path": "iterations/codex/.gitignore",
+      "sha256": "6f60166800d33b59f29b14f6527909ac087e59ee1d68fca8be0b8a18e28efa0d",
+      "bytes": 193
+    },
+    {
+      "path": "iterations/codex/CHANGELOG.md",
+      "sha256": "90e9726615e03152b77cb90c647f43858559ff762bc5dfa7316d2d2021265cd4",
+      "bytes": 839
+    },
+    {
+      "path": "iterations/codex/README.md",
+      "sha256": "b0140adf0ae52cac79e4c08b5afb6fd69742c52167c25cef375fdf16a4c96668",
+      "bytes": 12681
+    },
+    {
+      "path": "iterations/codex/docs/lok-and-collaboration.md",
+      "sha256": "7b7b198ee5a523a545cc22936747bc4299976e62191b8b0b02fd1104b228d817",
+      "bytes": 12344
+    },
+    {
+      "path": "iterations/codex/examples/decision.json",
+      "sha256": "6a64b6f5d9374136485aeda3046306468d2837d43a6de638c120d73b72439264",
+      "bytes": 270
+    },
+    {
+      "path": "iterations/codex/examples/profile.json",
+      "sha256": "2f2f2a2e32d1d86b3a70e61a8683f5516ee99b28bba1b7b1751da9a3a02d9e64",
+      "bytes": 60
+    },
+    {
+      "path": "iterations/codex/pyproject.toml",
+      "sha256": "646fcadab3a753a7adeffae5d9ed25c7a9a2b5b62e01597802e2fff880d9dfd4",
+      "bytes": 385
+    },
+    {
+      "path": "iterations/codex/scripts/game_command.py",
+      "sha256": "14edec233884b82bf82c569c146755c3ae94e4204ab833ad2e3a5205cdaf2125",
+      "bytes": 5434
+    },
+    {
+      "path": "iterations/codex/scripts/relay_once.py",
+      "sha256": "d69fa776782496b225de84b2aafe178d795294edea19fc7d5a359b0fc5c7fdc6",
+      "bytes": 11454
+    },
+    {
+      "path": "iterations/codex/src/mudgpt/__init__.py",
+      "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
+      "bytes": 84
+    },
+    {
+      "path": "iterations/codex/src/mudgpt/__main__.py",
+      "sha256": "53c2f331bd014c7f0c2434f1327ebf93d798638394097223b8e21e3130ed8bc0",
+      "bytes": 4664
+    },
+    {
+      "path": "iterations/codex/src/mudgpt/broker.py",
+      "sha256": "85130fb52257bbb55a44d62ab4e057786f2dc0c00c47f84847bfb3ec1daa383b",
+      "bytes": 9277
+    },
+    {
+      "path": "iterations/codex/src/mudgpt/colors.py",
+      "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
+      "bytes": 8747
+    },
+    {
+      "path": "iterations/codex/src/mudgpt/decision_journal.py",
+      "sha256": "a5cc8777027aa8d6780aa8fa2851acd88cb7f91f2c8576c26e277a124b703aba",
+      "bytes": 2877
+    },
+    {
+      "path": "iterations/codex/src/mudgpt/mcp_gateway.py",
+      "sha256": "b474f5c9b6e4733547621686d02f01f1a5f605c502b259e377223014e8b0b033",
+      "bytes": 3930
+    },
+    {
+      "path": "iterations/codex/src/mudgpt/observations.py",
+      "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
+      "bytes": 4698
+    },
+    {
+      "path": "iterations/codex/src/mudgpt/session.py",
+      "sha256": "c0d28f724f334ff357a31a77409254a263dc0dbaf7cf6f921f94ab3e9a3d6e21",
+      "bytes": 19001
+    },
+    {
+      "path": "iterations/codex/tests/test_broker.py",
+      "sha256": "96d4bf0ec142458a75fa1c5c199538954c6f68691d7d89b3b32dcfdbf02edd85",
+      "bytes": 11109
+    },
+    {
+      "path": "iterations/codex/tests/test_broker_lock.py",
+      "sha256": "13e23c037c42700991330506235395c401437609195747c7bf4e87e187ed2318",
+      "bytes": 3550
+    },
+    {
+      "path": "iterations/codex/tests/test_colors.py",
+      "sha256": "5f78c35dd585d0fe56972c27dd2efea808f18b62b6be5510eda48df29d170070",
+      "bytes": 4424
+    },
+    {
+      "path": "iterations/codex/tests/test_mcp.py",
+      "sha256": "92e68607bd64f49e6a5caa239f2a981d87ae16f060391afdf5d6c9a54a0cc5e9",
+      "bytes": 7254
+    },
+    {
+      "path": "iterations/codex/tests/test_observations.py",
+      "sha256": "150e8798777e5ba42e60de35c39029c05591f89fbf824b7af41d9bd6bc0e18c6",
+      "bytes": 2584
+    },
+    {
+      "path": "iterations/codex/tests/test_relay_once.py",
+      "sha256": "d5e5a2551742be8b57fecef8569194898c66c30ac69ad2a9e485a040d8b9cb47",
+      "bytes": 16529
+    },
+    {
+      "path": "iterations/codex/tests/test_revision_guards.py",
+      "sha256": "f92e1a0c7d9a69d9e9d30b1cd8880f3c89917dcfb86b04b03414387719dba400",
+      "bytes": 11839
+    },
+    {
+      "path": "iterations/codex/tests/test_session.py",
+      "sha256": "e4c8e603146a3ebf618bb4d1ef4b32898cbaa5ff7913565febab0224632c2685",
+      "bytes": 18275
+    },
+    {
+      "path": "iterations/codex/uv.lock",
+      "sha256": "70ba4bc7c73c7e88b25cc094013bc7a93694b78007988e468795bd9962a6999e",
+      "bytes": 167197
+    },
+    {
+      "path": "iterations/codex/validation.json",
+      "sha256": "128966cea8241aedb50ff9ead7c27c8b12218297a9a1800323e8ad8b157bb849",
+      "bytes": 7511
+    },
+    {
+      "path": "iterations/muse/.gitignore",
+      "sha256": "6f60166800d33b59f29b14f6527909ac087e59ee1d68fca8be0b8a18e28efa0d",
+      "bytes": 193
+    },
+    {
+      "path": "iterations/muse/ADAPTER_CONTRACT.md",
+      "sha256": "e651f965ce7481c6c5a95e7a7bc80d999361a2022e1a5335b6f1f03445e804a5",
+      "bytes": 334
+    },
+    {
+      "path": "iterations/muse/CHANGELOG.md",
+      "sha256": "73b90efe6ddd8b763a68e3a8e1ca8758551c88a1a73b245fac886ec7660f2429",
+      "bytes": 973
+    },
+    {
+      "path": "iterations/muse/README.md",
+      "sha256": "e8288ecfde7b8381ec1d00919f51fa8f3dd6965a2d782381263e8b786fadf0a6",
+      "bytes": 3962
+    },
+    {
+      "path": "iterations/muse/docs/core-readme.md",
+      "sha256": "7bc42c591bbbd16a8882579dac44f590c7807dff330503e54c84620cd17ec7c1",
+      "bytes": 12684
+    },
+    {
+      "path": "iterations/muse/docs/lok-and-collaboration.md",
+      "sha256": "7762cb62281e02b97260e56028a4c21a32c508720b14abd2069195e3d7e5c175",
+      "bytes": 12346
+    },
+    {
+      "path": "iterations/muse/examples/decision.json",
+      "sha256": "6a64b6f5d9374136485aeda3046306468d2837d43a6de638c120d73b72439264",
+      "bytes": 270
+    },
+    {
+      "path": "iterations/muse/examples/profile.json",
+      "sha256": "2f2f2a2e32d1d86b3a70e61a8683f5516ee99b28bba1b7b1751da9a3a02d9e64",
+      "bytes": 60
+    },
+    {
+      "path": "iterations/muse/muse/.gitignore",
+      "sha256": "180c2fe0aca90bff787abae58896383ac44f23b5bdfc54740d0b09de5481eb0a",
+      "bytes": 101
+    },
+    {
+      "path": "iterations/muse/muse/ADAPTER_CONTRACT.md",
+      "sha256": "133ec0f186c4202cd601bbf628cfaf7fa2b3870bae062d43a124bf2a8d2ad707",
+      "bytes": 9381
+    },
+    {
+      "path": "iterations/muse/muse/README.md",
+      "sha256": "ac23dee8e67da1f4e78c966194e269ae8edf6a3bc03656f3f3e41d60fd5bf301",
+      "bytes": 15663
+    },
+    {
+      "path": "iterations/muse/muse/__init__.py",
+      "sha256": "f2cc91d70a9285a21bd4ff9f86a9ced59bb15244cca79c73d820bacd14ea5ab7",
+      "bytes": 86
+    },
+    {
+      "path": "iterations/muse/muse/adapter.py",
+      "sha256": "df76fe223742069cb34df75a66b7db790b4739a35b9f3d018ab4c0cf01574eba",
+      "bytes": 23945
+    },
+    {
+      "path": "iterations/muse/muse/call.py",
+      "sha256": "974e08c3f072086f776e2c50847a88b835f43108fa2e836b963c4a94e2fe72e4",
+      "bytes": 20033
+    },
+    {
+      "path": "iterations/muse/muse/config.example.json",
+      "sha256": "7103a0e4a8ca095edcdc2bf70d47ea772bfa63dcba1ccd6a8ccb2bf9e8e42881",
+      "bytes": 285
+    },
+    {
+      "path": "iterations/muse/muse/config.schema.json",
+      "sha256": "50cfcd7237dbb7d260f64996c95e9d58c21908ca080b2a2f273fdaae41d3601a",
+      "bytes": 1091
+    },
+    {
+      "path": "iterations/muse/muse/credentials.py",
+      "sha256": "3eeb7bc41feb9f290335d940b58df771d323374fe59b8ab81cc2e3949323a8b3",
+      "bytes": 5320
+    },
+    {
+      "path": "iterations/muse/muse/envelope.schema.json",
+      "sha256": "66329b32ed320962b8f0aab54b391c8fb6a382fab4ef2f334f231b7d2bfe749e",
+      "bytes": 1357
+    },
+    {
+      "path": "iterations/muse/muse/package-manifest.json",
+      "sha256": "6b98558f8074062ba9abe01fdd84d10050460e99d0ee7e834e38eb220adfce20",
+      "bytes": 3070
+    },
+    {
+      "path": "iterations/muse/muse/request.schema.json",
+      "sha256": "8564647da6653dfbaf8dd621cb003f083e667517e7a39bed6a4b127627af1f42",
+      "bytes": 3217
+    },
+    {
+      "path": "iterations/muse/muse/requirements.txt",
+      "sha256": "b58e9d2e578854f1ec1f406d00126ed260226dc72632a732977c638b4799ed79",
+      "bytes": 149
+    },
+    {
+      "path": "iterations/muse/muse/setup.workflow.json",
+      "sha256": "a73cc2c375555d6a22c5b4fd894dafcd0533f282806ba97fac4f5cf1d39d6742",
+      "bytes": 9091
+    },
+    {
+      "path": "iterations/muse/muse/status.request.json",
+      "sha256": "e1b0f3bc0a33c457342c2b0e5052177b194ed3e1a39456daedafb05b82cbacf5",
+      "bytes": 16
+    },
+    {
+      "path": "iterations/muse/muse/tailnet-policy.example.json",
+      "sha256": "c18d7d30c2986a6399780a7de36fa92859cbfe6728a0326cbae2aac5a1b052b9",
+      "bytes": 230
+    },
+    {
+      "path": "iterations/muse/muse/tests/test_adapter.py",
+      "sha256": "cf8002040f7f099e71f7de1ae74541325881464fc022bdec2e5e8c9e0629b20a",
+      "bytes": 19376
+    },
+    {
+      "path": "iterations/muse/muse/tests/test_call.py",
+      "sha256": "71ff64ba40477d2ec0460fb450eba2b4545142ed59e29face74869f7d200e048",
+      "bytes": 12073
+    },
+    {
+      "path": "iterations/muse/muse/validation.json",
+      "sha256": "4d7b22c9b7b92c4437ad92cacc53c7c31af683343de0b3fb2306e94a01dce2b2",
+      "bytes": 3105
+    },
+    {
+      "path": "iterations/muse/provenance/codex-CHANGELOG.md",
+      "sha256": "90e9726615e03152b77cb90c647f43858559ff762bc5dfa7316d2d2021265cd4",
+      "bytes": 839
+    },
+    {
+      "path": "iterations/muse/provenance/codex-validation.json",
+      "sha256": "128966cea8241aedb50ff9ead7c27c8b12218297a9a1800323e8ad8b157bb849",
+      "bytes": 7511
+    },
+    {
+      "path": "iterations/muse/provenance/inherited-core.json",
+      "sha256": "a5e034e54a8b53d7dd5c76e87e44be92a568556191643f2f1e4c54cc59df227a",
+      "bytes": 9730
+    },
+    {
+      "path": "iterations/muse/provenance/muse-original-validation.json",
+      "sha256": "33cde10f0edf7a2a1cc21631e02f4a1f75009adca597f6450e950158c157bb91",
+      "bytes": 1137
+    },
+    {
+      "path": "iterations/muse/pyproject.toml",
+      "sha256": "646fcadab3a753a7adeffae5d9ed25c7a9a2b5b62e01597802e2fff880d9dfd4",
+      "bytes": 385
+    },
+    {
+      "path": "iterations/muse/scripts/game_command.py",
+      "sha256": "14edec233884b82bf82c569c146755c3ae94e4204ab833ad2e3a5205cdaf2125",
+      "bytes": 5434
+    },
+    {
+      "path": "iterations/muse/scripts/relay_once.py",
+      "sha256": "d69fa776782496b225de84b2aafe178d795294edea19fc7d5a359b0fc5c7fdc6",
+      "bytes": 11454
+    },
+    {
+      "path": "iterations/muse/setup.workflow.json",
+      "sha256": "8f70e85de908afa24f014296a03261e849da9d5a1564cf457935b2350163e72f",
+      "bytes": 1699
+    },
+    {
+      "path": "iterations/muse/source-manifest.json",
+      "sha256": "c16ee9bad57cb31463c897148edb51bbc48ff7ac180d4c34b7897369cc605763",
+      "bytes": 9233
+    },
+    {
+      "path": "iterations/muse/src/mudgpt/__init__.py",
+      "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
+      "bytes": 84
+    },
+    {
+      "path": "iterations/muse/src/mudgpt/__main__.py",
+      "sha256": "53c2f331bd014c7f0c2434f1327ebf93d798638394097223b8e21e3130ed8bc0",
+      "bytes": 4664
+    },
+    {
+      "path": "iterations/muse/src/mudgpt/broker.py",
+      "sha256": "85130fb52257bbb55a44d62ab4e057786f2dc0c00c47f84847bfb3ec1daa383b",
+      "bytes": 9277
+    },
+    {
+      "path": "iterations/muse/src/mudgpt/colors.py",
+      "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
+      "bytes": 8747
+    },
+    {
+      "path": "iterations/muse/src/mudgpt/decision_journal.py",
+      "sha256": "a5cc8777027aa8d6780aa8fa2851acd88cb7f91f2c8576c26e277a124b703aba",
+      "bytes": 2877
+    },
+    {
+      "path": "iterations/muse/src/mudgpt/mcp_gateway.py",
+      "sha256": "b474f5c9b6e4733547621686d02f01f1a5f605c502b259e377223014e8b0b033",
+      "bytes": 3930
+    },
+    {
+      "path": "iterations/muse/src/mudgpt/observations.py",
+      "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
+      "bytes": 4698
+    },
+    {
+      "path": "iterations/muse/src/mudgpt/session.py",
+      "sha256": "c0d28f724f334ff357a31a77409254a263dc0dbaf7cf6f921f94ab3e9a3d6e21",
+      "bytes": 19001
+    },
+    {
+      "path": "iterations/muse/tests/test_broker.py",
+      "sha256": "96d4bf0ec142458a75fa1c5c199538954c6f68691d7d89b3b32dcfdbf02edd85",
+      "bytes": 11109
+    },
+    {
+      "path": "iterations/muse/tests/test_broker_lock.py",
+      "sha256": "13e23c037c42700991330506235395c401437609195747c7bf4e87e187ed2318",
+      "bytes": 3550
+    },
+    {
+      "path": "iterations/muse/tests/test_colors.py",
+      "sha256": "5f78c35dd585d0fe56972c27dd2efea808f18b62b6be5510eda48df29d170070",
+      "bytes": 4424
+    },
+    {
+      "path": "iterations/muse/tests/test_mcp.py",
+      "sha256": "92e68607bd64f49e6a5caa239f2a981d87ae16f060391afdf5d6c9a54a0cc5e9",
+      "bytes": 7254
+    },
+    {
+      "path": "iterations/muse/tests/test_observations.py",
+      "sha256": "150e8798777e5ba42e60de35c39029c05591f89fbf824b7af41d9bd6bc0e18c6",
+      "bytes": 2584
+    },
+    {
+      "path": "iterations/muse/tests/test_relay_once.py",
+      "sha256": "d5e5a2551742be8b57fecef8569194898c66c30ac69ad2a9e485a040d8b9cb47",
+      "bytes": 16529
+    },
+    {
+      "path": "iterations/muse/tests/test_revision_guards.py",
+      "sha256": "f92e1a0c7d9a69d9e9d30b1cd8880f3c89917dcfb86b04b03414387719dba400",
+      "bytes": 11839
+    },
+    {
+      "path": "iterations/muse/tests/test_session.py",
+      "sha256": "e4c8e603146a3ebf618bb4d1ef4b32898cbaa5ff7913565febab0224632c2685",
+      "bytes": 18275
+    },
+    {
+      "path": "iterations/muse/uv.lock",
+      "sha256": "70ba4bc7c73c7e88b25cc094013bc7a93694b78007988e468795bd9962a6999e",
+      "bytes": 167197
+    },
+    {
+      "path": "iterations/muse/validation.json",
+      "sha256": "ada2d66e3a4ad0f485fcfc34fbd242c6a2d9a7f4c1f775eea9032e1317d923bb",
+      "bytes": 3096
+    },
+    {
+      "path": "provenance/collection.json",
+      "sha256": "62e9000c27311eb8d1301029a98847c3a6385277f0c47e0eed166972059eac03",
+      "bytes": 24244
+    }
+  ],
+  "archive_policy": "Sorted exact allowlist, fixed 2026-10-20T00:00:00 ZIP timestamps and permissions, DEFLATE level 9",
+  "line_endings": "Repository .gitattributes disables text conversion; preserve tested bytes",
+  "exclusions": [
+    "game server source",
+    "pfiles",
+    "roleplay logs",
+    "keys",
+    "credentials",
+    "private encrypted handoffs",
+    "runtime data",
+    "generated build files"
+  ]
+}
