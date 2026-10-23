@@ -76,3 +76,9 @@ The nested [Muse package manifest](muse/package-manifest.json) identifies its
 separate adapter/helper files. Runtime data, keys, envelopes, credentials,
 journals, roleplay logs, pfiles and game server source are excluded. The server
 project is maintained and published separately under its own access policy.
+
+## Collection 0.3.0 update checks
+
+The separate update-aware launcher checks GitLab and notifies on ordinary long-running starts. Downloads require an explicit request; installation is a deliberate side-by-side operation. Existing runtime code, original launchers and historical validation remain unchanged. See [UPDATES.md](UPDATES.md), [updates.workflow.json](updates.workflow.json) and [UPDATE_VALIDATION.json](UPDATE_VALIDATION.json) for the setup, machine-readable policy and separate updater evidence.
+
+For the complete 0.3.0 package inventory, use [distribution-manifest.json](distribution-manifest.json); earlier source manifests and runtime validation retain their historical scope. Updater tests are supplied at the collection root, and the copied updater receipt refers to those collection-relative test paths.

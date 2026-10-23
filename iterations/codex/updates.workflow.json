@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "project": "MUDweave",
+  "collection_version": "0.3.0",
+  "gitlab_project_id": 87773838,
+  "gitlab_project": "codalilitari/mudgpt",
+  "human_entrypoint": "UPDATES.md",
+  "launcher": "mudweave.py",
+  "checker": "mudweave_update.py",
+  "identity": "mudweave-update.json",
+  "automatic_behavior": "check_and_notify_on_opt_in_launcher_start",
+  "successful_check_cache_seconds": 86400,
+  "automatic_archive_download": false,
+  "automatic_install": false,
+  "automatic_restart": false,
+  "background_service_installed": false,
+  "git_processes_or_file_watchers": false,
+  "stdout_reserved_for_client_protocol": true,
+  "notification_stream": "stderr",
+  "disabled_for_short_broker_operations": true,
+  "same_python_interpreter": true,
+  "claude_setup": {
+    "requires_existing_configured_private_runtime_home": true,
+    "preserve_environment_variable": "KRASNA_CONTROL",
+    "wsl_original_python": "$HOME/.krasna/venv/bin/python",
+    "wsl_original_control": "$HOME/.krasna/control.json",
+    "windows_original_python": "PRIVATE_HOME/.venv/Scripts/python.exe or the existing fallback interpreter",
+    "windows_default_control": "PRIVATE_HOME/control.json",
+    "first_run_environment_setup": false,
+    "platform_state_migration": false
+  },
+  "client_state_access": false,
+  "credentials_required": false,
+  "commands": {
+    "check_now": ["python", "mudweave.py", "update", "check", "--force", "--json"],
+    "status": ["python", "mudweave.py", "update", "status", "--json"],
+    "download": ["python", "mudweave.py", "update", "download", "--iteration", "ITERATION", "--json"],
+    "disable": ["python", "mudweave.py", "update", "config", "enabled", "off", "--json"],
+    "enable": ["python", "mudweave.py", "update", "config", "enabled", "on", "--json"]
+  },
+  "existing_client_runtime_versions": {"codex": "0.2.0", "claude": "0.1.0", "muse": "0.2.0"},
+  "verified_download": {
+    "trigger": "explicit_download_command",
+    "metadata_ref": "release_commit_id",
+    "checks": ["selected_iteration", "unique_asset_name", "allowed_https_project_url", "exact_size", "sha256"],
+    "output": "external_user_cache_zip",
+    "extract_or_execute": false
+  },
+  "installation": {
+    "mode": "operator_requested_side_by_side_installation",
+    "steps": ["download_and_verify_selected_iteration", "read_release_readme", "extract_to_new_directory", "create_separate_environment", "configure_existing_private_paths_deliberately", "switch_launch_command_during_planned_stop"],
+    "preserve": ["previous_install", "private_keys", "credentials", "control_files", "mailboxes", "journals", "character_state"],
+    "unknown_delivery": "inspect_and_never_replay"
+  }
+}

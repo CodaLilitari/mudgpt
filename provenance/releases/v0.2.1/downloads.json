@@ -1,0 +1,45 @@
+{
+  "format": "mudgpt-public-downloads-v1",
+  "project": "MUDweave",
+  "collection_version": "0.2.1",
+  "distribution_revision": "license1",
+  "portfolio_origin": "https://richard-pemberton-research.darkahn.chatgpt.site",
+  "assets": [
+    {
+      "name": "mudgpt-codex-0.2.0-license1.zip",
+      "iteration": "codex",
+      "version": "0.2.0",
+      "distribution_revision": "license1",
+      "size_bytes": 126266,
+      "sha256": "1924e5371b76c1e0af58fa614d0e4e275ea40e52bf7bb7ce6b32a9522b913ec8",
+      "url": "/downloads/files/1924e5371b76c1e0/mudgpt-codex-0.2.0-license1.zip",
+      "files": 35
+    },
+    {
+      "name": "mudgpt-claude-0.1.0-license1.zip",
+      "iteration": "claude",
+      "version": "0.1.0",
+      "distribution_revision": "license1",
+      "size_bytes": 132852,
+      "sha256": "156d466cf89b760f5f1d1aee14f69b8c55be3f3bb8622211f4ab836ef670af31",
+      "url": "/downloads/files/156d466cf89b760f/mudgpt-claude-0.1.0-license1.zip",
+      "files": 46
+    },
+    {
+      "name": "mudgpt-muse-0.2.0-license1.zip",
+      "iteration": "muse",
+      "version": "0.2.0",
+      "distribution_revision": "license1",
+      "size_bytes": 194940,
+      "sha256": "245fd700e515a1c3d537f12deb0bb5e3fe0641b041d747a0fb920ab8b60ecb2b",
+      "url": "/downloads/files/245fd700e515a1c3/mudgpt-muse-0.2.0-license1.zip",
+      "files": 69
+    }
+  ],
+  "complete_collection": {
+    "filename": "mudgpt-clients-0.2.1.zip",
+    "release_url": "https://gitlab.com/codalilitari/mudgpt/-/releases/v0.2.1"
+  },
+  "historical_downloads": "provenance/releases/v0.2.0/downloads.json",
+  "collection_checksum_note": "The collection checksum is published outside this self-containing archive in the release asset receipt and portfolio catalog."
+}

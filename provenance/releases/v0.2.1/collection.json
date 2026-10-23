@@ -1,0 +1,40 @@
+{
+  "format": "mudgpt-collection-provenance-v2",
+  "project": "MUDweave",
+  "collection_version": "0.2.1",
+  "distribution_revision": "license1",
+  "date": "2026-10-20",
+  "baseline_commit": "7fcced4b72df97454b8c015a7bf6ac7cf7940c28",
+  "repository": "https://gitlab.com/codalilitari/mudgpt",
+  "historical_collection": "provenance/releases/v0.2.0/collection.json",
+  "notice_release": "provenance/notice-release.json",
+  "runtime_bytes_unchanged": true,
+  "tests_rerun": false,
+  "validation_status_note": "Historical validation and source manifests are retained unchanged. New distribution manifests cover the licensing additions and package metadata.",
+  "iterations": [
+    {
+      "iteration": "codex",
+      "core_version": "0.2.0",
+      "distribution_revision": "license1",
+      "distribution_manifest": "iterations/codex/distribution-manifest.json",
+      "distribution_manifest_sha256": "ca039f3866fbdedfcf02bc688c6b1e83146347b80a93fde7ce28102390ae35a2",
+      "validation": "iterations/codex/validation.json"
+    },
+    {
+      "iteration": "claude",
+      "core_version": "0.1.0",
+      "distribution_revision": "license1",
+      "distribution_manifest": "iterations/claude/distribution-manifest.json",
+      "distribution_manifest_sha256": "fa41ac68a80c90a3c215b4584065c757ec700c1890410153a00d6edb2ab9ffa8",
+      "validation": "iterations/claude/validation.json"
+    },
+    {
+      "iteration": "muse",
+      "core_version": "0.2.0",
+      "distribution_revision": "license1",
+      "distribution_manifest": "iterations/muse/distribution-manifest.json",
+      "distribution_manifest_sha256": "b3d9a8fb5244f9d3a7693645acadfe1b1efbab993d512a4868bd68126dd2567f",
+      "validation": "iterations/muse/validation.json"
+    }
+  ]
+}

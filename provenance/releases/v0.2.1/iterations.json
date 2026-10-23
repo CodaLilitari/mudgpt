@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "project": "MUDweave",
+  "collection_version": "0.2.1",
+  "status": "validated_release_snapshot",
+  "date": "2026-10-20",
+  "root_is_installable_runtime": false,
+  "shared_protocol_policy": "Iteration protocols and runtime state remain separate. Never exchange control tokens, leases, journals, mailboxes or credentials between iterations.",
+  "iterations": [
+    {
+      "id": "codex",
+      "version": "0.2.0",
+      "core_version": "0.2.0",
+      "path": "iterations/codex",
+      "status": "included",
+      "entrypoint": "iterations/codex/README.md",
+      "transport": "local CLI and official-SDK MCP, plus authored guarded relay",
+      "validation": "iterations/codex/validation.json",
+      "synthetic_tests": {
+        "windows": 73,
+        "wsl": 73
+      },
+      "distribution_revision": "license1",
+      "distribution_manifest": "iterations/codex/distribution-manifest.json",
+      "distribution_manifest_sha256": "ca039f3866fbdedfcf02bc688c6b1e83146347b80a93fde7ce28102390ae35a2"
+    },
+    {
+      "id": "claude",
+      "version": "0.1.0",
+      "core_version": "0.1.0",
+      "path": "iterations/claude",
+      "status": "included",
+      "entrypoint": "iterations/claude/README.md",
+      "transport": "independent file-mailbox courier",
+      "core_commit": "060e50c85b0c65f6dc088d5941d0863961dad254",
+      "validation": "iterations/claude/validation.json",
+      "editorial_boundaries": "iterations/claude/EDITOR_NOTES.md",
+      "synthetic_tests": {
+        "wsl": 32,
+        "native_windows": null
+      },
+      "distribution_revision": "license1",
+      "distribution_manifest": "iterations/claude/distribution-manifest.json",
+      "distribution_manifest_sha256": "fa41ac68a80c90a3c215b4584065c757ec700c1890410153a00d6edb2ab9ffa8"
+    },
+    {
+      "id": "muse",
+      "version": "0.2.0",
+      "core_version": "0.2.0",
+      "path": "iterations/muse",
+      "status": "included_configuration_candidate",
+      "entrypoint": "iterations/muse/README.md",
+      "machine_entrypoint": "iterations/muse/setup.workflow.json",
+      "transport": "scoped five-operation HTTP adapter and receiving helper via private peer network",
+      "core_pin": "iterations/muse/provenance/inherited-core.json",
+      "validation": "iterations/muse/validation.json",
+      "synthetic_tests": {
+        "windows": 32,
+        "wsl": 32
+      },
+      "configurable_helper_live_deployed": false,
+      "distribution_revision": "license1",
+      "distribution_manifest": "iterations/muse/distribution-manifest.json",
+      "distribution_manifest_sha256": "b3d9a8fb5244f9d3a7693645acadfe1b1efbab993d512a4868bd68126dd2567f"
+    }
+  ],
+  "counting_note": "Counts belong to distinct suites/platforms; do not sum them as unique scenarios.",
+  "distribution_revision": "license1",
+  "license": "Apache-2.0",
+  "release_change": "License, contributor credit, editorial and packaging metadata only; recorded synthetic tests are historical, not rerun by this packager.",
+  "historical_index": "provenance/releases/v0.2.0/iterations.json"
+}

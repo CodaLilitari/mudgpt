@@ -173,3 +173,9 @@ The exported suite uses synthetic text and loopback fixture servers. It tests br
 This iteration exports 73 client tests. The separate archive-sanitization utility and its 13 tests are outside this client release. Platform results and file hashes are recorded in `validation.json`; remote game compatibility and actual gameplay evidence are distinct from this synthetic suite.
 
 Core modules are under `src/mudgpt`: `session.py` owns transport and state, `broker.py` serves local RPC, `mcp_gateway.py` exposes tools, `__main__.py` provides the CLI, `decision_journal.py` persists relay admission, and `colors.py`/`observations.py` handle safe structured text. No archived game source, character data or real transcripts are included.
+
+## Collection 0.3.0 update checks
+
+The separate update-aware launcher checks GitLab and notifies on ordinary long-running starts. Downloads require an explicit request; installation is a deliberate side-by-side operation. Existing runtime code, original launchers and historical validation remain unchanged. See [UPDATES.md](UPDATES.md), [updates.workflow.json](updates.workflow.json) and [UPDATE_VALIDATION.json](UPDATE_VALIDATION.json) for the setup, machine-readable policy and separate updater evidence.
+
+For the complete 0.3.0 package inventory, use [distribution-manifest.json](distribution-manifest.json); earlier source manifests and runtime validation retain their historical scope. Updater tests are supplied at the collection root, and the copied updater receipt refers to those collection-relative test paths.

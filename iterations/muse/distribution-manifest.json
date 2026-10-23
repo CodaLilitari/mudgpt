@@ -1,422 +1,458 @@
 {
-  "format": "mudweave-notice-distribution-manifest-v1",
+  "format": "mudweave-update-distribution-manifest-v1",
   "self_excluded": true,
-  "baseline_commit": "7fcced4b72df97454b8c015a7bf6ac7cf7940c28",
-  "collection_version": "0.2.1",
+  "baseline_commit": "c9764b51b409d5470c9bd96363b74dd572c901d3",
+  "collection_version": "0.3.0",
   "iteration": "muse",
   "core_version": "0.2.0",
   "version": "0.2.0",
-  "distribution_revision": "license1",
+  "distribution_revision": "updates1",
   "license": "Apache-2.0",
-  "historical_manifests_note": "Earlier manifests, pins and validation records are preserved as historical evidence; this manifest defines the complete notice distribution.",
+  "runtime_validation": "Historical files unchanged; separate current UPDATE_VALIDATION.json covers the wrapper.",
   "files": [
     {
       "path": ".gitignore",
       "sha256": "6f60166800d33b59f29b14f6527909ac087e59ee1d68fca8be0b8a18e28efa0d",
       "bytes": 193,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "ADAPTER_CONTRACT.md",
       "sha256": "e651f965ce7481c6c5a95e7a7bc80d999361a2022e1a5335b6f1f03445e804a5",
       "bytes": 334,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "CHANGELOG.md",
       "sha256": "73b90efe6ddd8b763a68e3a8e1ca8758551c88a1a73b245fac886ec7660f2429",
       "bytes": 973,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "CONTRIBUTING.md",
       "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
       "bytes": 877,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "CONTRIBUTOR_RECOGNITION.md",
       "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
       "bytes": 1522,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "CREDITS.md",
       "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
       "bytes": 2625,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "LICENSE",
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
       "bytes": 11358,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "LICENSE_SCOPE.md",
       "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
       "bytes": 1742,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "NOTICE",
       "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
       "bytes": 1870,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "README.md",
-      "sha256": "e8288ecfde7b8381ec1d00919f51fa8f3dd6965a2d782381263e8b786fadf0a6",
-      "bytes": 3962,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "sha256": "7e8fd7fb978c02c188bf5c16b85e22b4619ce4be3dd818707cb2a9c5e6595a91",
+      "bytes": 4785,
+      "provenance": "updates1-wrapper-or-documentation"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
       "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
       "bytes": 1401,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
+    },
+    {
+      "path": "UPDATES.md",
+      "sha256": "198288684912d77c52dfa037aeb0457a9cec4f75ab33ef804006c7dc1ddbaf4a",
+      "bytes": 7290,
+      "provenance": "updates1-wrapper-or-documentation"
+    },
+    {
+      "path": "UPDATE_VALIDATION.json",
+      "sha256": "71eaa26071bc5c4e056252d7b05c986a9f5f778d25917b18b4364e2a82910403",
+      "bytes": 4050,
+      "provenance": "updates1-wrapper-or-documentation"
     },
     {
       "path": "docs/core-readme.md",
       "sha256": "7bc42c591bbbd16a8882579dac44f590c7807dff330503e54c84620cd17ec7c1",
       "bytes": 12684,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "docs/lok-and-collaboration.md",
       "sha256": "7762cb62281e02b97260e56028a4c21a32c508720b14abd2069195e3d7e5c175",
       "bytes": 12346,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "examples/decision.json",
       "sha256": "6a64b6f5d9374136485aeda3046306468d2837d43a6de638c120d73b72439264",
       "bytes": 270,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "examples/profile.json",
       "sha256": "2f2f2a2e32d1d86b3a70e61a8683f5516ee99b28bba1b7b1751da9a3a02d9e64",
       "bytes": 60,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
+    },
+    {
+      "path": "mudweave-update.json",
+      "sha256": "90d1cff46ec261c0e2b34c5f28afdb54a7f680de7a15edaab0696286631f097f",
+      "bytes": 185,
+      "provenance": "updates1-wrapper-or-documentation"
+    },
+    {
+      "path": "mudweave.py",
+      "sha256": "28cd7e0fbcefc048f4939d707e300ea5ab2d257b101850ed82dc3a99f3e68ba8",
+      "bytes": 2855,
+      "provenance": "updates1-wrapper-or-documentation"
+    },
+    {
+      "path": "mudweave_update.py",
+      "sha256": "b42f0e32f037d76dc45e1cc55ab4bb2e25cf4c852f50b51108af872b0ab54cab",
+      "bytes": 27473,
+      "provenance": "updates1-wrapper-or-documentation"
     },
     {
       "path": "muse/.gitignore",
       "sha256": "180c2fe0aca90bff787abae58896383ac44f23b5bdfc54740d0b09de5481eb0a",
       "bytes": 101,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/ADAPTER_CONTRACT.md",
       "sha256": "133ec0f186c4202cd601bbf628cfaf7fa2b3870bae062d43a124bf2a8d2ad707",
       "bytes": 9381,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/CONTRIBUTING.md",
       "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
       "bytes": 877,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/CONTRIBUTOR_RECOGNITION.md",
       "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
       "bytes": 1522,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/CREDITS.md",
       "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
       "bytes": 2625,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/LICENSE",
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
       "bytes": 11358,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/LICENSE_SCOPE.md",
       "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
       "bytes": 1742,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/NOTICE",
       "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
       "bytes": 1870,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/README.md",
       "sha256": "ac23dee8e67da1f4e78c966194e269ae8edf6a3bc03656f3f3e41d60fd5bf301",
       "bytes": 15663,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/THIRD_PARTY_NOTICES.md",
       "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
       "bytes": 1401,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/__init__.py",
       "sha256": "f2cc91d70a9285a21bd4ff9f86a9ced59bb15244cca79c73d820bacd14ea5ab7",
       "bytes": 86,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/adapter.py",
       "sha256": "df76fe223742069cb34df75a66b7db790b4739a35b9f3d018ab4c0cf01574eba",
       "bytes": 23945,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/call.py",
       "sha256": "974e08c3f072086f776e2c50847a88b835f43108fa2e836b963c4a94e2fe72e4",
       "bytes": 20033,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/config.example.json",
       "sha256": "7103a0e4a8ca095edcdc2bf70d47ea772bfa63dcba1ccd6a8ccb2bf9e8e42881",
       "bytes": 285,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/config.schema.json",
       "sha256": "50cfcd7237dbb7d260f64996c95e9d58c21908ca080b2a2f273fdaae41d3601a",
       "bytes": 1091,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/credentials.py",
       "sha256": "3eeb7bc41feb9f290335d940b58df771d323374fe59b8ab81cc2e3949323a8b3",
       "bytes": 5320,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/envelope.schema.json",
       "sha256": "66329b32ed320962b8f0aab54b391c8fb6a382fab4ef2f334f231b7d2bfe749e",
       "bytes": 1357,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/package-manifest.json",
       "sha256": "6b98558f8074062ba9abe01fdd84d10050460e99d0ee7e834e38eb220adfce20",
       "bytes": 3070,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/request.schema.json",
       "sha256": "8564647da6653dfbaf8dd621cb003f083e667517e7a39bed6a4b127627af1f42",
       "bytes": 3217,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/requirements.txt",
       "sha256": "b58e9d2e578854f1ec1f406d00126ed260226dc72632a732977c638b4799ed79",
       "bytes": 149,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/setup.workflow.json",
       "sha256": "a73cc2c375555d6a22c5b4fd894dafcd0533f282806ba97fac4f5cf1d39d6742",
       "bytes": 9091,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/status.request.json",
       "sha256": "e1b0f3bc0a33c457342c2b0e5052177b194ed3e1a39456daedafb05b82cbacf5",
       "bytes": 16,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/tailnet-policy.example.json",
       "sha256": "c18d7d30c2986a6399780a7de36fa92859cbfe6728a0326cbae2aac5a1b052b9",
       "bytes": 230,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/tests/test_adapter.py",
       "sha256": "cf8002040f7f099e71f7de1ae74541325881464fc022bdec2e5e8c9e0629b20a",
       "bytes": 19376,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/tests/test_call.py",
       "sha256": "71ff64ba40477d2ec0460fb450eba2b4545142ed59e29face74869f7d200e048",
       "bytes": 12073,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "muse/validation.json",
       "sha256": "4d7b22c9b7b92c4437ad92cacc53c7c31af683343de0b3fb2306e94a01dce2b2",
       "bytes": 3105,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "provenance/codex-CHANGELOG.md",
       "sha256": "90e9726615e03152b77cb90c647f43858559ff762bc5dfa7316d2d2021265cd4",
       "bytes": 839,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "provenance/codex-validation.json",
       "sha256": "128966cea8241aedb50ff9ead7c27c8b12218297a9a1800323e8ad8b157bb849",
       "bytes": 7511,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "provenance/inherited-core.json",
       "sha256": "a5e034e54a8b53d7dd5c76e87e44be92a568556191643f2f1e4c54cc59df227a",
       "bytes": 9730,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "provenance/muse-original-validation.json",
       "sha256": "33cde10f0edf7a2a1cc21631e02f4a1f75009adca597f6450e950158c157bb91",
       "bytes": 1137,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "pyproject.toml",
       "sha256": "5df0f987c8f50c3bcb93aba443d419bd86068fde5dffb324f1f726d613de17e7",
       "bytes": 516,
-      "provenance": "license-package-metadata"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "scripts/game_command.py",
       "sha256": "14edec233884b82bf82c569c146755c3ae94e4204ab833ad2e3a5205cdaf2125",
       "bytes": 5434,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "scripts/relay_once.py",
       "sha256": "d69fa776782496b225de84b2aafe178d795294edea19fc7d5a359b0fc5c7fdc6",
       "bytes": 11454,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "setup.workflow.json",
       "sha256": "8f70e85de908afa24f014296a03261e849da9d5a1564cf457935b2350163e72f",
       "bytes": 1699,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "source-manifest.json",
       "sha256": "c16ee9bad57cb31463c897148edb51bbc48ff7ac180d4c34b7897369cc605763",
       "bytes": 9233,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/__init__.py",
       "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
       "bytes": 84,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/__main__.py",
       "sha256": "53c2f331bd014c7f0c2434f1327ebf93d798638394097223b8e21e3130ed8bc0",
       "bytes": 4664,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/broker.py",
       "sha256": "85130fb52257bbb55a44d62ab4e057786f2dc0c00c47f84847bfb3ec1daa383b",
       "bytes": 9277,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/colors.py",
       "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
       "bytes": 8747,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/decision_journal.py",
       "sha256": "a5cc8777027aa8d6780aa8fa2851acd88cb7f91f2c8576c26e277a124b703aba",
       "bytes": 2877,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/mcp_gateway.py",
       "sha256": "b474f5c9b6e4733547621686d02f01f1a5f605c502b259e377223014e8b0b033",
       "bytes": 3930,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/observations.py",
       "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
       "bytes": 4698,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/session.py",
       "sha256": "c0d28f724f334ff357a31a77409254a263dc0dbaf7cf6f921f94ab3e9a3d6e21",
       "bytes": 19001,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "tests/test_broker.py",
       "sha256": "96d4bf0ec142458a75fa1c5c199538954c6f68691d7d89b3b32dcfdbf02edd85",
       "bytes": 11109,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "tests/test_broker_lock.py",
       "sha256": "13e23c037c42700991330506235395c401437609195747c7bf4e87e187ed2318",
       "bytes": 3550,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "tests/test_colors.py",
       "sha256": "5f78c35dd585d0fe56972c27dd2efea808f18b62b6be5510eda48df29d170070",
       "bytes": 4424,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "tests/test_mcp.py",
       "sha256": "92e68607bd64f49e6a5caa239f2a981d87ae16f060391afdf5d6c9a54a0cc5e9",
       "bytes": 7254,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "tests/test_observations.py",
       "sha256": "150e8798777e5ba42e60de35c39029c05591f89fbf824b7af41d9bd6bc0e18c6",
       "bytes": 2584,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "tests/test_relay_once.py",
       "sha256": "d5e5a2551742be8b57fecef8569194898c66c30ac69ad2a9e485a040d8b9cb47",
       "bytes": 16529,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "tests/test_revision_guards.py",
       "sha256": "f92e1a0c7d9a69d9e9d30b1cd8880f3c89917dcfb86b04b03414387719dba400",
       "bytes": 11839,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "tests/test_session.py",
       "sha256": "e4c8e603146a3ebf618bb4d1ef4b32898cbaa5ff7913565febab0224632c2685",
       "bytes": 18275,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
+    },
+    {
+      "path": "updates.workflow.json",
+      "sha256": "dc39bb244501978eb2ae275b9d9564c799a7c14d5a98de121eb3dcc6ed0bc45d",
+      "bytes": 2682,
+      "provenance": "updates1-wrapper-or-documentation"
     },
     {
       "path": "uv.lock",
       "sha256": "70ba4bc7c73c7e88b25cc094013bc7a93694b78007988e468795bd9962a6999e",
       "bytes": 167197,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "validation.json",
       "sha256": "ada2d66e3a4ad0f485fcfc34fbd242c6a2d9a7f4c1f775eea9032e1317d923bb",
       "bytes": 3096,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     }
   ]
 }

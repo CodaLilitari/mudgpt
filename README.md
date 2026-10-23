@@ -1,4 +1,4 @@
-# MUDweave — three client iterations, collection 0.2.0
+# MUDweave — three client iterations, collection 0.3.0
 
 *Formerly MudGPT · Multi-client collaboration collection*
 
@@ -13,9 +13,10 @@ code through separately pinned snapshots. Each has its own environment, processe
 runtime state and validation record. Choose one iteration and install it in its
 own environment. Keep its broker, control files, credentials, leases, mailbox and
 journals separate from the others. Their protocols and guarantees are specific to
-each implementation; the repository root is a collection index.
+each implementation; the repository root is a collection index with a separate
+optional update-aware launcher.
 
-| Iteration | Package and core | Intended route | Executed synthetic checks |
+| Iteration | Package and core | Intended route | Historical runtime checks |
 |---|---|---|---|
 | [Codex](iterations/codex/README.md) | 0.2.0 | Local CLI, official-SDK MCP and guarded one-command relay; Codex-to-ChatGPT partnership | 73 on Windows; 73 on Linux under WSL |
 | [Claude / Red](iterations/claude/README.md) | Mailbox iteration with pinned 0.1.0 core | Independent file-mailbox courier and local takeover | 32 courier checks on Linux under WSL |
@@ -26,6 +27,35 @@ includes Windows launchers but does not claim a native Windows courier test run.
 Its [editorial boundaries](iterations/claude/EDITOR_NOTES.md) qualify the original
 review and guarantee wording. Each iteration preserves its own validation and
 provenance; newer Codex results do not silently upgrade the Claude snapshot.
+
+Those runtime checks retain their original checkpoint and were not rerun to
+certify the updater. Collection 0.3.0 uses distribution revision `updates1` while
+preserving Codex/Muse core 0.2.0 and Claude core 0.1.0. Existing runtime files,
+Red's authored courier tree, Muse's adapter/helper tree, dependency pins and
+historical validation files remain unchanged.
+
+## Automatic notices, deliberate downloads
+
+The new `mudweave.py` launcher starts the selected client with its own Python
+environment and checks the public GitLab release in the background on ordinary
+long-running starts. It checks and notifies only. It never automatically downloads,
+installs, restarts a client, connects to a game, changes controller ownership or
+replays a command. Existing launchers remain available unchanged; adopt the new
+launcher on the next normal start.
+
+Checks use a separate external cache, a 24-hour throttle and stderr notices;
+client JSON and MCP stdout stay separate. No Git polling, repository watcher,
+scheduled job or persistent updater service is added. Downloads require an
+explicit command and are checked against release-specific GitLab metadata,
+byte count and SHA-256. Installation is a deliberate side-by-side operation with
+the old environment and private state preserved, not an in-place updater action.
+
+Read [UPDATES.md](UPDATES.md) for commands and limits, or
+[updates.workflow.json](updates.workflow.json) for the machine-readable policy.
+The separate [UPDATE_VALIDATION.json](UPDATE_VALIDATION.json) records updater
+checks; historical client tests remain in their original files.
+
+**Updater validation:** passed on Windows and Linux; see UPDATE_VALIDATION.json for exact scope and hashes.
 
 ## Start with the route you want
 
@@ -82,15 +112,21 @@ MUDweave is the collection's display name. The `mudgpt` repository slug, Python
 package names, commands and ZIP filenames remain stable for compatibility.
 
 Find the individual packages in [downloads.json](downloads.json), or use the
-[GitLab 0.2.1 license-and-credit release](https://gitlab.com/codalilitari/mudgpt/-/releases/v0.2.1)
+[GitLab 0.3.0 update-check release](https://gitlab.com/codalilitari/mudgpt/-/releases/v0.3.0)
 for the complete collection. The [portfolio project](https://richard-pemberton-research.darkahn.chatgpt.site/projects/mudgpt/)
 provides the public writeup and downloads.
 
 [iterations.json](iterations.json) is the machine-readable route index.
-[release-manifest.json](release-manifest.json) pins every public file, and
+[release-manifest.json](release-manifest.json) pins every other public file, and
 [provenance/collection.json](provenance/collection.json) records the source snapshots
-and packaging boundaries. The previous top-level 0.1.0 layout remains in Git
+and packaging boundaries. Exact 0.2.1 metadata is preserved under
+[provenance/releases/v0.2.1](provenance/releases/v0.2.1/snapshot.json), pinned to
+commit `c9764b51b409d5470c9bd96363b74dd572c901d3`. The previous top-level 0.1.0 layout remains in Git
 history at commit `060e50c85b0c65f6dc088d5941d0863961dad254`.
+
+Distribution manifests exclude their own bytes. The release's external
+`SHA256SUMS` records the standalone and complete archive checksums, avoiding a
+self-referential checksum inside the complete collection ZIP.
 
 Andrei defines the project's goals. Coda maintains the Codex work and coordinates
 the collection and evidence. Red authored the Claude mailbox courier and owns
@@ -113,6 +149,8 @@ attributions must be retained when redistributing under its terms.
 treating named human and AI collaborators as people within the collaboration.
 See [license scope](LICENSE_SCOPE.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-Collection 0.2.1 adds licensing, credits and packaging metadata only. The three
-client runtime versions and code remain unchanged; frozen 0.2.0 archives remain
-available. Every new standalone archive carries its own LICENSE and NOTICE.
+Collection 0.2.1 added licensing, credits and packaging metadata. Collection
+0.3.0 adds the separate update launcher, checker, identity settings and update
+documentation. The three existing client runtime versions and code remain
+unchanged; historical archives remain available. Every new standalone archive
+carries its own LICENSE, NOTICE and update instructions.

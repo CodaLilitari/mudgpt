@@ -36,3 +36,9 @@ The code retains its tested `krasna` launcher names and `red` actor label. Those
 The original 14 Red files and her manifest are preserved exactly under `claude/`. The seven core modules and dependency metadata are exact public commit `060e50c85b0c65f6dc088d5941d0863961dad254`. The entry README, editorial wrapper, provenance and validation record were prepared by Coda. No active runtime, Red original or other client was edited during packaging.
 
 No server source, engine findings, pfiles, roleplay logs, private mailbox files, credentials or keys are included. Current server mechanics and successful gameplay are separate evidence from the synthetic courier suite.
+
+## Collection 0.3.0 update checks
+
+The separate update-aware launcher checks GitLab and notifies on ordinary long-running starts. Downloads require an explicit request; installation is a deliberate side-by-side operation. Existing runtime code, original launchers and historical validation remain unchanged. See [UPDATES.md](UPDATES.md), [updates.workflow.json](updates.workflow.json) and [UPDATE_VALIDATION.json](UPDATE_VALIDATION.json) for the setup, machine-readable policy and separate updater evidence.
+
+For the complete 0.3.0 package inventory, use [distribution-manifest.json](distribution-manifest.json); earlier source manifests and runtime validation retain their historical scope. Updater tests are supplied at the collection root, and the copied updater receipt refers to those collection-relative test paths.

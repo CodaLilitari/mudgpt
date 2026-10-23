@@ -1,284 +1,320 @@
 {
-  "format": "mudweave-notice-distribution-manifest-v1",
+  "format": "mudweave-update-distribution-manifest-v1",
   "self_excluded": true,
-  "baseline_commit": "7fcced4b72df97454b8c015a7bf6ac7cf7940c28",
-  "collection_version": "0.2.1",
+  "baseline_commit": "c9764b51b409d5470c9bd96363b74dd572c901d3",
+  "collection_version": "0.3.0",
   "iteration": "claude",
   "core_version": "0.1.0",
   "version": "0.1.0",
-  "distribution_revision": "license1",
+  "distribution_revision": "updates1",
   "license": "Apache-2.0",
-  "historical_manifests_note": "Earlier manifests, pins and validation records are preserved as historical evidence; this manifest defines the complete notice distribution.",
+  "runtime_validation": "Historical files unchanged; separate current UPDATE_VALIDATION.json covers the wrapper.",
   "files": [
     {
       "path": ".gitignore",
       "sha256": "9495a6221a1507e82b0af64d4c0e10153f1046496c8fa00e1e65033f5b9f1d42",
       "bytes": 243,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "CONTRIBUTING.md",
       "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
       "bytes": 877,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "CONTRIBUTOR_RECOGNITION.md",
       "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
       "bytes": 1522,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "CREDITS.md",
       "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
       "bytes": 2625,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "EDITOR_NOTES.md",
       "sha256": "1d3b5ddeb02dcaf214eea4c520448f1e5ce3644309cf620f6614c3d05034d3fb",
       "bytes": 3127,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "LICENSE",
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
       "bytes": 11358,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "LICENSE_SCOPE.md",
       "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
       "bytes": 1742,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "NOTICE",
       "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
       "bytes": 1870,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "README.md",
-      "sha256": "037a4665c0361d7d3a3b21e71cdb05b0652e59a7ad11743b413ceb7cb5f7165d",
-      "bytes": 3774,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "sha256": "d2b18c922826d068490b722ee839096aa8f6ce49e048f6b94a565d84bd6aa6da",
+      "bytes": 4597,
+      "provenance": "updates1-wrapper-or-documentation"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
       "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
       "bytes": 1401,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
+    },
+    {
+      "path": "UPDATES.md",
+      "sha256": "198288684912d77c52dfa037aeb0457a9cec4f75ab33ef804006c7dc1ddbaf4a",
+      "bytes": 7290,
+      "provenance": "updates1-wrapper-or-documentation"
+    },
+    {
+      "path": "UPDATE_VALIDATION.json",
+      "sha256": "71eaa26071bc5c4e056252d7b05c986a9f5f778d25917b18b4364e2a82910403",
+      "bytes": 4050,
+      "provenance": "updates1-wrapper-or-documentation"
     },
     {
       "path": "claude/CONTRIBUTING.md",
       "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
       "bytes": 877,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/CONTRIBUTOR_RECOGNITION.md",
       "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
       "bytes": 1522,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/CREDITS.md",
       "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
       "bytes": 2625,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/LICENSE",
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
       "bytes": 11358,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/LICENSE_SCOPE.md",
       "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
       "bytes": 1742,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/NOTICE",
       "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
       "bytes": 1870,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/PUBLICATION_MANIFEST.sha256",
       "sha256": "80993af40f34647c592f8f17a8a5f525a6e380a8e93ac810f57546543bc3a581",
       "bytes": 1469,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/PUBLIC_README.md",
       "sha256": "7aa0a05e24fee10d40c9dc1c2cb81e23a56ccdadb692e9d37088fbcb4ba4548b",
       "bytes": 2308,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/THIRD_PARTY_NOTICES.md",
       "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
       "bytes": 1401,
-      "provenance": "license-and-credit-documents"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/Release-To-Red.cmd",
       "sha256": "dc6d9dc2d7467cce8eaeaa17e498a3dade6f72bd7e44b49954d37fb2105d5a12",
       "bytes": 361,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/Start-Krasna-WSL.cmd",
       "sha256": "1f9e7c13a6989d980b77446e507c4ccaa832294a4e13a196b80f9ef6a529697c",
       "bytes": 605,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/Start-Krasna.cmd",
       "sha256": "a87dd20cba6b43430f0fc38a48b9968b951d6bd874711ea48725f0ab724f4e73",
       "bytes": 1590,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/Take-Over-Krasna.cmd",
       "sha256": "64ce1e145c065dcb4f317b5ddee41fa94cbc6b46d47014518d3dfcdc8d6a848b",
       "bytes": 625,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/krasna.py",
       "sha256": "45f3d13a1b19ad7d53b64f9c046e91f302ce760f774ac7406edb248244c51e54",
       "bytes": 5594,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/mailbox_courier.py",
       "sha256": "bc6ca00dfdf7886c8e7dac14c64218ad2bcfd5874c2045e7f3f98144602a78eb",
       "bytes": 15291,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/release-to-red-wsl.sh",
       "sha256": "370c0a3409953e510db894f966ce91a98eab99dccd588bd0d73d6e564c37273d",
       "bytes": 342,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/start-krasna-wsl.sh",
       "sha256": "775e86207352448b3075e4d0c39d713654c9ca50b756c53941216d07ada1c94a",
       "bytes": 1876,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/take-over-krasna-wsl.sh",
       "sha256": "325c9c54d510cb120de1909044589e9f7b9a654aa47158100de6def6811d8cb8",
       "bytes": 560,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/tests/fake_lok.py",
       "sha256": "40c02d01fc2d96cd33d2e9e3a947a21ec64894652456e4d28c55a9d15e485726",
       "bytes": 8306,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/courier/tests/test_courier_e2e.py",
       "sha256": "030a261ae47042e83d4a933b6692f6bc1525a769613d9cad309e08dd21ff7132",
       "bytes": 13073,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/docs/CLAUDE_PLAY_SETUP.md",
       "sha256": "aa25aabf1ebcca0372e581b6085303d247d637ebd9d79e026ad2df73f23ef6ae",
       "bytes": 6455,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "claude/docs/MUDGPT_0.1.0_REVIEW.md",
       "sha256": "1dc717d074d5a7b464574a00a2f92d6c47b03365a60f20d86662bc81d2d58869",
       "bytes": 5902,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "docs/HISTORICAL_CLIENT_REVIEW.md",
       "sha256": "92980345f434e19f795c7e481358d259ec6a03c7699f9680f8a7674a75dc86b1",
       "bytes": 6292,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "examples/profile.json",
       "sha256": "2f2f2a2e32d1d86b3a70e61a8683f5516ee99b28bba1b7b1751da9a3a02d9e64",
       "bytes": 60,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
+    },
+    {
+      "path": "mudweave-update.json",
+      "sha256": "6289e3024e711b680602b8122a08e82c96556c2abdbc775314bb3ca7df7560bc",
+      "bytes": 187,
+      "provenance": "updates1-wrapper-or-documentation"
+    },
+    {
+      "path": "mudweave.py",
+      "sha256": "28cd7e0fbcefc048f4939d707e300ea5ab2d257b101850ed82dc3a99f3e68ba8",
+      "bytes": 2855,
+      "provenance": "updates1-wrapper-or-documentation"
+    },
+    {
+      "path": "mudweave_update.py",
+      "sha256": "b42f0e32f037d76dc45e1cc55ab4bb2e25cf4c852f50b51108af872b0ab54cab",
+      "bytes": 27473,
+      "provenance": "updates1-wrapper-or-documentation"
     },
     {
       "path": "provenance/core.json",
       "sha256": "b235d8110b4e02d985b544280c3846f2de6d69f89ba7a90682d6bf98075773f7",
       "bytes": 1601,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "pyproject.toml",
       "sha256": "da470a84455b0cc51786f0290fc6c61b2944ee35bb195664cea0a89b261531ac",
       "bytes": 516,
-      "provenance": "license-package-metadata"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/__init__.py",
       "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
       "bytes": 84,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/__main__.py",
       "sha256": "c46e8bedddf04742eea1be9462b4df2def1b9207e40f98fc8cf762adbaa2cefc",
       "bytes": 4150,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/broker.py",
       "sha256": "76f1709949e9ae0af4a56e965805705b06f3702d5c35f47a958d97f86c6be2ab",
       "bytes": 8890,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/colors.py",
       "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
       "bytes": 8747,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/mcp_gateway.py",
       "sha256": "a51df03387ae390fc9be60b48a6d117315b67ab27ddecaa4f101023a38ef8e8d",
       "bytes": 3208,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/observations.py",
       "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
       "bytes": 4698,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "src/mudgpt/session.py",
       "sha256": "968bc603656c6a89b1fc9ba53c0635c70809f6f5cd35f70eaa018ed9b8e200c2",
       "bytes": 16163,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
+    },
+    {
+      "path": "updates.workflow.json",
+      "sha256": "dc39bb244501978eb2ae275b9d9564c799a7c14d5a98de121eb3dcc6ed0bc45d",
+      "bytes": 2682,
+      "provenance": "updates1-wrapper-or-documentation"
     },
     {
       "path": "uv.lock",
       "sha256": "78e43c7532e83dc61f77b6042faaffe8a86949ed9736328cc22acb44abcafd7d",
       "bytes": 167197,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     },
     {
       "path": "validation.json",
       "sha256": "20c28ada3cd4eeeee2e23fd2f2c2355cefe9355217fc594fd1843a1d837e36ae",
       "bytes": 10577,
-      "provenance": "frozen-v0.2.0-byte-identical"
+      "provenance": "baseline-byte-identical"
     }
   ]
 }
