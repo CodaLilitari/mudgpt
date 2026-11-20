@@ -1,6 +1,8 @@
 """One persistent MUD connection; observations never certify command completion."""
 from __future__ import annotations
 
+from .errors import BrokerRefusal, PrewriteValueError, PrewritePermissionError, PrewriteConnectionError
+
 import asyncio
 from collections import deque
 from copy import deepcopy
@@ -229,11 +231,11 @@ class Session:
 
     def check_controller(self, owner, lease=None):
         if self._owner != owner or owner is None:
-            raise PermissionError("Controller does not own this session")
+            raise PrewritePermissionError("controller_mismatch", "Controller does not own this session")
         # The trusted human CLI deliberately retains takeover/no-token access.
         if owner != "human" or lease is not None:
             if not isinstance(lease, str) or not secrets.compare_digest(lease, self._lease):
-                raise PermissionError("A current controller lease is required")
+                raise PrewritePermissionError("lease_mismatch", "A current controller lease is required")
 
     def release(self, owner, lease=None):
         self.check_controller(owner, lease)
@@ -245,7 +247,7 @@ class Session:
 
     def status(self):
         return {"broker_id": self._broker_id,
-                "capabilities": ["guarded_send_v1"],
+                "capabilities": ["guarded_send_v1", "typed_errors_v1", "conditional_actions_v1", "lok_scene_v1"],
                 "connected": self._connected, "connecting": self._connecting,
                 "busy": self._busy, "owner": self._owner, "cursor": self._seq,
                 "lease_epoch": self._lease_epoch,
@@ -256,17 +258,17 @@ class Session:
         """Check supplied observation guards without yielding before a write."""
         if expected_broker_id is not None:
             if not isinstance(expected_broker_id, str) or not expected_broker_id:
-                raise ValueError("expected_broker_id must be a nonempty string")
+                raise PrewriteValueError("invalid_request", "expected_broker_id must be a nonempty string")
             if expected_broker_id != self._broker_id:
-                raise RuntimeError("Broker lifetime changed; nothing sent; obtain fresh observations")
+                raise BrokerRefusal("broker_changed", "Broker lifetime changed; nothing sent; obtain fresh observations")
         for name, expected, actual in (
                 ("expected_generation", expected_generation, self._generation),
                 ("expected_cursor", expected_cursor, self._seq)):
             if expected is not None:
                 if type(expected) is not int or expected < 0:
-                    raise ValueError(f"{name} must be a nonnegative integer")
+                    raise PrewriteValueError("invalid_request", f"{name} must be a nonnegative integer")
                 if expected != actual:
-                    raise RuntimeError(f"{name} changed; nothing sent; obtain fresh observations")
+                    raise BrokerRefusal("generation_changed" if name == "expected_generation" else "cursor_changed", f"{name} changed; nothing sent; obtain fresh observations")
 
     def observe(self, after=0, expected_broker_id=None):
         self._check_observation(expected_broker_id=expected_broker_id)
@@ -277,32 +279,37 @@ class Session:
         return {"broker_id": self._broker_id,
                 "events": [deepcopy(e) for e in self._events if e["seq"] > after],
                 "cursor": self._seq, "oldest": oldest, "truncated": after < oldest - 1,
-                "generation": self._generation}
+                "generation": self._generation, "lease_epoch": self._lease_epoch}
 
     async def send(self, command, owner="human", timeout=3, quiet=0.3, secret=False, lease=None,
                    expected_broker_id=None, expected_generation=None, expected_cursor=None,
-                   expires_at=None):
+                   expires_at=None, expected_lease_epoch=None):
         if not isinstance(command, str) or len(command) > 500:
-            raise ValueError("Command must be a string of at most 500 characters")
+            raise PrewriteValueError("invalid_request", "Command must be a string of at most 500 characters")
         if any(unicodedata.category(c).startswith("C") or c in "\u2028\u2029" for c in command):
-            raise ValueError("Command cannot contain control characters or line separators")
+            raise PrewriteValueError("invalid_request", "Command cannot contain control characters or line separators")
         if any(type(v) not in (int, float) or not math.isfinite(v) or v <= 0
                for v in (timeout, quiet)):
-            raise ValueError("timeout and quiet must be finite positive seconds")
+            raise PrewriteValueError("invalid_request", "timeout and quiet must be finite positive seconds")
         if not self._connected:
-            raise ConnectionError("Session is disconnected")
+            raise PrewriteConnectionError("not_connected", "Session is disconnected")
         self.check_controller(owner, lease)
+        if expected_lease_epoch is not None:
+            if type(expected_lease_epoch) is not int or expected_lease_epoch < 0:
+                raise PrewriteValueError("invalid_request", "expected_lease_epoch must be a nonnegative integer")
+            if expected_lease_epoch != self._lease_epoch:
+                raise BrokerRefusal("lease_epoch_changed", "Controller epoch changed; nothing sent; observe again")
         if self._busy:
-            raise RuntimeError("A command is already in flight")
+            raise BrokerRefusal("command_in_flight", "A command is already in flight")
         guards = (expected_broker_id, expected_generation, expected_cursor)
         if any(value is not None for value in guards) and any(value is None for value in guards):
-            raise ValueError("Guarded sends require expected_broker_id, expected_generation and expected_cursor")
+            raise PrewriteValueError("invalid_request", "Guarded sends require expected_broker_id, expected_generation and expected_cursor")
         self._check_observation(expected_broker_id, expected_generation, expected_cursor)
         if expires_at is not None:
             if type(expires_at) not in (int, float) or not math.isfinite(expires_at):
-                raise ValueError("expires_at must be finite POSIX seconds")
+                raise PrewriteValueError("invalid_request", "expires_at must be finite POSIX seconds")
             if time.time() >= expires_at:
-                raise RuntimeError("Decision expired; nothing sent; obtain a fresh decision")
+                raise BrokerRefusal("decision_expired", "Decision expired; nothing sent; obtain a fresh decision")
         # No await occurs between these checks and writer.write below. This binds
         # the decision to observations processed by this broker, not unseen bytes
         # in the network or the remote game's state.

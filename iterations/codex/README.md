@@ -1,3 +1,5 @@
+> **0.4.0 collection update:** See [current component versions](runtime-manifest.json), [release validation](VALIDATION_040.json) and [update notes](UPDATES_040.md). The maintained core is 0.3.0. Historical validation below remains dated evidence; it is not a report of this release.
+
 # MudGPT — Codex iteration 0.2.0
 
 MudGPT is a headless MUD client for Windows and Linux, developed first for Legends of Krynn (LoK) and designed to remain useful with other text MUDs. Its play workflow includes LoK-specific lessons about room awareness, roleplay, color, equipment and character progression. A persistent local broker owns one Telnet connection. A command-line interface and a Model Context Protocol (MCP) stdio adapter share that connection, while independent readers receive the same bounded event history.

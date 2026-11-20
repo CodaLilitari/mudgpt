@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "project": "MUDweave",
+  "collection_version": "0.3.0",
+  "distribution_revision": "updates1",
+  "date": "2026-10-23",
+  "passed": true,
+  "windows": {
+    "passed": true,
+    "tests": 49,
+    "python": "3.13.14",
+    "mcp": "2.3.0",
+    "telnetlib3": "4.0.3",
+    "environment": "Windows",
+    "external_log_sha256": "694a7769706301c0bc06179ab6599da5de86f37cb5d0575da9ef1dbb10107327"
+  },
+  "linux": {
+    "passed": true,
+    "tests": 49,
+    "python": "3.14.4",
+    "mcp": "2.3.0",
+    "telnetlib3": "4.0.3",
+    "environment": "Ubuntu Linux under WSL",
+    "external_log_sha256": "2b64edf85c8804268c055925b8f51f7ced897a19e03d1795653984588913cf20"
+  },
+  "test_methods": {
+    "updater": 40,
+    "launcher": 7,
+    "integration": 2
+  },
+  "counts_note": "Same suite on two platforms; not 98 unique scenarios. MCP integration includes blocked and offline subcases.",
+  "test_command": "python -B -m unittest discover -s tests -p test_update*.py -v",
+  "test_storage_environment": "MUDWEAVE_TEST_STORAGE: absolute external directory with no Git ancestor or symlink/junction",
+  "existing_runtime_bytes_unchanged": true,
+  "protected_baseline_files": 158,
+  "baseline_commit": "c9764b51b409d5470c9bd96363b74dd572c901d3",
+  "runtime_full_suites_rerun": false,
+  "scope": [
+    "GitLab metadata validation and commit pinning",
+    "version ordering and downgrade refusal",
+    "external cache, throttling, backoff and local lock contention",
+    "strict project asset URLs and redirects",
+    "explicit size and SHA256 checked downloads and cleanup failures",
+    "actual wrapper child argv/cwd/environment/stdin/stdout/stderr/exit preservation",
+    "actual Codex MCP initialization and tool listing while updater is blocked or offline"
+  ],
+  "live_metadata_smoke": {
+    "passed": true,
+    "anonymous": true,
+    "release": "v0.2.1",
+    "commit": "c9764b51b409d5470c9bd96363b74dd572c901d3",
+    "archive_downloaded": false,
+    "external_receipt_sha256": "0734479fa2fcbc3011c8547579e5dd2b21b0ade399840f0e618fef1c42ec648a"
+  },
+  "independent_reviews": {
+    "source": "two error-boundary findings corrected and regression tested",
+    "packaging": "no remaining static blocker; Claude WSL setup example corrected"
+  },
+  "no_game_or_broker_commands_sent": true,
+  "no_running_session_changed": true,
+  "limits": [
+    "Historical runtime suites retained, not recertified by updater tests.",
+    "GitLab latest is release-date ordered, not a scan for highest semantic version.",
+    "Foreground and MCP stdio lifecycle tested; parent-only termination is not a supervised shutdown.",
+    "Cross-process crash/lock-recovery stress was not tested.",
+    "No automatic installation, migration, extraction or restart is implemented.",
+    "Archive hashes use GitLab metadata, not independent publisher signing."
+  ],
+  "hashes": {
+    "mudweave.py": "28cd7e0fbcefc048f4939d707e300ea5ab2d257b101850ed82dc3a99f3e68ba8",
+    "mudweave_update.py": "b42f0e32f037d76dc45e1cc55ab4bb2e25cf4c852f50b51108af872b0ab54cab",
+    "mudweave-update.json": "c9a180e2a195838c9e523312420b4c3349c73f0df3169ea9823b8199ad74e918",
+    "UPDATES.md": "198288684912d77c52dfa037aeb0457a9cec4f75ab33ef804006c7dc1ddbaf4a",
+    "updates.workflow.json": "dc39bb244501978eb2ae275b9d9564c799a7c14d5a98de121eb3dcc6ed0bc45d",
+    "tests/test_updates.py": "97aabe1e89f4bf4576e40576629c8fa285e9eda05d1fb3333d8e3875f15357d9",
+    "tests/test_update_launcher.py": "6828665378e63334c3d1291170048631dc151135d59b41bc41c75428efb9cf8a",
+    "tests/test_update_integration.py": "0d07d0b9927018c4df02fbe3dbae1f0ad9d1f86861e50305ce556f8343c40229",
+    "iterations/codex/mudweave-update.json": "e7e77540019c7e08e12cbdca22f3be28fb13be1025b74a0b375ccf6c142339a9",
+    "iterations/claude/mudweave-update.json": "6289e3024e711b680602b8122a08e82c96556c2abdbc775314bb3ca7df7560bc",
+    "iterations/muse/mudweave-update.json": "90d1cff46ec261c0e2b34c5f28afdb54a7f680de7a15edaab0696286631f097f"
+  }
+}

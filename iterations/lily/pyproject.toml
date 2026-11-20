@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mudgpt"
+version = "0.3.0"
+description = "Local headless MUD session broker with CLI and MCP adapters"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "CREDITS.md", "CONTRIBUTOR_RECOGNITION.md", "THIRD_PARTY_NOTICES.md"]
+dependencies = ["telnetlib3==4.0.3", "mcp==2.3.0"]
+
+[project.scripts]
+mudgpt = "mudgpt.__main__:main"
+mudweave-actor = "mudgpt.actor_client:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

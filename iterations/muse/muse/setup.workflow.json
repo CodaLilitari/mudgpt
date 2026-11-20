@@ -1,13 +1,14 @@
 {
   "format": "mudgpt-muse-setup-workflow-v1",
   "iteration": "muse",
-  "version": "0.2.0",
-  "status": "separate_iteration_offline_verified_windows_and_wsl",
+  "version": "0.3.0",
+  "core_version": "0.3.0",
+  "status": "windows_synthetic_validated_040_historical_wsl_not_rerun",
   "client_separation": {
     "codex": "../codex",
     "claude": "../claude",
     "muse": ".",
-    "relationship": "Separate client iteration with its own pinned copy of Codex 0.2.0 core; no shared runtime or courier merge"
+    "relationship": "Separate client iteration with its own pinned copy of core 0.3.0; no shared runtime or courier merge"
   },
   "roles": {
     "host_operator": [
@@ -23,7 +24,7 @@
       "one-command requests"
     ],
     "adapter": [
-      "five scoped operations",
+      "six scoped operations including explicit conditional retreat",
       "local-only broker lease",
       "durable command ID journal"
     ]
@@ -232,6 +233,39 @@
       ]
     },
     {
+      "id": "conditional_retreat",
+      "actor": "recipient",
+      "op": "conditional",
+      "action": "lok_retreat_v1",
+      "required_capability": "conditional_actions_v1",
+      "fixed_game_command": "flee",
+      "required_original_fields": [
+        "expected_broker_id",
+        "expected_generation",
+        "expected_cursor",
+        "expected_lease_epoch",
+        "expires_at"
+      ],
+      "additional_fields": [
+        "expected_adapter_id",
+        "command_id",
+        "condition"
+      ],
+      "condition": {
+        "enemy_status": "exact observed status line; 1..150 plain characters",
+        "allow_afk_combat": "explicit boolean; requires supported fresh same-enemy exchange before exact status and literal AFK prompt"
+      },
+      "decision_id_mapping": "command_id forwarded unchanged as core decision_id",
+      "ttl_seconds_maximum": 30,
+      "deadline_extension": false,
+      "automatic_conversion_from_send": false,
+      "maximum_send_attempts": 1,
+      "automatic_retries": 0,
+      "journal_shared_with_send": true,
+      "room_inference": false,
+      "next_step": "Inspect core result delivery, reason_code, original_decision, predicate_evidence and intervening_observation before a new decision"
+    },
+    {
       "id": "ongoing_access",
       "actor": "both",
       "action": "Retain key and keep agreed game/broker/adapter running until scope changes; release ownership when handing off",
@@ -304,5 +338,12 @@
     "unknown": "Unexpected exception, exit 1: stop and inspect; never assume nothing was sent.",
     "unrecognized_malformed_or_missing": "Stop and inspect; never permission to retry."
   },
-  "http_502": "Generic adapter error can include stale guards as well as transport/journal problems; status alone does not classify delivery."
+  "adapter_receipt_outcomes": {
+    "broker_response": "An ordinary or conditional core response arrived; inspect result.delivery and reason_code. This does not prove a game write or completion.",
+    "not_forwarded": "Adapter refused locally before forwarding the game operation.",
+    "not_sent": "Only a recognized versioned prewrite core error proves no game command write; inspect registered error_code.",
+    "uncertain": "No automatic retry or replacement ID; inspect observations and resolve the outcome."
+  },
+  "http_409": "May mean a local refusal, duplicate ID, busy adapter, or typed prewrite core refusal. Inspect the preserved receipt and error_code; status alone is insufficient.",
+  "http_502": "Transport/journal failures and malformed, legacy or unrecognized broker errors remain uncertain; never classify delivery from English error text."
 }

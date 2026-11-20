@@ -1,0 +1,60 @@
+{
+  "format": "mudweave-collection-changelog-v1",
+  "project": "MUDweave",
+  "collection_version": "0.3.0",
+  "distribution_revision": "updates1",
+  "history_note": "This machine-readable history was introduced in 0.3.0. Earlier entries summarize retained human changelog and release metadata, not a pre-existing machine ledger.",
+  "releases": [
+    {
+      "version": "0.3.0",
+      "distribution_revision": "updates1",
+      "date": "2026-10-23",
+      "baseline_commit": "c9764b51b409d5470c9bd96363b74dd572c901d3",
+      "status": "validated_release_snapshot",
+      "runtime_versions": {
+        "codex": "0.2.0",
+        "claude": "0.1.0",
+        "muse": "0.2.0"
+      },
+      "existing_runtime_bytes_unchanged": true,
+      "runtime_tests_rerun": false,
+      "changes": [
+        "Separate same-interpreter launcher and standard-library GitLab checker; automatic checks notify only.",
+        "Explicit archive downloads verify release-specific metadata, selected iteration, exact size and SHA-256; no automatic extraction or execution.",
+        "Installation remains an operator-requested side-by-side procedure; no restart, session control, game connection or request replay.",
+        "External per-install cache and 24-hour throttle; stderr notices preserve client stdout; no Git watcher, scheduler or background service.",
+        "Human and machine update instructions, independent updater evidence, exact distribution manifests and external standalone packages.",
+        "Exact 0.2.1 metadata retained; existing runtime source, authored nested trees, dependency pins and historical test/validation files preserved."
+      ],
+      "validation": "UPDATE_VALIDATION.json",
+      "historical_metadata": "provenance/releases/v0.2.1/snapshot.json",
+      "contributors": [
+        "Andrei: scope and update policy",
+        "Coda and Codex collaborators: updater, integration review, packaging and documentation"
+      ]
+    },
+    {
+      "version": "0.2.1",
+      "distribution_revision": "license1",
+      "date": "2026-10-20",
+      "status": "historical_release_metadata",
+      "changes": [
+        "Apache 2.0 license, contributor credit and redistribution notices; runtime code unchanged."
+      ],
+      "evidence": "provenance/releases/v0.2.1/collection.json",
+      "runtime_tests_rerun": false
+    },
+    {
+      "version": "0.2.0",
+      "date": "2026-10-20",
+      "status": "historical_release_metadata",
+      "changes": [
+        "MUDweave naming and three separately pinned Codex, Claude and Muse client iterations; LoK and interlocutor guidance; scoped runtime validation."
+      ],
+      "evidence": [
+        "provenance/releases/v0.2.1/CHANGELOG.md",
+        "provenance/releases/v0.2.0/collection.json"
+      ]
+    }
+  ]
+}

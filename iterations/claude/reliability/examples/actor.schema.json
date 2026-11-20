@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MUDweave private actor configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["actor", "control"],
+  "properties": {
+    "actor": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$", "not": {"const": "human"}},
+    "control": {"type": "string", "minLength": 1, "description": "Existing private broker control path; relative paths resolve beside this config."},
+    "state_dir": {"type": "string", "minLength": 1, "description": "Private directory outside all Git checkouts. Runtime checks Git ancestry; schema validation alone is insufficient."},
+    "profile": {"enum": ["lok", "none"], "default": "lok"},
+    "max_ttl_seconds": {"type": "number", "minimum": 1, "maximum": 300, "default": 120}
+  }
+}

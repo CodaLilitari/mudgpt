@@ -28,7 +28,7 @@ sys.dont_write_bytecode = True
 ORIGIN = "https://gitlab.com"
 PROJECT_ID = 87773838
 PROJECT_PATH = "codalilitari/mudgpt"
-ITERATIONS = ("codex", "claude", "muse", "collection")
+ITERATIONS = ("codex", "claude", "muse", "lily", "collection")
 DAY = 86400
 MAX_JSON = 512 * 1024
 MAX_ARCHIVE = 128 * 1024 * 1024
@@ -102,6 +102,88 @@ def load_settings(settings=None):
             "enabled": settings.get("enabled", True)}
     except (OSError, UpdateError, TypeError, KeyError):
         raise UpdateError("configuration_error") from None
+
+
+def _load_runtime_manifest():
+    """Read bounded public package metadata, never private runtime state."""
+    path = INSTALL_DIR / "runtime-manifest.json"
+    info = path.lstat()
+    _need(not path.is_symlink() and not (getattr(info, "st_file_attributes", 0) & 0x400))
+    _need(info.st_size <= 65536)
+    with path.open("rb") as stream:
+        raw = stream.read(65537)
+    _need(len(raw) <= 65536)
+    return _json_bytes(raw)
+
+
+def _declared_components(value):
+    _need(isinstance(value, dict) and set(value) == {"core", "adapter", "updater"})
+    result = {}
+    for name in ("core", "adapter", "updater"):
+        component = value[name]
+        _need(isinstance(component, dict))
+        version, status_label = component.get("version"), component.get("status")
+        _need(status_label in ("included", "historical", "not_applicable", "optional"))
+        if status_label == "not_applicable":
+            _need(version is None)
+        else:
+            _version(version)
+        result[name] = {"version": version, "status": status_label}
+    return result
+
+
+def _declared_companion(value):
+    _need(isinstance(value, dict))
+    name = value.get("name")
+    _need(isinstance(name, str) and re.fullmatch(r"[a-z][a-z0-9_-]{0,63}", name) is not None)
+    result = {"name": name, "components": _declared_components(value.get("components"))}
+    entrypoint = value.get("entrypoint")
+    if entrypoint is not None:
+        _need(isinstance(entrypoint, str) and len(entrypoint) <= 180 and
+              re.fullmatch(r"[A-Za-z0-9_./-]+", entrypoint) is not None and
+              not entrypoint.startswith("/") and ".." not in entrypoint.split("/"))
+        result["entrypoint"] = entrypoint
+    return result
+
+
+def versions(settings=None, *, manifest=None):
+    """Report declared package components, not what any active game is running."""
+    result = {"schema_version": 1, "status": "unavailable",
+              "evidence": "public_runtime_manifest", "runtime_verified": False,
+              "components": {}}
+    try:
+        settings = load_settings(settings)
+        result.update(iteration=settings["iteration"], collection_version=settings["collection_version"])
+    except UpdateError:
+        return dict(result, reason="configuration_error")
+    try:
+        value = _load_runtime_manifest() if manifest is None else manifest
+        _need(isinstance(value, dict) and type(value.get("schema_version")) is int and value["schema_version"] == 1)
+        _need(value.get("iteration") == settings["iteration"])
+        _version(value.get("collection_version"))
+        _need(value["collection_version"] == settings["collection_version"])
+        declared = {"components": _declared_components(value.get("components"))}
+        if "companion" in value:
+            declared["companion"] = _declared_companion(value["companion"])
+        if "iterations" in value:
+            rows = value["iterations"]
+            _need(settings["iteration"] == "collection" and isinstance(rows, list) and 0 < len(rows) <= 4)
+            entries, seen = [], set()
+            for row in rows:
+                _need(isinstance(row, dict))
+                name = row.get("iteration")
+                _need(name in ITERATIONS and name != "collection" and name not in seen)
+                seen.add(name)
+                entry = {"iteration": name, "components": _declared_components(row.get("components"))}
+                if "companion" in row:
+                    entry["companion"] = _declared_companion(row["companion"])
+                entries.append(entry)
+            declared["iterations"] = entries
+        return dict(result, status="declared_versions", **declared)
+    except FileNotFoundError:
+        return dict(result, reason="runtime_manifest_missing")
+    except (OSError, UpdateError, ValueError, TypeError, KeyError, RecursionError):
+        return dict(result, reason="runtime_manifest_invalid")
 
 
 def _guard(path, *, directory=False):
@@ -221,7 +303,7 @@ def _asset_url(url, name):
     upload = (rf"(?:/{re.escape(PROJECT_PATH)}/-/uploads|/-/project/{PROJECT_ID}/uploads)"
               rf"/[0-9a-f]{{32}}/{re.escape(name)}")
     generic = (rf"/api/v4/projects/(?:{PROJECT_ID}|{re.escape(PROJECT_PATH)})/packages/generic/"
-               rf"(?:mudweave|mudgpt)(?:-(?:codex|claude|muse|collection|clients))?/"
+               rf"(?:mudweave|mudgpt)(?:-(?:codex|claude|muse|lily|collection|clients))?/"
                rf"v?(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)/{re.escape(name)}")
     _need(re.fullmatch(upload, path) is not None or re.fullmatch(generic, path) is not None)
     return url
@@ -315,7 +397,12 @@ def _release(settings, now):
     _need(manifest.get("collection_version") == latest)
     rows = manifest.get("assets")
     _need(isinstance(rows, list) and 0 < len(rows) <= 16)
-    assets = [_asset(row) for row in rows]
+    # 0.3 consumers validate every legacy assets row against their fixed ID
+    # list. New iterations live in this additive field so those clients can
+    # still discover/download their own 0.4 update without a bootstrap patch.
+    additional = manifest.get("additional_assets", [])
+    _need(isinstance(additional, list) and len(rows) + len(additional) <= 16)
+    assets = [_asset(row) for row in [*rows, *additional]]
     _need(len({row["iteration"] for row in assets}) == len(assets))
     selected = [row for row in assets if row["iteration"] == settings["iteration"]]
     if not selected and settings["iteration"] == "collection":
@@ -433,16 +520,18 @@ def check(settings=None, force=False):
 def status(settings=None):
     """Inspect local metadata only; never turns stale evidence into up-to-date."""
     settings = load_settings(settings)
+    version_report = versions(settings)
     try:
         root = _cache_root(settings)
         enabled = _enabled(settings, root)
         if not enabled:
-            return _result(settings, "disabled", enabled=False)
+            return _result(settings, "disabled", enabled=False, version_report=version_report)
         state = _read(root, "state.json")
         cached = _cached(settings, state, time.time())
-        return cached or _result(settings, "stale" if state else "not_checked", cache_hit=bool(state))
+        result = cached or _result(settings, "stale" if state else "not_checked", cache_hit=bool(state))
+        return dict(result, version_report=version_report)
     except (UpdateError, OSError, ValueError, TypeError):
-        return _result(settings, "cache_unavailable")
+        return _result(settings, "cache_unavailable", version_report=version_report)
 
 
 def configure(settings=None, enabled=True):
@@ -524,7 +613,7 @@ def download(settings=None):
     asset = result.get("asset")
     if asset is None:
         return dict(result, status="download_unsupported", update_available=result["update_available"],
-                    detail="Select --iteration codex, claude, or muse; the collection has no verified archive metadata.")
+                    detail="Select --iteration codex, claude, muse, or lily; the collection has no verified archive metadata.")
     temporary = None
     outcome = None
     try:
@@ -590,7 +679,7 @@ def main(settings=None, argv=None):
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--iteration", choices=ITERATIONS)
     sub = parser.add_subparsers(dest="command")
-    for name in ("check", "download", "status", "config"):
+    for name in ("check", "download", "status", "config", "versions"):
         child = sub.add_parser(name)
         child.add_argument("--json", action="store_true", default=argparse.SUPPRESS)
         child.add_argument("--iteration", choices=ITERATIONS, default=argparse.SUPPRESS)
@@ -604,7 +693,9 @@ def main(settings=None, argv=None):
         resolved = load_settings(settings)
         if args.iteration:
             resolved["iteration"] = args.iteration
-        if args.command == "check":
+        if args.command == "versions":
+            result = versions(resolved)
+        elif args.command == "check":
             result = check(resolved, force=args.force)
         elif args.command == "download":
             result = download(resolved)
@@ -617,12 +708,27 @@ def main(settings=None, argv=None):
     if args.json:
         print(json.dumps(result, sort_keys=True))
     else:
-        print("MUDweave updates: " + result["status"])
+        print("MUDweave " + ("declared versions: " if args.command == "versions" else "updates: ") + result["status"])
         for key in ("current", "latest", "release_url", "download_path", "detail"):
             if result.get(key):
                 print(f"{key}: {result[key]}")
         if result.get("cleanup_pending"):
             print("cleanup_pending: true (a partial download could not be removed)")
+        report = result if args.command == "versions" else result.get("version_report")
+        if report is not None:
+            print(f"collection: {report.get('collection_version', 'unavailable')}")
+            print("evidence: public runtime manifest; active runtime not verified")
+            if report.get("reason"):
+                print("version_report: " + report["reason"])
+            def show_components(label, values):
+                for component, detail in values.get("components", {}).items():
+                    print(f"{label}{component}: {detail['version'] or 'not applicable'} ({detail['status']})")
+                companion = values.get("companion")
+                if companion:
+                    show_components(label + "optional companion " + companion["name"] + " / ", companion)
+            show_components("", report)
+            for row in report.get("iterations", []):
+                show_components(row["iteration"] + " / ", row)
     if result["status"] == "configuration_error":
         return 2
     return int(args.command == "download" and result["status"] != "downloaded")

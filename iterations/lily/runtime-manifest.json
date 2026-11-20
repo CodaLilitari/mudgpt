@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "iteration": "lily",
+  "collection_version": "0.4.0",
+  "components": {
+    "core": {
+      "version": "0.3.0",
+      "status": "included"
+    },
+    "adapter": {
+      "version": "0.1.0",
+      "status": "included"
+    },
+    "updater": {
+      "version": "0.4.0",
+      "status": "included"
+    }
+  }
+}

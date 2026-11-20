@@ -350,8 +350,9 @@ class RealBrokerIntegrationTests(unittest.TestCase):
         self.assertEqual(call(command)[0], 409)
         stale = {**command, "command_id": secrets.token_hex(16)}
         code, rejected = call(stale)
-        self.assertEqual(code, 502)  # Conservative uncertainty on upstream rejection.
-        self.assertEqual(rejected["receipt"]["outcome"], "uncertain")
+        self.assertEqual(code, 409)
+        self.assertEqual(rejected["receipt"]["outcome"], "not_sent")
+        self.assertEqual(rejected["receipt"]["error_code"], "cursor_changed")
         self.assertEqual(call(stale)[0], 409)
         expires_while_checking_status = {**command, "command_id": secrets.token_hex(16),
                                         "expected_cursor": sent["result"]["cursor"],
@@ -365,8 +366,9 @@ class RealBrokerIntegrationTests(unittest.TestCase):
 
         with patch.object(adapter.broker, "call", side_effect=delayed_status):
             code, expired = call(expires_while_checking_status)
-        self.assertEqual(code, 502)
-        self.assertEqual(expired["receipt"]["outcome"], "uncertain")
+        self.assertEqual(code, 409)
+        self.assertEqual(expired["receipt"]["outcome"], "not_sent")
+        self.assertEqual(expired["receipt"]["error_code"], "decision_expired")
         self.assertEqual(harness.fake.commands, ["look"])
         release = {"op": "release", "expected_adapter_id": aid, "expected_broker_id": identity}
         self.assertEqual(call(release)[0], 200)

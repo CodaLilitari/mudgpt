@@ -1,0 +1,5 @@
+{
+  "host": "example.org",
+  "port": 4000,
+  "tls": false
+}

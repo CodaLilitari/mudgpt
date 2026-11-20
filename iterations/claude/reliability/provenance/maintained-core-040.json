@@ -1,0 +1,164 @@
+{
+  "format": "mudweave-maintained-core-pin-v1",
+  "core_version": "0.3.0",
+  "collection_version": "0.4.0",
+  "baseline_commit": "78f1b3241b77cc9a1e82f601b0d2f5fcc8263879",
+  "pin_type": "exact source snapshot; hashes bind the separate packaged copies",
+  "files": [
+    {
+      "path": "src/mudgpt/__init__.py",
+      "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
+      "bytes": 84
+    },
+    {
+      "path": "src/mudgpt/__main__.py",
+      "sha256": "53c2f331bd014c7f0c2434f1327ebf93d798638394097223b8e21e3130ed8bc0",
+      "bytes": 4664
+    },
+    {
+      "path": "src/mudgpt/actor_client.py",
+      "sha256": "00367c8fbd3bba4f3b7697699087902fd5b96919efa5069367cd959d956a6c1b",
+      "bytes": 22164
+    },
+    {
+      "path": "src/mudgpt/broker.py",
+      "sha256": "40a9ed8fa4f7f1d587ab4b2481fc1c743e64559b47d05a7aeb00fbdb7b7e1906",
+      "bytes": 10046
+    },
+    {
+      "path": "src/mudgpt/colors.py",
+      "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
+      "bytes": 8747
+    },
+    {
+      "path": "src/mudgpt/conditional_actions.py",
+      "sha256": "7ea9e5e0d3f1157fd772f39141f309356eddc9170e4341dbcac844987f5f8659",
+      "bytes": 11409
+    },
+    {
+      "path": "src/mudgpt/decision_journal.py",
+      "sha256": "e6977a28dcb98dd8480bdb1f2a6031b97e477bf97657e37543c8271aa14145e3",
+      "bytes": 7445
+    },
+    {
+      "path": "src/mudgpt/errors.py",
+      "sha256": "3def94e8aa0319453ca15caaafd570e2385657eac0d1a2d1b9fca75ca1c818ac",
+      "bytes": 2162
+    },
+    {
+      "path": "src/mudgpt/lok_scene.py",
+      "sha256": "de1e017f79ff6e44595f42fb0a186ab0ebf08c3a07201b46eaf3b333f1c04cc0",
+      "bytes": 7483
+    },
+    {
+      "path": "src/mudgpt/mcp_gateway.py",
+      "sha256": "9d2e519cf74597c7fba1d1b7a78d2ce26c4f29307ec168acbb3e023b46ce2b86",
+      "bytes": 6057
+    },
+    {
+      "path": "src/mudgpt/observations.py",
+      "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
+      "bytes": 4698
+    },
+    {
+      "path": "src/mudgpt/session.py",
+      "sha256": "1d45eed6715d402259e86c30d4d4c925fefaed2f54a36e8c944dee535f2a39fa",
+      "bytes": 20054
+    },
+    {
+      "path": "scripts/game_command.py",
+      "sha256": "f028e45d401bb2cc9165cf9f730afef5df0da0e49f2084445475e5750700baf9",
+      "bytes": 11415
+    },
+    {
+      "path": "scripts/relay_once.py",
+      "sha256": "d69fa776782496b225de84b2aafe178d795294edea19fc7d5a359b0fc5c7fdc6",
+      "bytes": 11454
+    },
+    {
+      "path": "tests/test_actor_client.py",
+      "sha256": "6e1a28c840a1691a9f6cd55986d4523a24f5629d24b932a75e593bb960bc598e",
+      "bytes": 10951
+    },
+    {
+      "path": "tests/test_broker.py",
+      "sha256": "96d4bf0ec142458a75fa1c5c199538954c6f68691d7d89b3b32dcfdbf02edd85",
+      "bytes": 11109
+    },
+    {
+      "path": "tests/test_broker_lock.py",
+      "sha256": "13e23c037c42700991330506235395c401437609195747c7bf4e87e187ed2318",
+      "bytes": 3550
+    },
+    {
+      "path": "tests/test_colors.py",
+      "sha256": "5f78c35dd585d0fe56972c27dd2efea808f18b62b6be5510eda48df29d170070",
+      "bytes": 4424
+    },
+    {
+      "path": "tests/test_conditional_actions.py",
+      "sha256": "6752f452c3347d19465a66b592903d6a0b4d30ff805af69959d2f35fcd4e68cc",
+      "bytes": 12985
+    },
+    {
+      "path": "tests/test_helper_checkpoint.py",
+      "sha256": "76b92903ee48a29bbf057afb61a2aa27445868280acfcd5eb45c704833e3e60d",
+      "bytes": 4767
+    },
+    {
+      "path": "tests/test_journal_retention.py",
+      "sha256": "b17b2294e979c87ae4959a7a919beb8b77bf97c3c352ca586094f5c2d515dce8",
+      "bytes": 4232
+    },
+    {
+      "path": "tests/test_lok_scene.py",
+      "sha256": "fc942de0cc76e6f81f9a5755fa2489369f8dd23c8871c9e279baaade1deea084",
+      "bytes": 6235
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "sha256": "3b97388ae959e45d1e4e84769320738477cc29bcddab4d188c790ebca8f925af",
+      "bytes": 7494
+    },
+    {
+      "path": "tests/test_observations.py",
+      "sha256": "150e8798777e5ba42e60de35c39029c05591f89fbf824b7af41d9bd6bc0e18c6",
+      "bytes": 2584
+    },
+    {
+      "path": "tests/test_relay_once.py",
+      "sha256": "d5e5a2551742be8b57fecef8569194898c66c30ac69ad2a9e485a040d8b9cb47",
+      "bytes": 16529
+    },
+    {
+      "path": "tests/test_release_integration.py",
+      "sha256": "065b31e9721e792ce474b03ce339e2e65619f24d221d7306413258c02d775c93",
+      "bytes": 2050
+    },
+    {
+      "path": "tests/test_revision_guards.py",
+      "sha256": "f92e1a0c7d9a69d9e9d30b1cd8880f3c89917dcfb86b04b03414387719dba400",
+      "bytes": 11839
+    },
+    {
+      "path": "tests/test_session.py",
+      "sha256": "e4c8e603146a3ebf618bb4d1ef4b32898cbaa5ff7913565febab0224632c2685",
+      "bytes": 18275
+    },
+    {
+      "path": "tests/test_structured_errors.py",
+      "sha256": "63c22835fbb933ebea3c79e5c374575ebdcbccee61ed8918ecac465f0c1e2fda",
+      "bytes": 3673
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "a6849e78826dd1e76a8bafabcdfbbf8623cb85d5818c551c824581baca797923",
+      "bytes": 560
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "272b04ca4705a32de1f7f4479b60245b2a80a999eb7a6bf39219e30b3e58737c",
+      "bytes": 167197
+    }
+  ]
+}

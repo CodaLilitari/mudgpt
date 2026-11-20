@@ -39,7 +39,7 @@ class McpIntegrationTests(unittest.TestCase):
                     self.assertEqual(init.server_info.name, "MudGPT")
                     listed = await client.list_tools()
                     names = {tool.name for tool in listed.tools}
-                    self.assertEqual(names, {"mud_status", "mud_observe", "mud_claim", "mud_release", "mud_send"})
+                    self.assertEqual(names, {"mud_status", "mud_observe", "mud_claim", "mud_release", "mud_send", "mud_scene", "mud_retreat"})
                     # Game target and secrets must not be exposed by tool inputs.
                     for tool in listed.tools:
                         props = tool.input_schema.get("properties", {})
@@ -59,6 +59,9 @@ class McpIntegrationTests(unittest.TestCase):
                     rejected = await client.call_tool("mud_send", {
                         "command": "north", "owner": "lily", "timeout": 1, **guards})
                     self.assertTrue(rejected.is_error)
+                    typed_error = result_data(rejected)
+                    self.assertEqual(typed_error["error_code"], "cursor_changed")
+                    self.assertEqual(typed_error["delivery"], "not_sent")
                     observed = await client.call_tool("mud_observe", {"after": 0})
                     first = result_data(observed)
                     self.assertIn("Fixture response: look", json.dumps(first))

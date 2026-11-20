@@ -1,10 +1,56 @@
 {
   "format": "mudweave-collection-changelog-v1",
   "project": "MUDweave",
-  "collection_version": "0.3.0",
-  "distribution_revision": "updates1",
+  "collection_version": "0.4.0",
+  "distribution_revision": "reliability1",
   "history_note": "This machine-readable history was introduced in 0.3.0. Earlier entries summarize retained human changelog and release metadata, not a pre-existing machine ledger.",
   "releases": [
+    {
+      "version": "0.4.0",
+      "distribution_revision": "reliability1",
+      "date": "2026-11-20",
+      "baseline_commit": "78f1b3241b77cc9a1e82f601b0d2f5fcc8263879",
+      "status": "release_metadata",
+      "distribution_versions": {
+        "codex": "0.3.0",
+        "claude": "0.2.0",
+        "muse": "0.3.0",
+        "lily": "0.1.0"
+      },
+      "core_versions": {
+        "codex": "0.3.0",
+        "claude_legacy": "0.1.0",
+        "claude_optional_companion": "0.3.0",
+        "muse": "0.3.0",
+        "lily": "0.3.0"
+      },
+      "updater_version": "0.4.0",
+      "existing_runtime_bytes_unchanged": false,
+      "red_original_files_unchanged": true,
+      "historical_validation_files_unchanged": true,
+      "runtime_tests_rerun": true,
+      "current_validation_platforms": ["windows"],
+      "wsl_tests_rerun": false,
+      "changes": [
+        "Four separate iterations with a maintained local Lily actor; Red's legacy courier and core remain preserved alongside an optional reliability companion.",
+        "Versioned prewrite refusals retain not_sent and registered error codes; legacy, malformed and unknown errors remain uncertain.",
+        "Ordinary sends retain original observation guards; an explicit lok_retreat_v1 decision permits at most one guarded write attempt of flee after a bounded combat predicate, with separate AFK opt-in.",
+        "Original decision, lease epoch, deadline, predicate evidence and intervening colored observations are preserved; admitted IDs cannot be repurposed or replay uncertain actions.",
+        "Maintained actor and helper improve incremental observation handling and bounded scene evidence; unsupported text remains unknown.",
+        "Muse adds a sixth scoped operation and typed refusal handling without changing credential or network scope.",
+        "Declared component version reports distinguish package metadata from installed or running state; older updater manifest compatibility and deliberate downloads remain intact.",
+        "Current Windows validation is recorded separately; historical receipts, Red originals and private runtime state remain preserved."
+      ],
+      "validation": "VALIDATION_040.json",
+      "historical_metadata": "provenance/releases/v0.3.0/snapshot.json",
+      "live_runtime_deployed_by_release": false,
+      "contributors": [
+        "Andrei: project scope, separate-client policy and deployment boundaries",
+        "Coda and Codex collaborators: maintained core, adapters, regression checks, packaging and documentation",
+        "Lilitari: relay-authored play, decision partnership and reliability framing review",
+        "Red and Nua: separately retained courier/helper work and collaboration lessons"
+      ]
+    },
     {
       "version": "0.3.0",
       "distribution_revision": "updates1",

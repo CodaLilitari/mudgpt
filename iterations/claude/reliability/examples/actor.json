@@ -1,0 +1,7 @@
+{
+  "actor": "red-reliability",
+  "control": "broker/control.json",
+  "state_dir": "actor-state",
+  "profile": "lok",
+  "max_ttl_seconds": 120
+}

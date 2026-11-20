@@ -24,6 +24,8 @@ import threading
 import time
 import unicodedata
 
+from mudgpt.errors import is_prewrite_error
+
 TAILNET = ipaddress.ip_network("100.64.0.0/10")
 MAX_BODY = 8192
 MAX_REPLY = 1024 * 1024
@@ -40,6 +42,15 @@ class Rejected(Exception):
 
 class UpstreamError(Exception):
     """An upstream transport/protocol failure; never assume a mutation failed."""
+
+
+class UpstreamRefusal(UpstreamError):
+    """Only a recognized versioned core refusal proves no game write occurred."""
+    def __init__(self, payload):
+        if not is_prewrite_error(payload):
+            raise ValueError("unrecognized pre-write refusal")
+        self.error_code = payload["error_code"]
+        super().__init__("broker refused before sending a game command")
 
 
 def read_json(path, limit=4096):
@@ -107,8 +118,10 @@ class LocalBroker:
             raw = response.read(MAX_REPLY + 1)
             if len(raw) > MAX_REPLY:
                 raise UpstreamError("broker response exceeded the limit")
-            result = json.loads(raw)
+            result = json.loads(raw, object_pairs_hook=unique_object)
             if response.status != 200 or not isinstance(result, dict) or "error" in result:
+                if is_prewrite_error(result):
+                    raise UpstreamRefusal(result)
                 # Do not reflect arbitrary broker exception strings or credentials.
                 raise UpstreamError("broker rejected or did not complete the request")
             return result
@@ -178,6 +191,9 @@ class Adapter:
         "release": {"op", "expected_adapter_id", "expected_broker_id"},
         "send": {"op", "expected_adapter_id", "command_id", "command",
                  "expected_broker_id", "expected_generation", "expected_cursor", "expires_at"},
+        "conditional": {"op", "expected_adapter_id", "command_id", "action", "condition",
+                        "expected_broker_id", "expected_generation", "expected_cursor",
+                        "expected_lease_epoch", "expires_at"},
     }
 
     def __init__(self, control, credential_file, journal, *, broker=None):
@@ -215,20 +231,35 @@ class Adapter:
         if op != "status" and (not isinstance(data["expected_broker_id"], str)
                                or not ID.fullmatch(data["expected_broker_id"])):
             raise Rejected("invalid expected_broker_id")
-        if op in {"claim", "send", "release"}:
+        if op in {"claim", "send", "conditional", "release"}:
             if not isinstance(data["expected_adapter_id"], str) or not ID.fullmatch(data["expected_adapter_id"]):
                 raise Rejected("invalid expected_adapter_id")
         if op == "observe" and (type(data["after"]) is not int or data["after"] < 0):
             raise Rejected("after must be a nonnegative integer")
-        if op == "send":
+        if op in {"send", "conditional"}:
             if not isinstance(data["command_id"], str) or not ID.fullmatch(data["command_id"]):
                 raise Rejected("command_id must be 16..96 URL-safe characters")
-            command = data["command"]
-            if not isinstance(command, str) or len(command) > 500:
-                raise Rejected("command must be a string of at most 500 characters")
-            if any(unicodedata.category(c).startswith("C") or c in "\u2028\u2029" for c in command):
-                raise Rejected("command cannot contain control characters or line separators")
-            for field in ("expected_generation", "expected_cursor"):
+            counters = ("expected_generation", "expected_cursor")
+            if op == "send":
+                command = data["command"]
+                if not isinstance(command, str) or len(command) > 500:
+                    raise Rejected("command must be a string of at most 500 characters")
+                if any(unicodedata.category(c).startswith("C") or c in "\u2028\u2029" for c in command):
+                    raise Rejected("command cannot contain control characters or line separators")
+            else:
+                if data["action"] != "lok_retreat_v1":
+                    raise Rejected("only the explicit lok_retreat_v1 action is supported")
+                condition = data["condition"]
+                if (not isinstance(condition, dict)
+                        or set(condition) != {"enemy_status", "allow_afk_combat"}
+                        or type(condition["allow_afk_combat"]) is not bool):
+                    raise Rejected("condition requires enemy_status and an explicit allow_afk_combat boolean")
+                enemy = condition["enemy_status"]
+                if (not isinstance(enemy, str) or not 0 < len(enemy) <= 150
+                        or any(unicodedata.category(c).startswith("C") or c in "\u2028\u2029" for c in enemy)):
+                    raise Rejected("enemy_status must be one plain line of 1..150 characters")
+                counters += ("expected_lease_epoch",)
+            for field in counters:
                 if type(data[field]) is not int or data[field] < 0:
                     raise Rejected(f"{field} must be a nonnegative integer")
             expiry = data["expires_at"]
@@ -252,9 +283,9 @@ class Adapter:
                 self.adapter_id = secrets.token_hex(16)
             self.credential_version = version
             op = self.validate(data)
-            if op in {"claim", "release", "send"} and data["expected_adapter_id"] != self.adapter_id:
+            if op in {"claim", "release", "send", "conditional"} and data["expected_adapter_id"] != self.adapter_id:
                 raise Rejected("adapter lifetime changed; obtain status and reclaim locally if needed", 409)
-            if op == "send":
+            if op in {"send", "conditional"}:
                 command_id = data["command_id"]
                 old = self.journal.reserve(command_id, data)
                 if old is not None:
@@ -264,6 +295,8 @@ class Adapter:
             capabilities = status.get("capabilities")
             if not isinstance(capabilities, list) or "guarded_send_v1" not in capabilities:
                 raise UpstreamError("broker does not advertise atomic guarded sends")
+            if op == "conditional" and "conditional_actions_v1" not in capabilities:
+                raise Rejected("broker does not advertise conditional_actions_v1; nothing forwarded", 409)
             identity = status.get("broker_id")
             if not isinstance(identity, str) or not ID.fullmatch(identity):
                 raise UpstreamError("broker lacks a valid lifetime identity")
@@ -273,7 +306,7 @@ class Adapter:
             self.broker_id = identity
             if op != "status" and data["expected_broker_id"] != identity:
                 raise Rejected("broker lifetime changed; nothing sent; obtain fresh status", 409)
-            if op in {"claim", "release", "send"} and data["expected_adapter_id"] != self.adapter_id:
+            if op in {"claim", "release", "send", "conditional"} and data["expected_adapter_id"] != self.adapter_id:
                 raise Rejected("adapter lifetime changed; nothing sent; obtain fresh status", 409)
             if op == "status":
                 result = status
@@ -296,6 +329,16 @@ class Adapter:
                         result = self.broker.call(config, {"op": "release", "owner": "nua", "lease": self.lease})
                     finally:
                         self.lease = None
+                elif op == "conditional":
+                    # The authored observation, epoch, and expiry stay unchanged.
+                    # Only the core can evaluate the allowlisted retreat once.
+                    result = self.broker.call(config, {
+                        "op": "conditional", "owner": "nua", "lease": self.lease,
+                        "decision_id": command_id,
+                        **{field: data[field] for field in
+                           ("action", "condition", "expected_broker_id", "expected_generation",
+                            "expected_cursor", "expected_lease_epoch", "expires_at")},
+                    })
                 else:
                     # These guards are ALSO checked atomically by the broker,
                     # after any concurrent output and before writer.write().
@@ -327,6 +370,20 @@ class Adapter:
                     pass  # The earlier durable reservation still prevents replay.
                 response["receipt"] = receipt
             return exc.code, response
+        except UpstreamRefusal as exc:
+            response = {"error": str(exc), "error_schema": 1, "error_code": exc.error_code,
+                        "delivery": "not_sent", "command_complete": False,
+                        "adapter_id": self.adapter_id}
+            if command_id:
+                receipt = {"command_id": command_id, "outcome": "not_sent",
+                           "delivery": "not_sent", "error_code": exc.error_code,
+                           "command_complete": False}
+                try:
+                    self.journal.finish(command_id, receipt)
+                except sqlite3.Error:
+                    pass  # The durable reservation still prevents another attempt.
+                response["receipt"] = receipt
+            return 409, response
         except (OSError, ValueError, UpstreamError, sqlite3.Error):
             response = {"error": "local broker or journal unavailable; inspect state before a new decision",
                         "adapter_id": self.adapter_id}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "iteration": "collection",
+  "collection_version": "0.4.0",
+  "components": {
+    "core": {
+      "version": null,
+      "status": "not_applicable"
+    },
+    "adapter": {
+      "version": null,
+      "status": "not_applicable"
+    },
+    "updater": {
+      "version": "0.4.0",
+      "status": "included"
+    }
+  },
+  "iterations": [
+    {
+      "iteration": "codex",
+      "components": {
+        "core": {
+          "version": "0.3.0",
+          "status": "included"
+        },
+        "adapter": {
+          "version": "0.3.0",
+          "status": "included"
+        },
+        "updater": {
+          "version": "0.4.0",
+          "status": "included"
+        }
+      }
+    },
+    {
+      "iteration": "claude",
+      "components": {
+        "core": {
+          "version": "0.1.0",
+          "status": "historical"
+        },
+        "adapter": {
+          "version": "0.1.0",
+          "status": "historical"
+        },
+        "updater": {
+          "version": "0.4.0",
+          "status": "included"
+        }
+      },
+      "companion": {
+        "name": "reliability",
+        "entrypoint": "reliability/README.md",
+        "components": {
+          "core": {
+            "version": "0.3.0",
+            "status": "included"
+          },
+          "adapter": {
+            "version": "0.1.0",
+            "status": "included"
+          },
+          "updater": {
+            "version": "0.4.0",
+            "status": "optional"
+          }
+        }
+      }
+    },
+    {
+      "iteration": "muse",
+      "components": {
+        "core": {
+          "version": "0.3.0",
+          "status": "included"
+        },
+        "adapter": {
+          "version": "0.3.0",
+          "status": "included"
+        },
+        "updater": {
+          "version": "0.4.0",
+          "status": "included"
+        }
+      }
+    },
+    {
+      "iteration": "lily",
+      "components": {
+        "core": {
+          "version": "0.3.0",
+          "status": "included"
+        },
+        "adapter": {
+          "version": "0.1.0",
+          "status": "included"
+        },
+        "updater": {
+          "version": "0.4.0",
+          "status": "included"
+        }
+      }
+    }
+  ]
+}

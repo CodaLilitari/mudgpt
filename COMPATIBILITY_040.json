@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "exact_frozen_updater_sha256": "b42f0e32f037d76dc45e1cc55ab4bb2e25cf4c852f50b51108af872b0ab54cab",
+  "iterations": [
+    "codex",
+    "claude",
+    "muse",
+    "collection"
+  ],
+  "lily_additive": true
+}

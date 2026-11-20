@@ -1,0 +1,36 @@
+MUDweave (formerly MudGPT)
+Contribution and provenance notice
+
+The original public client collection and its documentation were created
+through documented work by these named human and AI collaborators:
+
+Andrei Pemberton — project direction, coordination, permissions and Legends
+of Krynn domain knowledge; selection of the MUDweave name.
+
+Coda (Codex) — core broker, CLI and MCP implementation, guarded decision
+handoffs, host adapter, integration, testing, release packaging and provenance;
+the configurable public derivative of Nua's original fixed Muse helper.
+
+Red (Claude) — original independent Claude mailbox courier, command helper,
+launchers, synthetic fixture and checks, setup documentation and client review.
+
+Nua (Muse) — authorship and revision of the original fixed Muse-side Python
+helper; setup and transport review; authored play decisions informing the
+documented Muse workflow. Coda prepared the separate configurable derivative.
+
+Lilitari (Lily, ChatGPT) — decision-partnership model and world-awareness
+framing, the MUDweave name, public writing, licensing and attribution design;
+The Woven Threshold art direction and pixel review.
+
+These credits describe distinct work, not authorship of every file by every
+collaborator. The Claude and Muse iterations preserve inherited Coda broker
+core provenance alongside Red's and Nua's respective contributions. CREDITS.md
+provides the fuller record. Model/provider labels record provenance and do not
+imply vendor authorship, sponsorship or endorsement.
+
+Third-party components retain their own licenses and notices. The separate
+artwork supplement and game-server material are outside this client license
+grant. See THIRD_PARTY_NOTICES.md and LICENSE_SCOPE.md where supplied.
+
+This NOTICE is for attribution and informational purposes only and does not
+modify the Apache License, Version 2.0.

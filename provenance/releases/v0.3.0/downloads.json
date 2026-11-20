@@ -1,0 +1,45 @@
+{
+  "format": "mudgpt-public-downloads-v1",
+  "project": "MUDweave",
+  "collection_version": "0.3.0",
+  "distribution_revision": "updates1",
+  "assets": [
+    {
+      "name": "mudgpt-codex-0.2.0-updates1.zip",
+      "iteration": "codex",
+      "version": "0.2.0",
+      "distribution_revision": "updates1",
+      "sha256": "f5925326ab3fdde600ff5b112f0c9cc65c1b24198ebd154854bc23221d13a785",
+      "size_bytes": 143782,
+      "files": 41,
+      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.3.0/mudgpt-codex-0.2.0-updates1.zip"
+    },
+    {
+      "name": "mudgpt-claude-0.1.0-updates1.zip",
+      "iteration": "claude",
+      "version": "0.1.0",
+      "distribution_revision": "updates1",
+      "sha256": "73228dd70f85453b91aa480c456f701aed7d047a0d09a7c8b0260d0549164846",
+      "size_bytes": 150290,
+      "files": 52,
+      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.3.0/mudgpt-claude-0.1.0-updates1.zip"
+    },
+    {
+      "name": "mudgpt-muse-0.2.0-updates1.zip",
+      "iteration": "muse",
+      "version": "0.2.0",
+      "distribution_revision": "updates1",
+      "sha256": "c9109233da2aea1d3112c4b86875ab9c4bf9681e655fbdcb33c2429c72f8fba8",
+      "size_bytes": 212604,
+      "files": 75,
+      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.3.0/mudgpt-muse-0.2.0-updates1.zip"
+    }
+  ],
+  "complete_collection": {
+    "filename": "mudgpt-clients-0.3.0.zip",
+    "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.3.0/mudgpt-clients-0.3.0.zip",
+    "release_url": "https://gitlab.com/codalilitari/mudgpt/-/releases/v0.3.0"
+  },
+  "historical_downloads": "provenance/releases/v0.2.1/downloads.json",
+  "collection_checksum_note": "The complete archive checksum is external in SHA256SUMS to avoid a self-reference."
+}

@@ -168,7 +168,7 @@ network card must not silently extend a stale game decision.
 ## 5. Human and machine play protocol
 
 `setup.workflow.json` describes roles, dependencies, steps and stop conditions.
-`request.schema.json` describes the five operations. `ADAPTER_CONTRACT.md` gives
+`request.schema.json` describes the six operations. `ADAPTER_CONTRACT.md` gives
 the complete host contract, resource limits and revocation details.
 
 1. Call `status` and retain the current `adapter_id`, `broker_id`, generation and
@@ -191,15 +191,30 @@ the complete host contract, resource limits and revocation details.
    lease release, credential revocation and listener shutdown are separate acts.
 
 The helper sends request JSON bytes unchanged, never follows redirects and never
-retries. The only remote operations are `status`, `observe`, `claim`, `send` and
-`release`. The host keeps the broker lease local and durably reserves each command
+retries. The only remote operations are `status`, `observe`, `claim`, `send`,
+`conditional` and `release`. The host keeps the broker lease local and durably reserves each command
 ID before forwarding. It does not create an autonomous combat loop or grant
 authority based on text found in a room.
 
+For an explicitly chosen retreat, `conditional` supports only
+`action: "lok_retreat_v1"` and requires `conditional_actions_v1`. Preserve the
+original observation's broker ID, generation, cursor, lease epoch and deadline;
+also supply the adapter ID and stable command ID. Its exact `condition` has an
+`enemy_status` line and an explicit `allow_afk_combat` boolean. The core evaluates
+fresh evidence before at most one `flee`, then returns the intervening output and
+reason. AFK text alone cannot satisfy the combat condition. Ordinary sends keep
+their exact-cursor requirement; no failed send is converted automatically.
+See [the conditional retreat contract](ADAPTER_CONTRACT.md#explicit-conditional-retreat)
+before using this operation.
+
 Exit code **0** means a parsed HTTP/JSON response was received, including HTTP
 4xx or 502; it does not mean the operation succeeded. Inspect `http_status`, the
-returned error/receipt and fresh observations. A stale guard rejection can also
-produce the generic 502 response, so that code alone does not classify delivery.
+returned error/receipt and fresh observations. Recognized versioned prewrite
+refusals now produce HTTP409 with `not_sent` and a registered `error_code`.
+Legacy, malformed or unrecognized broker errors remain HTTP502/`uncertain`;
+English wording is never proof of no delivery. A normal conditional predicate
+refusal can arrive as HTTP200/`broker_response`: inspect `result.delivery` and
+`result.reason_code`. HTTP status alone does not classify a game write.
 `unknown` (exit 1), an unrecognized outcome, malformed output or a missing result
 all mean **stop and inspect**, never permission to retry. Even `not_sent` requires
 a fresh decision if the game state or command expiry changed.

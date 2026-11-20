@@ -128,6 +128,76 @@
           "description": "Finite Unix seconds; runtime requires now < value <= now + 30."
         }
       }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "expected_adapter_id",
+        "command_id",
+        "action",
+        "condition",
+        "expected_broker_id",
+        "expected_generation",
+        "expected_cursor",
+        "expected_lease_epoch",
+        "expires_at"
+      ],
+      "properties": {
+        "op": {
+          "const": "conditional"
+        },
+        "expected_adapter_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        },
+        "command_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$",
+          "description": "Stable ID reserved in the adapter journal and forwarded unchanged as the core decision_id."
+        },
+        "action": {
+          "const": "lok_retreat_v1"
+        },
+        "condition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enemy_status", "allow_afk_combat"],
+          "properties": {
+            "enemy_status": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 150,
+              "description": "Exact enemy status line from the original observation. Runtime rejects Unicode category C characters and U+2028/U+2029."
+            },
+            "allow_afk_combat": {
+              "type": "boolean",
+              "description": "Explicit opt-in to the core's narrowly evidenced AFK combat predicate."
+            }
+          }
+        },
+        "expected_broker_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{16,96}$"
+        },
+        "expected_generation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_cursor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_lease_epoch": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expires_at": {
+          "type": "number",
+          "description": "Original decision deadline in finite Unix seconds; runtime requires now < value <= now + 30. Never extended during forwarding."
+        }
+      }
     }
   ]
 }

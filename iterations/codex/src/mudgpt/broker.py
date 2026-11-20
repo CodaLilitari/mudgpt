@@ -13,6 +13,9 @@ from http.client import HTTPException
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from .session import Session
+from .errors import BrokerRequestError, PrewriteValueError, error_payload
+from .conditional_actions import send_conditional
+from .lok_scene import scene_from_observation
 
 
 def default_control():
@@ -44,8 +47,8 @@ def request(payload, control=None):
     except (OSError, HTTPException) as exc:
         raise RuntimeError("Broker transport failed; outcome unknown for mutations. "
                            "Do not replay a command. Reconnect to the broker and inspect status/observations.") from exc
-    if "error" in result:
-        raise RuntimeError(result["error"])
+    if not isinstance(result, dict) or "error" in result:
+        raise BrokerRequestError(result)
     return result
 
 
@@ -106,16 +109,23 @@ def _serve_locked(control, profile):
         op = data.get("op")
         if op == "status":
             return session.status()
-        if op == "observe":
+        if op in ("observe", "scene"):
             after = data.get("after", 0)
             if type(after) is not int or after < 0:
                 raise ValueError("after must be a nonnegative integer")
-            return session.observe(after, expected_broker_id=data.get("expected_broker_id"))
+            observation = session.observe(after, expected_broker_id=data.get("expected_broker_id"))
+            if op == "scene":
+                observation["scene"] = scene_from_observation(observation)
+            return observation
         if op == "claim":
             return session.claim(data.get("owner", "human"), takeover=data.get("takeover", False),
                                  lease=data.get("lease"))
         if op == "release":
             return session.release(data.get("owner", "human"), lease=data.get("lease"))
+        if op == "conditional":
+            # Admission handles exact duplicate IDs before checking a new lease.
+            # Store private decision receipts beside the private control file.
+            return await send_conditional(session, data, control.with_suffix(".decisions.sqlite3"))
         owner = data.get("owner", "human")
         session.check_controller(owner, data.get("lease"))
         if op == "connect":
@@ -133,15 +143,16 @@ def _serve_locked(control, profile):
             timeout = data.get("timeout", 3)
             quiet = data.get("quiet", 0.3)
             if type(timeout) not in (int, float) or not 0.1 <= timeout <= 15:
-                raise ValueError("timeout must be 0.1..15 seconds")
+                raise PrewriteValueError("invalid_request", "timeout must be 0.1..15 seconds")
             if type(quiet) not in (int, float) or not 0.05 <= quiet <= timeout:
-                raise ValueError("quiet must be 0.05..timeout seconds")
+                raise PrewriteValueError("invalid_request", "quiet must be 0.05..timeout seconds")
             return await session.send(data.get("command"), owner=owner, timeout=timeout,
                                       quiet=quiet, secret=data.get("secret", False), lease=data.get("lease"),
                                       expected_broker_id=data.get("expected_broker_id"),
                                       expected_generation=data.get("expected_generation"),
                                       expected_cursor=data.get("expected_cursor"),
-                                      expires_at=data.get("expires_at"))
+                                      expires_at=data.get("expires_at"),
+                                      expected_lease_epoch=data.get("expected_lease_epoch"))
         if op in ("close", "stop"):
             await session.close()
             if op == "stop":
@@ -175,7 +186,7 @@ def _serve_locked(control, profile):
             except Exception as exc:
                 if future and not future.done():
                     future.cancel()
-                self.reply(400, {"error": str(exc) or type(exc).__name__})
+                self.reply(400, error_payload(exc))
 
         def reply(self, code, value):
             encoded = json.dumps(value, ensure_ascii=True).encode()

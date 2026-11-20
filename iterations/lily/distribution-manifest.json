@@ -1,0 +1,294 @@
+{
+  "format": "mudweave-update-distribution-manifest-v1",
+  "self_excluded": true,
+  "baseline_commit": "78f1b3241b77cc9a1e82f601b0d2f5fcc8263879",
+  "collection_version": "0.4.0",
+  "iteration": "lily",
+  "version": "0.1.0",
+  "core_version": "0.3.0",
+  "distribution_revision": "reliability1",
+  "license": "Apache-2.0",
+  "runtime_validation": "VALIDATION_040.json",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "6f60166800d33b59f29b14f6527909ac087e59ee1d68fca8be0b8a18e28efa0d",
+      "bytes": 193
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "096197047d95cca765793191002cd2dab41a9f6fc6c0fa52781ca2d255139c1e",
+      "bytes": 877
+    },
+    {
+      "path": "CONTRIBUTOR_RECOGNITION.md",
+      "sha256": "481246f8288c5d75d00de2b7d7f9eba19f15e56837083a253b73767fc3670be1",
+      "bytes": 1522
+    },
+    {
+      "path": "CREDITS.md",
+      "sha256": "a4e5550f474ae64dbb1c239c444b8156091b60ea2dfa7c97c95f0a7b55d64668",
+      "bytes": 2625
+    },
+    {
+      "path": "docs/actor-protocol.md",
+      "sha256": "a215c343cbbd32345e0f42ebb6488a690c1833730b7f7ba870194c851acb06c1",
+      "bytes": 11016
+    },
+    {
+      "path": "docs/lok-and-collaboration.md",
+      "sha256": "745bdc9632fd5b1fd67b91da9a83465d23d096f5456a9fa2fa8dc569109b0516",
+      "bytes": 12260
+    },
+    {
+      "path": "docs/RELIABILITY_040.md",
+      "sha256": "0b460bdaf2475389a70b22ccde39712fcc3083d6ef9dcf4c788f4c9fae1d2358",
+      "bytes": 9189
+    },
+    {
+      "path": "examples/actor.json",
+      "sha256": "e1064a2cd9726d2576bee711c0f5b3e5b996b7d9f1314b78a7eaec7f30b646a8",
+      "bytes": 134
+    },
+    {
+      "path": "examples/actor.schema.json",
+      "sha256": "8fa79482353302c6ece6a0e90c3505df423552eb81d2ef2993b1a1b079e3321e",
+      "bytes": 819
+    },
+    {
+      "path": "examples/profile.json",
+      "sha256": "2f2f2a2e32d1d86b3a70e61a8683f5516ee99b28bba1b7b1751da9a3a02d9e64",
+      "bytes": 60
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "LICENSE_SCOPE.md",
+      "sha256": "04b9c3f2772aaee24a19404abd4e82d64f1d7dc68067225a4eac36e56eed1f8e",
+      "bytes": 1742
+    },
+    {
+      "path": "mudweave-update.json",
+      "sha256": "81965d178719956afc0e429c8f3001df5b1b33608682e1d5db316b446d696381",
+      "bytes": 181
+    },
+    {
+      "path": "mudweave.py",
+      "sha256": "e421f6dbe0740a5499c3e00bb588b4cd6bb4152775a5bef48b8e1a7168d92c00",
+      "bytes": 3059
+    },
+    {
+      "path": "mudweave_update.py",
+      "sha256": "823d1ca465864f2994d794bcf3d45904ef8e8c1b5c47ad4f420cea10e76c6b60",
+      "bytes": 33065
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "32e5169be049375c0d33f7f60c2294521abf0039d96eb3ff17a663e1e24e03a9",
+      "bytes": 1870
+    },
+    {
+      "path": "provenance/maintained-core-040.json",
+      "sha256": "e4eb5cfd93f53bd2668244cd739b836f58eaffef21bfd853d1e487a2337e61f4",
+      "bytes": 5212
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "a6849e78826dd1e76a8bafabcdfbbf8623cb85d5818c551c824581baca797923",
+      "bytes": 560
+    },
+    {
+      "path": "README.md",
+      "sha256": "b3b06c6c6fb93da98bc56dd59d0e57b4b192c30278a06a29e2b49eba164a35ce",
+      "bytes": 4943
+    },
+    {
+      "path": "runtime-manifest.json",
+      "sha256": "a29ee4bcfb50fda6f8d9270e1d68cb7e8cb876b6042c4fe6b61ad12350d2717a",
+      "bytes": 332
+    },
+    {
+      "path": "scripts/game_command.py",
+      "sha256": "f028e45d401bb2cc9165cf9f730afef5df0da0e49f2084445475e5750700baf9",
+      "bytes": 11415
+    },
+    {
+      "path": "scripts/relay_once.py",
+      "sha256": "d69fa776782496b225de84b2aafe178d795294edea19fc7d5a359b0fc5c7fdc6",
+      "bytes": 11454
+    },
+    {
+      "path": "setup.workflow.json",
+      "sha256": "92a100676e19b45afd45871ecbcbe43b8bd67ba4b73514b0563c2660b4c8b9de",
+      "bytes": 2795
+    },
+    {
+      "path": "src/mudgpt/__init__.py",
+      "sha256": "3850ebb67470655149f82ae6286f57e09930a31d573a99c0300a71f7f1065691",
+      "bytes": 84
+    },
+    {
+      "path": "src/mudgpt/__main__.py",
+      "sha256": "53c2f331bd014c7f0c2434f1327ebf93d798638394097223b8e21e3130ed8bc0",
+      "bytes": 4664
+    },
+    {
+      "path": "src/mudgpt/actor_client.py",
+      "sha256": "00367c8fbd3bba4f3b7697699087902fd5b96919efa5069367cd959d956a6c1b",
+      "bytes": 22164
+    },
+    {
+      "path": "src/mudgpt/broker.py",
+      "sha256": "40a9ed8fa4f7f1d587ab4b2481fc1c743e64559b47d05a7aeb00fbdb7b7e1906",
+      "bytes": 10046
+    },
+    {
+      "path": "src/mudgpt/colors.py",
+      "sha256": "7b988607aa51d66ebb426a5f28e4dc0064bf38a17c92c415bb89df336f797299",
+      "bytes": 8747
+    },
+    {
+      "path": "src/mudgpt/conditional_actions.py",
+      "sha256": "7ea9e5e0d3f1157fd772f39141f309356eddc9170e4341dbcac844987f5f8659",
+      "bytes": 11409
+    },
+    {
+      "path": "src/mudgpt/decision_journal.py",
+      "sha256": "e6977a28dcb98dd8480bdb1f2a6031b97e477bf97657e37543c8271aa14145e3",
+      "bytes": 7445
+    },
+    {
+      "path": "src/mudgpt/errors.py",
+      "sha256": "3def94e8aa0319453ca15caaafd570e2385657eac0d1a2d1b9fca75ca1c818ac",
+      "bytes": 2162
+    },
+    {
+      "path": "src/mudgpt/lok_scene.py",
+      "sha256": "de1e017f79ff6e44595f42fb0a186ab0ebf08c3a07201b46eaf3b333f1c04cc0",
+      "bytes": 7483
+    },
+    {
+      "path": "src/mudgpt/mcp_gateway.py",
+      "sha256": "9d2e519cf74597c7fba1d1b7a78d2ce26c4f29307ec168acbb3e023b46ce2b86",
+      "bytes": 6057
+    },
+    {
+      "path": "src/mudgpt/observations.py",
+      "sha256": "36842ddde1dfafad993482892dc1e8032211b1ab4123684ef508fe603fa7a410",
+      "bytes": 4698
+    },
+    {
+      "path": "src/mudgpt/session.py",
+      "sha256": "1d45eed6715d402259e86c30d4d4c925fefaed2f54a36e8c944dee535f2a39fa",
+      "bytes": 20054
+    },
+    {
+      "path": "tests/test_actor_client.py",
+      "sha256": "6e1a28c840a1691a9f6cd55986d4523a24f5629d24b932a75e593bb960bc598e",
+      "bytes": 10951
+    },
+    {
+      "path": "tests/test_broker.py",
+      "sha256": "96d4bf0ec142458a75fa1c5c199538954c6f68691d7d89b3b32dcfdbf02edd85",
+      "bytes": 11109
+    },
+    {
+      "path": "tests/test_broker_lock.py",
+      "sha256": "13e23c037c42700991330506235395c401437609195747c7bf4e87e187ed2318",
+      "bytes": 3550
+    },
+    {
+      "path": "tests/test_colors.py",
+      "sha256": "5f78c35dd585d0fe56972c27dd2efea808f18b62b6be5510eda48df29d170070",
+      "bytes": 4424
+    },
+    {
+      "path": "tests/test_conditional_actions.py",
+      "sha256": "6752f452c3347d19465a66b592903d6a0b4d30ff805af69959d2f35fcd4e68cc",
+      "bytes": 12985
+    },
+    {
+      "path": "tests/test_helper_checkpoint.py",
+      "sha256": "76b92903ee48a29bbf057afb61a2aa27445868280acfcd5eb45c704833e3e60d",
+      "bytes": 4767
+    },
+    {
+      "path": "tests/test_journal_retention.py",
+      "sha256": "b17b2294e979c87ae4959a7a919beb8b77bf97c3c352ca586094f5c2d515dce8",
+      "bytes": 4232
+    },
+    {
+      "path": "tests/test_lok_scene.py",
+      "sha256": "fc942de0cc76e6f81f9a5755fa2489369f8dd23c8871c9e279baaade1deea084",
+      "bytes": 6235
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "sha256": "3b97388ae959e45d1e4e84769320738477cc29bcddab4d188c790ebca8f925af",
+      "bytes": 7494
+    },
+    {
+      "path": "tests/test_observations.py",
+      "sha256": "150e8798777e5ba42e60de35c39029c05591f89fbf824b7af41d9bd6bc0e18c6",
+      "bytes": 2584
+    },
+    {
+      "path": "tests/test_relay_once.py",
+      "sha256": "d5e5a2551742be8b57fecef8569194898c66c30ac69ad2a9e485a040d8b9cb47",
+      "bytes": 16529
+    },
+    {
+      "path": "tests/test_release_integration.py",
+      "sha256": "065b31e9721e792ce474b03ce339e2e65619f24d221d7306413258c02d775c93",
+      "bytes": 2050
+    },
+    {
+      "path": "tests/test_revision_guards.py",
+      "sha256": "f92e1a0c7d9a69d9e9d30b1cd8880f3c89917dcfb86b04b03414387719dba400",
+      "bytes": 11839
+    },
+    {
+      "path": "tests/test_session.py",
+      "sha256": "e4c8e603146a3ebf618bb4d1ef4b32898cbaa5ff7913565febab0224632c2685",
+      "bytes": 18275
+    },
+    {
+      "path": "tests/test_structured_errors.py",
+      "sha256": "63c22835fbb933ebea3c79e5c374575ebdcbccee61ed8918ecac465f0c1e2fda",
+      "bytes": 3673
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "e0ba9297ee97d5fe23a1dbe1643602bbc596ba86917c6a5d56111d74f7239754",
+      "bytes": 1401
+    },
+    {
+      "path": "UPDATES.md",
+      "sha256": "1acf350ce814213df8112503b27228f5e3d1ef6cedd3ef2af288161a703e15d7",
+      "bytes": 1009
+    },
+    {
+      "path": "updates.workflow.json",
+      "sha256": "1a05bddee3da3f8721d9ee3b65a2f4f54d9736781a3328230ed1dc5467666dac",
+      "bytes": 2540
+    },
+    {
+      "path": "UPDATES_040.md",
+      "sha256": "f2324f4cd7a3c7014362495f1178402ffaafdcbf100a2b5168fd2f9cd61372cc",
+      "bytes": 5493
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "272b04ca4705a32de1f7f4479b60245b2a80a999eb7a6bf39219e30b3e58737c",
+      "bytes": 167197
+    },
+    {
+      "path": "VALIDATION_040.json",
+      "sha256": "f0e89049ecfd5c66bea15ff12a471be101c138fb4608228be4fa30301eff6c04",
+      "bytes": 2163
+    }
+  ]
+}

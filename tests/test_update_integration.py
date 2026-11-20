@@ -174,7 +174,7 @@ class UpdateLauncherIntegrationTests(unittest.TestCase):
                             self.assertEqual(result.server_info.name, "MudGPT")
                             tools = await client.list_tools()
                             self.assertEqual({tool.name for tool in tools.tools}, {
-                                "mud_status", "mud_observe", "mud_claim", "mud_release", "mud_send"
+                                "mud_status", "mud_observe", "mud_claim", "mud_release", "mud_send", "mud_scene", "mud_retreat"
                             })
                             deadline = time.monotonic() + 2
                             while not (self.home / "check-entered").exists():

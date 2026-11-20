@@ -14,11 +14,13 @@ HELP = """MUDweave launcher (Python 3.11+)
   python mudweave.py [--no-update-check] broker <mudgpt arguments>
   python mudweave.py [--no-update-check] run -- <Python arguments>
   python mudweave.py update <check|download|status|config> [options]
+  python mudweave.py versions [--json]
 
 broker runs this Python's -m mudgpt; run passes arguments to this Python.
 Use your selected iteration's environment. Checks notify only; they never
 install, restart, take control, connect to a game, or replay a command.
 Existing -m mudgpt and authored courier launchers remain unchanged.
+versions reads the public runtime manifest; it does not inspect active processes.
 """
 
 
@@ -34,6 +36,8 @@ def main(argv=None):
     action = args.pop(0)
     if action == "update":
         return updates.main(argv=args)
+    if action == "versions":
+        return updates.main(argv=["versions", *args])
     if action == "broker":
         child_args = ["-m", "mudgpt", *args]
         # Short commands must not start network work on every game turn.

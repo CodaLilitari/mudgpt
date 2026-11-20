@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "iteration": "claude",
+  "collection_version": "0.4.0",
+  "components": {
+    "core": {
+      "version": "0.1.0",
+      "status": "historical"
+    },
+    "adapter": {
+      "version": "0.1.0",
+      "status": "historical"
+    },
+    "updater": {
+      "version": "0.4.0",
+      "status": "included"
+    }
+  },
+  "companion": {
+    "name": "reliability",
+    "entrypoint": "reliability/README.md",
+    "components": {
+      "core": {
+        "version": "0.3.0",
+        "status": "included"
+      },
+      "adapter": {
+        "version": "0.1.0",
+        "status": "included"
+      },
+      "updater": {
+        "version": "0.4.0",
+        "status": "optional"
+      }
+    }
+  }
+}

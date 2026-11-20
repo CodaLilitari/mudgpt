@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "project": "MUDweave",
+  "collection_version": "0.3.0",
+  "status": "validated_release_snapshot",
+  "date": "2026-10-23",
+  "root_is_installable_runtime": false,
+  "shared_protocol_policy": "Iteration protocols and runtime state remain separate. Never exchange control tokens, leases, journals, mailboxes or credentials between iterations.",
+  "iterations": [
+    {
+      "id": "codex",
+      "version": "0.2.0",
+      "core_version": "0.2.0",
+      "path": "iterations/codex",
+      "status": "included",
+      "entrypoint": "iterations/codex/README.md",
+      "transport": "local CLI and official-SDK MCP, plus authored guarded relay",
+      "validation": "iterations/codex/validation.json",
+      "synthetic_tests": {
+        "windows": 73,
+        "wsl": 73
+      },
+      "distribution_revision": "updates1",
+      "distribution_manifest": "iterations/codex/distribution-manifest.json",
+      "distribution_manifest_sha256": "5fb310daa5f316faf3a12b341beaa928e297a7bfe8dc8f5f44830dc81c11f168",
+      "runtime_validation_status": "historical_unchanged_not_rerun_for_update_wrapper",
+      "update_validation": "iterations/codex/UPDATE_VALIDATION.json",
+      "update_validation_status": "passed",
+      "update_guide": "iterations/codex/UPDATES.md",
+      "update_launcher": "iterations/codex/mudweave.py"
+    },
+    {
+      "id": "claude",
+      "version": "0.1.0",
+      "core_version": "0.1.0",
+      "path": "iterations/claude",
+      "status": "included",
+      "entrypoint": "iterations/claude/README.md",
+      "transport": "independent file-mailbox courier",
+      "core_commit": "060e50c85b0c65f6dc088d5941d0863961dad254",
+      "validation": "iterations/claude/validation.json",
+      "editorial_boundaries": "iterations/claude/EDITOR_NOTES.md",
+      "synthetic_tests": {
+        "wsl": 32,
+        "native_windows": null
+      },
+      "distribution_revision": "updates1",
+      "distribution_manifest": "iterations/claude/distribution-manifest.json",
+      "distribution_manifest_sha256": "990d764c209b81b703158d8428929ced1a81bc5598cf3039cc9cbc237f293dc7",
+      "runtime_validation_status": "historical_unchanged_not_rerun_for_update_wrapper",
+      "update_validation": "iterations/claude/UPDATE_VALIDATION.json",
+      "update_validation_status": "passed",
+      "update_guide": "iterations/claude/UPDATES.md",
+      "update_launcher": "iterations/claude/mudweave.py"
+    },
+    {
+      "id": "muse",
+      "version": "0.2.0",
+      "core_version": "0.2.0",
+      "path": "iterations/muse",
+      "status": "included_configuration_candidate",
+      "entrypoint": "iterations/muse/README.md",
+      "machine_entrypoint": "iterations/muse/setup.workflow.json",
+      "transport": "scoped five-operation HTTP adapter and receiving helper via private peer network",
+      "core_pin": "iterations/muse/provenance/inherited-core.json",
+      "validation": "iterations/muse/validation.json",
+      "synthetic_tests": {
+        "windows": 32,
+        "wsl": 32
+      },
+      "configurable_helper_live_deployed": false,
+      "distribution_revision": "updates1",
+      "distribution_manifest": "iterations/muse/distribution-manifest.json",
+      "distribution_manifest_sha256": "e0c0f53034451f3f65172278a5a33ab354dbaee7b63746a168a809cde9b10549",
+      "runtime_validation_status": "historical_unchanged_not_rerun_for_update_wrapper",
+      "update_validation": "iterations/muse/UPDATE_VALIDATION.json",
+      "update_validation_status": "passed",
+      "update_guide": "iterations/muse/UPDATES.md",
+      "update_launcher": "iterations/muse/mudweave.py"
+    }
+  ],
+  "counting_note": "Counts belong to distinct suites/platforms; do not sum them as unique scenarios.",
+  "distribution_revision": "updates1",
+  "license": "Apache-2.0",
+  "release_change": "Separate update-aware launcher and check/notify component; automatic downloads, installation, restarts and state migration are disabled. Existing runtime/core bytes and historical validation records are unchanged.",
+  "historical_index": "provenance/releases/v0.2.1/iterations.json",
+  "update_validation": "UPDATE_VALIDATION.json",
+  "update_validation_status": "passed",
+  "update_policy": {
+    "automatic": "check_and_notify_on_update_aware_launch",
+    "download": "explicit_request_only",
+    "installation": "operator_requested_side_by_side",
+    "automatic_install": false,
+    "automatic_restart": false,
+    "existing_launchers_unchanged": true
+  },
+  "update_launcher": "mudweave.py",
+  "update_guide": "UPDATES.md",
+  "update_workflow": "updates.workflow.json"
+}

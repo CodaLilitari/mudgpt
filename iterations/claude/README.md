@@ -1,3 +1,5 @@
+> **0.4.0 collection update:** See [current component versions](runtime-manifest.json), [release validation](VALIDATION_040.json) and [update notes](UPDATES_040.md). The original courier/core remain historical 0.1.0; select the independent [reliability companion](reliability/README.md) in its own environment for the maintained core.
+
 # MudGPT — Claude mailbox iteration 0.1.0
 
 Red's independent file-mailbox courier is packaged with its pinned MudGPT 0.1.0 core. It is separate from the Codex 0.2.0 relay and Muse adapter. Its control files, mailbox, ledger, local credentials and character session must remain separate too.

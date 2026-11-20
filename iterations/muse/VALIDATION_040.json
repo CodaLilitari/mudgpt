@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "collection_version": "0.4.0",
+  "date": "2026-11-20",
+  "status": "passed",
+  "platform": "Windows 11",
+  "python": "3.13",
+  "scope": "Synthetic fixtures only; no live character, server modification or running-client replacement.",
+  "suites": [
+    {
+      "name": "maintained core, actor, conditional action, helper and real local MCP/broker fixtures",
+      "tests": 138,
+      "status": "passed",
+      "log_sha256": "d2779ab4a872add5a2b133d1921a49c4ddb5eb02815538fdfcdb5562da2476f4"
+    },
+    {
+      "name": "Muse adapter/helper and synthetic broker integration",
+      "tests": 42,
+      "status": "passed",
+      "log_sha256": "b6954145464425959f91ddc72e92abf87f75ba7d623833ecd6519b5f6df440cd"
+    },
+    {
+      "name": "updater and launcher",
+      "tests": 63,
+      "status": "passed",
+      "log_sha256": "61bab78497aa9f104f1b473751edcf3c1f921d49722d8d3afd27480397fc3a58"
+    }
+  ],
+  "copy_validation": "Maintained src/scripts/tests/pyproject/lock files are byte-identical across Codex, Muse, Lily and Claude reliability companion. Suites are not counted again for these copies.",
+  "legacy_claude": "Original authored courier subtree and pinned legacy core verified byte-identical; historical WSL validation retained, not rerun.",
+  "linux": "New 0.4 runtime not executed on Linux/WSL this release; existing historical evidence is separate.",
+  "external_review": {
+    "reviewer": "Lilitari",
+    "scope": "Design and public wording, not source verification",
+    "adopted": [
+      "At most one guarded write attempt wording",
+      "Preserve uncertainty across duplicates",
+      "Retain journal initialization marker; refuse isolated journal loss"
+    ]
+  },
+  "limits": [
+    "Conditional action checks broker-processed evidence, not unseen remote state or guaranteed game outcome.",
+    "Database and initialization marker must both be retained; loss or rollback of both cannot be detected.",
+    "No hosted sandbox route, model wakeup service, autonomous-play claim or unlimited log retention.",
+    "Component manifests declare packaged versions, not active-process verification."
+  ],
+  "iteration": "muse"
+}

@@ -1,45 +1,57 @@
 {
   "format": "mudgpt-public-downloads-v1",
   "project": "MUDweave",
-  "collection_version": "0.3.0",
-  "distribution_revision": "updates1",
+  "collection_version": "0.4.0",
+  "distribution_revision": "reliability1",
   "assets": [
     {
-      "name": "mudgpt-codex-0.2.0-updates1.zip",
+      "name": "mudgpt-codex-0.3.0-reliability1.zip",
+      "sha256": "3e82ef14a84057aa50518eb3d73857964d8657524fd4c428df4663900b98f281",
+      "size_bytes": 188194,
+      "files": 57,
       "iteration": "codex",
-      "version": "0.2.0",
-      "distribution_revision": "updates1",
-      "sha256": "f5925326ab3fdde600ff5b112f0c9cc65c1b24198ebd154854bc23221d13a785",
-      "size_bytes": 143782,
-      "files": 41,
-      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.3.0/mudgpt-codex-0.2.0-updates1.zip"
+      "version": "0.3.0",
+      "distribution_revision": "reliability1",
+      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.4.0/mudgpt-codex-0.3.0-reliability1.zip"
     },
     {
-      "name": "mudgpt-claude-0.1.0-updates1.zip",
+      "name": "mudgpt-claude-0.2.0-reliability1.zip",
+      "sha256": "cbb28aadb737a10dbc3679ed3887d24e8aac6f02ef550815ec776d6a1f1b74c1",
+      "size_bytes": 322038,
+      "files": 103,
       "iteration": "claude",
-      "version": "0.1.0",
-      "distribution_revision": "updates1",
-      "sha256": "73228dd70f85453b91aa480c456f701aed7d047a0d09a7c8b0260d0549164846",
-      "size_bytes": 150290,
-      "files": 52,
-      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.3.0/mudgpt-claude-0.1.0-updates1.zip"
+      "version": "0.2.0",
+      "distribution_revision": "reliability1",
+      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.4.0/mudgpt-claude-0.2.0-reliability1.zip"
     },
     {
-      "name": "mudgpt-muse-0.2.0-updates1.zip",
+      "name": "mudgpt-muse-0.3.0-reliability1.zip",
+      "sha256": "b2137793902e7df34b268841365314846d15c96e20d525cb2437ccf497578aa9",
+      "size_bytes": 263656,
+      "files": 92,
       "iteration": "muse",
-      "version": "0.2.0",
-      "distribution_revision": "updates1",
-      "sha256": "c9109233da2aea1d3112c4b86875ab9c4bf9681e655fbdcb33c2429c72f8fba8",
-      "size_bytes": 212604,
-      "files": 75,
-      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.3.0/mudgpt-muse-0.2.0-updates1.zip"
+      "version": "0.3.0",
+      "distribution_revision": "reliability1",
+      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.4.0/mudgpt-muse-0.3.0-reliability1.zip"
+    }
+  ],
+  "additional_assets": [
+    {
+      "name": "mudgpt-lily-0.1.0-reliability1.zip",
+      "sha256": "a4f59fb01deda6257c3323a621560b5d04e4864f11c831bfe68332a2b2f9a173",
+      "size_bytes": 182791,
+      "files": 57,
+      "iteration": "lily",
+      "version": "0.1.0",
+      "distribution_revision": "reliability1",
+      "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.4.0/mudgpt-lily-0.1.0-reliability1.zip"
     }
   ],
   "complete_collection": {
-    "filename": "mudgpt-clients-0.3.0.zip",
-    "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.3.0/mudgpt-clients-0.3.0.zip",
-    "release_url": "https://gitlab.com/codalilitari/mudgpt/-/releases/v0.3.0"
+    "filename": "mudgpt-clients-0.4.0.zip",
+    "url": "https://gitlab.com/api/v4/projects/87773838/packages/generic/mudgpt-clients/v0.4.0/mudgpt-clients-0.4.0.zip",
+    "release_url": "https://gitlab.com/codalilitari/mudgpt/-/releases/v0.4.0"
   },
-  "historical_downloads": "provenance/releases/v0.2.1/downloads.json",
-  "collection_checksum_note": "The complete archive checksum is external in SHA256SUMS to avoid a self-reference."
+  "historical_downloads": "provenance/releases/v0.3.0/downloads.json",
+  "collection_checksum_note": "The complete archive checksum is external in SHA256SUMS to avoid self-reference."
 }

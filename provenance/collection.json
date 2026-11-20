@@ -1,63 +1,101 @@
 {
   "format": "mudgpt-collection-provenance-v2",
   "project": "MUDweave",
-  "collection_version": "0.3.0",
-  "distribution_revision": "updates1",
-  "date": "2026-10-23",
-  "baseline_commit": "c9764b51b409d5470c9bd96363b74dd572c901d3",
+  "collection_version": "0.4.0",
+  "distribution_revision": "reliability1",
+  "date": "2026-11-20",
+  "baseline_commit": "78f1b3241b77cc9a1e82f601b0d2f5fcc8263879",
   "repository": "https://gitlab.com/codalilitari/mudgpt",
-  "historical_collection": "provenance/releases/v0.2.1/collection.json",
+  "mirror": "https://github.com/CodaLilitari/mudgpt",
+  "historical_collection": "provenance/releases/v0.3.0/collection.json",
   "notice_release": "provenance/notice-release.json",
-  "runtime_bytes_unchanged": true,
-  "tests_rerun": false,
-  "validation_status_note": "Historical runtime evidence remains unchanged; separate Windows/Linux updater checks passed and bind current wrapper inputs.",
+  "runtime_bytes_unchanged": false,
+  "red_original_files_unchanged": true,
+  "historical_validation_files_unchanged": true,
+  "tests_rerun": true,
+  "runtime_tests_rerun": true,
+  "current_validation_platforms": [
+    "windows"
+  ],
+  "wsl_tests_rerun": false,
+  "validation": "VALIDATION_040.json",
+  "validation_status_note": "Current Windows checks are recorded in VALIDATION_040.json with their exact scope. Historical WSL and prior updater receipts remain unchanged and do not certify this revision.",
   "iterations": [
     {
       "iteration": "codex",
-      "core_version": "0.2.0",
-      "distribution_revision": "updates1",
+      "distribution_version": "0.3.0",
+      "core_version": "0.3.0",
+      "distribution_revision": "reliability1",
       "distribution_manifest": "iterations/codex/distribution-manifest.json",
-      "distribution_manifest_sha256": "5fb310daa5f316faf3a12b341beaa928e297a7bfe8dc8f5f44830dc81c11f168",
-      "validation": "iterations/codex/validation.json",
-      "runtime_validation_status": "historical_unchanged",
-      "update_validation": "iterations/codex/UPDATE_VALIDATION.json",
-      "update_validation_status": "passed"
+      "validation": "VALIDATION_040.json",
+      "historical_validation": "iterations/codex/validation.json",
+      "historical_update_validation": "iterations/codex/UPDATE_VALIDATION.json",
+      "runtime_validation_status": "see_current_windows_release_receipt",
+      "distribution_manifest_sha256": "06d5bb99ea2862031e59ceb266959a65b2947221e2002ae0a828ed99cfa50f38"
     },
     {
       "iteration": "claude",
+      "distribution_version": "0.2.0",
       "core_version": "0.1.0",
-      "distribution_revision": "updates1",
+      "distribution_revision": "reliability1",
       "distribution_manifest": "iterations/claude/distribution-manifest.json",
-      "distribution_manifest_sha256": "990d764c209b81b703158d8428929ced1a81bc5598cf3039cc9cbc237f293dc7",
-      "validation": "iterations/claude/validation.json",
-      "runtime_validation_status": "historical_unchanged",
-      "update_validation": "iterations/claude/UPDATE_VALIDATION.json",
-      "update_validation_status": "passed"
+      "validation": "VALIDATION_040.json",
+      "historical_validation": "iterations/claude/validation.json",
+      "historical_update_validation": "iterations/claude/UPDATE_VALIDATION.json",
+      "original_courier_unchanged": true,
+      "legacy_core_commit": "060e50c85b0c65f6dc088d5941d0863961dad254",
+      "companion": {
+        "core_version": "0.3.0",
+        "path": "iterations/claude/reliability",
+        "selection": "explicit_only"
+      },
+      "legacy_validation_scope": "historical_wsl_receipt_unchanged",
+      "runtime_validation_status": "see_current_windows_release_receipt",
+      "distribution_manifest_sha256": "b8dbac716fc306b02fcad656df518a549b8c1bf2d11452f4c0bc32d3b8914970"
     },
     {
       "iteration": "muse",
-      "core_version": "0.2.0",
-      "distribution_revision": "updates1",
+      "distribution_version": "0.3.0",
+      "core_version": "0.3.0",
+      "distribution_revision": "reliability1",
       "distribution_manifest": "iterations/muse/distribution-manifest.json",
-      "distribution_manifest_sha256": "e0c0f53034451f3f65172278a5a33ab354dbaee7b63746a168a809cde9b10549",
-      "validation": "iterations/muse/validation.json",
-      "runtime_validation_status": "historical_unchanged",
-      "update_validation": "iterations/muse/UPDATE_VALIDATION.json",
-      "update_validation_status": "passed"
+      "validation": "VALIDATION_040.json",
+      "historical_validation": "iterations/muse/validation.json",
+      "historical_update_validation": "iterations/muse/UPDATE_VALIDATION.json",
+      "runtime_validation_status": "see_current_windows_release_receipt",
+      "distribution_manifest_sha256": "3fde73b827dd292cbbb9ae49a72e5722075552342459585a6920e2bfae3cd59f"
+    },
+    {
+      "iteration": "lily",
+      "distribution_version": "0.1.0",
+      "core_version": "0.3.0",
+      "distribution_revision": "reliability1",
+      "distribution_manifest": "iterations/lily/distribution-manifest.json",
+      "validation": "VALIDATION_040.json",
+      "adapter_version": "0.1.0",
+      "runtime_validation_status": "see_current_windows_release_receipt",
+      "distribution_manifest_sha256": "7fd5dfeb4abaa018fe2c866949458af23b41d64bba1260f424d026a1ef620522"
     }
   ],
-  "historical_metadata_snapshot": "provenance/releases/v0.2.1/snapshot.json",
-  "runtime_tests_rerun": false,
-  "update_validation": "UPDATE_VALIDATION.json",
-  "update_validation_status": "passed",
-  "packaging_status": "validated_release_snapshot",
+  "historical_metadata_snapshot": "provenance/releases/v0.3.0/snapshot.json",
+  "update_validation": "VALIDATION_040.json",
+  "packaging_status": "release_metadata",
   "update_policy": {
     "automatic": "check_and_notify_on_update_aware_launch",
     "download": "explicit_request_only",
     "installation": "operator_requested_side_by_side",
     "automatic_install": false,
     "automatic_restart": false,
-    "existing_launchers_unchanged": true
+    "existing_authored_launchers_unchanged": true
   },
-  "tests_rerun_scope": "The tests_rerun field concerns historical runtime suites, which were not rerun. Current updater and launcher tests are recorded separately in UPDATE_VALIDATION.json."
+  "tests_rerun_scope": "Current maintained core, actor/helper, Muse adapter and updater checks are recorded in VALIDATION_040.json. Red's legacy courier validation and all older receipts remain historical.",
+  "live_runtime_deployed_by_release": false,
+  "privacy_exclusions": [
+    "private game server source",
+    "pfiles",
+    "roleplay logs",
+    "credentials",
+    "private keys",
+    "private runtime state"
+  ]
 }

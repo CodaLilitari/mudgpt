@@ -1,6 +1,6 @@
 # Scoped Muse host adapter contract
 
-This component gives Nua five HTTP operations against one locally configured
+This component gives Nua six HTTP operations against one locally configured
 MudGPT broker. It is separate from Red's Claude iteration courier and from Muse's
 original byte-forwarder proposal. This contract documents the host component.
 See README.md for the receiving helper, setup workflow, current evidence and
@@ -11,7 +11,7 @@ publication candidate. These files do not enroll a device or log in a character.
 
 - The broker's bearer token and Nua's controller lease remain local. A
   different, revocable credential authenticates Nua at this adapter.
-- Only `status`, `observe`, `claim`, `send`, and `release` exist. Requests use
+- Only `status`, `observe`, `claim`, `send`, `conditional`, and `release` exist. Requests use
   exact field allowlists. Owner is always `nua`; remote takeover, human
   impersonation, secret sends, connection changes, shutdown, and arbitrary
   upstream addresses are unavailable.
@@ -27,15 +27,25 @@ publication candidate. These files do not enroll a device or log in a character.
   checks the observation and expiry atomically before writing. These checks
   reject a decision after newly observed output; they cannot prove the game
   world stayed still or that a command finished.
+- `conditional` adds one explicit `lok_retreat_v1` decision, which can issue
+  only `flee`. It requires `conditional_actions_v1`, the original observation
+  tuple, controller lease epoch, unchanged deadline, and an exact enemy status
+  condition. Ordinary sends retain their exact-cursor rule. The adapter never
+  converts a rejected ordinary send into a conditional action.
 - A unique command ID is committed to a SQLite journal with
   `synchronous=FULL` **before forwarding**. Duplicate IDs never execute,
   including after a process restart. A reserved but unfinished entry means
   uncertainty. Neither a timeout nor a lost response triggers an automatic
   retry. Creating a new ID for the same uncertain command would bypass the
   operator's intent, so inspect fresh observations and make a new decision.
-- Broker exceptions and HTTP failures after reservation produce a
-  conservative `uncertain` receipt, even when the underlying broker may
-  have safely refused the command. Stored receipts contain no command
+- Both `send` and `conditional` use that same journal and ID namespace.
+  The conditional command ID becomes the core's `decision_id` unchanged.
+- Recognized versioned core errors produce `not_sent` with a registered
+  `error_code`. The shared `mudgpt.errors.is_prewrite_error` contract is the
+  only error classifier: an English error message, old broker response,
+  malformed JSON, or unknown code cannot prove that nothing was sent.
+  Other broker errors and HTTP failures after reservation remain `uncertain`.
+  Arbitrary upstream error messages are not reflected. Stored receipts contain no command
   text, lease, token, or game transcript. The journal stores a SHA-256
   request digest, ID, timestamp and small outcome receipt.
 - Successful observation and send results preserve text, events and color
@@ -62,6 +72,7 @@ Each operation requires exactly these fields:
 | claim | `op`, `expected_adapter_id`, `expected_broker_id` |
 | release | `op`, `expected_adapter_id`, `expected_broker_id` |
 | send | `op`, `expected_adapter_id`, `command_id`, `command`, `expected_broker_id`, `expected_generation`, `expected_cursor`, `expires_at` |
+| conditional | `op`, `expected_adapter_id`, `command_id`, `action`, `condition`, `expected_broker_id`, `expected_generation`, `expected_cursor`, `expected_lease_epoch`, `expires_at` |
 
 Start with `{"op":"status"}`. A successful reply wraps the broker response:
 
@@ -100,24 +111,69 @@ A send response additionally contains:
 }
 ```
 
-`outcome` can also be `not_forwarded` or `uncertain`. HTTP409 with
+`outcome` can also be `not_forwarded`, `not_sent`, or `uncertain`.
+`not_forwarded` describes a local adapter refusal; `not_sent` describes a
+recognized core refusal before a game write. The latter returns HTTP409,
+`error_schema: 1`, `delivery: "not_sent"`, and the registered `error_code`
+(for example `cursor_changed` or `decision_expired`). Inspect the receipt:
+HTTP409 alone does not identify its outcome. HTTP409 with
 `duplicate command_id` returns the preserved receipt and executes nothing.
 HTTP409 busy means no request was queued. HTTP502 means inspect current
 status and observations before making any further decision. If a lease was
 lost during an adapter restart or an uncertain claim/release, the local
 operator must take over and release it; the adapter cannot preempt.
 
+## Explicit conditional retreat
+
+Use `conditional` only for an authored retreat decision, with
+`action: "lok_retreat_v1"`. Copy `expected_broker_id`, `expected_generation`,
+`expected_cursor`, and `expected_lease_epoch` from the observation that informed
+that decision. Supply a stable `command_id`, the current `expected_adapter_id`,
+and the original `expires_at` within the same 30-second window as an ordinary
+send. The adapter performs a status read but never substitutes its newer cursor,
+epoch, or lifetime for those original fields, and never extends the deadline.
+
+`condition` has exactly two fields: `enemy_status` is the exact observed enemy
+status line (1–150 characters without controls or line separators), and
+`allow_afk_combat` is an explicit boolean. The core requires that same status
+immediately before a complete supported combat prompt. With AFK support enabled,
+it instead requires the exact status immediately before literal `<AFK>` plus a
+fresh preceding, supported same-enemy combat exchange. Bare AFK text does not
+qualify. Unsupported prompt/exchange forms refuse the action.
+
+The core checks the original controller and connection, intervening history,
+deadline, truncation, input mode, and relevant context changes before at most one
+guarded write attempt for `flee`. It does not infer or verify an unseen room. The result retains
+`original_decision`, `evaluation_cursor`, `predicate_evidence`,
+`intervening_observation` (including color), `send_attempted`, `reason_code`, and
+the ordinary delivery fields. Review all intervening output before the next
+decision. This is a bounded retreat predicate, not general combat automation.
+
+A normal conditional result, including a predicate refusal, returns HTTP200
+with the adapter receipt `outcome: "broker_response"`. Its `result.delivery`
+and `result.reason_code` describe the core outcome. Neither HTTP200 nor
+`broker_response` proves that a command was sent or completed. An uncertain
+attempt must not be replayed with a replacement ID; duplicate IDs retain their
+original receipt and do not dispatch again.
+
 ## Local setup, after review and explicit deployment coordination
 
 Run from this Muse iteration root with Python 3.11+ and its pinned broker
-installed. The server needs a trusted Tailscale installation which reports
+installed in the separate external environment described in the parent README.
+Keep the environment and private state outside every Git checkout, with no
+junction back into one. The paths below are configurable examples; use the
+intended dedicated broker's actual control path and verify private directory
+permissions. Repeat the path assignments when opening a new terminal.
+The server needs a trusted Tailscale installation which reports
 `BackendState: Running`, its own address in `Self.TailscaleIPs`, and the
 selected remote device in `Peer[*].TailscaleIPs`.
 
 Create the scoped credential in private local storage:
 
 ```powershell
-python -m muse.adapter create-credential .private/muse-adapter/credential.json
+$musePython = Join-Path $env:LOCALAPPDATA 'MUDweave\muse-env\Scripts\python.exe'
+$museState = Join-Path $env:LOCALAPPDATA 'MUDweave\muse-state'
+& $musePython -m muse.adapter create-credential (Join-Path $museState 'adapter\credential.json')
 ```
 
 The command creates a new file exclusively and prints no secret. Its JSON
@@ -128,12 +184,12 @@ token, either token into chat, or either token into a command line.
 The production command has no all-interface, LAN, or loopback fallback:
 
 ```powershell
-python -m muse.adapter serve `
-  --control .private/nua-broker/control.json `
-  --credential-file .private/muse-adapter/credential.json `
-  --journal .private/muse-adapter/commands.sqlite `
-  --listen-ip <this-machine-Tailscale-IPv4> `
-  --peer-ip <Nua-device-Tailscale-IPv4> `
+& $musePython -m muse.adapter serve `
+  --control (Join-Path $museState 'broker\control.json') `
+  --credential-file (Join-Path $museState 'adapter\credential.json') `
+  --journal (Join-Path $museState 'adapter\commands.sqlite') `
+  --listen-ip '<this-machine-Tailscale-IPv4>' `
+  --peer-ip '<Nua-device-Tailscale-IPv4>' `
   --listen-port 8811
 ```
 
@@ -167,7 +223,7 @@ use mode 0600; on Windows use a private user directory with suitable ACLs.
 - Three-second idle socket timeout and 25-second absolute connection limit.
 - Eight-second absolute upstream call limit, loopback-only upstream URL,
   no environment proxy, redirect following, or automatic retries.
-- 1MiB upstream response cap; 30-second maximum send TTL.
+- 1MiB upstream response cap; 30-second maximum send/conditional TTL.
 - 10,000 non-evicted journal entries; SQLite lock waits bounded to 1 second.
 
 The local synthetic fixture constructor deliberately uses an ephemeral
@@ -175,8 +231,13 @@ loopback port; it is not selectable from the production command line.
 
 ## Verification
 
+Use the selected external environment and an external temporary/output directory.
+Run suites serially; the command below is a manual verification instruction,
+not a step required to start or continue a game.
+
 ```powershell
-.venv/Scripts/python.exe -m unittest discover -s muse/tests -v
+$musePython = Join-Path $env:LOCALAPPDATA 'MUDweave\muse-env\Scripts\python.exe'
+& $musePython -m unittest discover -s muse/tests -v
 ```
 
 The suite exercises token/lease secrecy, color preservation, forbidden
@@ -190,8 +251,11 @@ neither replay, a stale observation, nor expiry during an upstream status
 check causes a second game write. A slow-drip HTTP fixture also verifies
 that frequent bytes cannot extend the absolute upstream deadline.
 
-The unchanged host adapter has 18 synthetic tests. The configurable receiving
-helper adds 14 offline tests. `validation.json` records the combined 32-test run
-and distinguishes that verification from prior live gameplay.
+The earlier `validation.json` records the historical 18 host-adapter and 14
+receiving-helper checks; it does not certify this reliability revision.
+`tests/test_reliability.py` adds focused in-process checks for typed refusals,
+malformed/legacy uncertainty, conditional guard preservation, durable replay
+barriers, capability/lease requirements, and predicate evidence with color.
+The receiving helper and network/enrollment scope are unchanged.
 
 No test calls a public MUD, remote provider or tailnet endpoint.
